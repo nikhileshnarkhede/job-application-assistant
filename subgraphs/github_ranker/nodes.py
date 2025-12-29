@@ -2,7 +2,7 @@
 GitHub Ranker Nodes
 
 This module contains all node definitions for the GitHub Ranker subgraph:
-1. load_projects - Load GitHub projects from API/cache/JSON
+1. load_projects - Load GitHub projects from API (LIVE)
 2. extract_jd_requirements - Extract skills/keywords from JD
 3. score_projects - Score each project by relevance
 4. select_top_projects - Select top N projects
@@ -58,17 +58,17 @@ def get_data_path() -> str:
 
 
 # ============================================================================
-# NODE 1: LOAD PROJECTS
+# NODE 1: LOAD PROJECTS (GITHUB API FIRST!)
 # ============================================================================
 
 def load_projects(state: GitHubRankerState) -> Dict[str, Any]:
     """
     Load GitHub projects from available sources.
     
-    Priority:
-    1. Cached API data (github_projects_fetched.json) - fastest
-    2. Manual JSON (github_projects.json) - customized
-    3. GitHub API (live) - requires credentials
+    Priority (UPDATED - API FIRST):
+    1. GitHub API (LIVE) - always try first for latest data
+    2. Cached API data (github_projects_fetched.json) - fallback
+    3. Manual JSON (github_projects.json) - customized overrides
     
     Returns:
         Updated state with all_projects and projects_source
@@ -78,19 +78,52 @@ def load_projects(state: GitHubRankerState) -> Dict[str, Any]:
     
     data_path = get_data_path()
     
-    # Try 1: Cached API data
-    cached_path = os.path.join(data_path, "github_projects_fetched.json")
-    if os.path.exists(cached_path):
-        try:
-            with open(cached_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-                projects = data.get("projects", [])
-                source = "cache"
-                print(f"  📂 Loaded {len(projects)} projects from cache")
-        except Exception as e:
-            print(f"  ⚠️ Cache load failed: {e}")
+    # ===== TRY 1: GITHUB API (LIVE) =====
+    try:
+        from mcp_server.tools.github_project_loader import (
+            load_projects_from_github_api, 
+            project_to_dict,
+            get_github_username,
+            get_github_token
+        )
+        
+        username = get_github_username()
+        token = get_github_token()
+        
+        if username and token:
+            print(f"  🌐 Fetching from GitHub API (@{username})...")
+            api_projects = load_projects_from_github_api(fetch_details=False)  # Fast mode
+            
+            if api_projects:
+                projects = [project_to_dict(p) for p in api_projects]
+                source = "github_api"
+                print(f"  ✅ Loaded {len(projects)} projects from GitHub API")
+                
+                # Merge with manual JSON for custom metrics/bullets
+                manual_projects = _load_manual_overrides(data_path)
+                if manual_projects:
+                    projects = _merge_projects(projects, manual_projects)
+                    print(f"  📝 Merged custom data for {len(manual_projects)} projects")
+        else:
+            print(f"  ⚠️  GitHub credentials not set (GITHUB_USERNAME, GITHUB_TOKEN)")
+            
+    except Exception as e:
+        print(f"  ⚠️  GitHub API failed: {e}")
     
-    # Try 2: Manual JSON
+    # ===== TRY 2: Cached API data (fallback) =====
+    if not projects:
+        cached_path = os.path.join(data_path, "github_projects_fetched.json")
+        if os.path.exists(cached_path):
+            try:
+                with open(cached_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    projects = data.get("projects", [])
+                    source = "cache"
+                    print(f"  📂 Loaded {len(projects)} projects from cache")
+            except Exception as e:
+                print(f"  ⚠️  Cache load failed: {e}")
+    
+    # ===== TRY 3: Manual JSON (last resort) =====
     if not projects:
         manual_path = os.path.join(data_path, "github_projects.json")
         if os.path.exists(manual_path):
@@ -103,31 +136,56 @@ def load_projects(state: GitHubRankerState) -> Dict[str, Any]:
                     source = "json"
                     print(f"  📂 Loaded {len(projects)} projects from JSON")
             except Exception as e:
-                print(f"  ⚠️ JSON load failed: {e}")
-    
-    # Try 3: GitHub API (if no cached data)
-    if not projects:
-        try:
-            from mcp_server.tools.github_project_loader import load_projects_from_github_api, project_to_dict
-            
-            api_projects = load_projects_from_github_api(fetch_details=False)  # Fast mode
-            projects = [project_to_dict(p) for p in api_projects]
-            source = "api"
-            print(f"  🌐 Loaded {len(projects)} projects from GitHub API")
-        except Exception as e:
-            print(f"  ⚠️ API load failed: {e}")
+                print(f"  ⚠️  JSON load failed: {e}")
     
     if not projects:
         return {
             "all_projects": [],
             "projects_source": "none",
-            "error_message": "No GitHub projects found. Check data files or GitHub credentials."
+            "error_message": "No GitHub projects found. Set GITHUB_USERNAME and GITHUB_TOKEN in .env"
         }
     
     return {
         "all_projects": projects,
         "projects_source": source
     }
+
+
+def _load_manual_overrides(data_path: str) -> List[Dict]:
+    """Load manual project overrides (custom bullets, metrics, etc.)"""
+    manual_path = os.path.join(data_path, "github_projects.json")
+    if not os.path.exists(manual_path):
+        return []
+    
+    try:
+        with open(manual_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            projects = data.get("projects", [])
+            # Filter out placeholders
+            return [p for p in projects if not p.get("name", "").startswith("Project Name")]
+    except:
+        return []
+
+
+def _merge_projects(api_projects: List[Dict], manual_projects: List[Dict]) -> List[Dict]:
+    """Merge API projects with manual overrides (manual takes precedence for matching projects)."""
+    manual_by_name = {p.get("name", "").lower(): p for p in manual_projects}
+    
+    merged = []
+    for proj in api_projects:
+        name_lower = proj.get("name", "").lower()
+        
+        if name_lower in manual_by_name:
+            # Merge: keep API metadata, use manual bullets/metrics
+            manual = manual_by_name[name_lower]
+            proj["bullets_for_resume"] = manual.get("bullets_for_resume", proj.get("bullets_for_resume", []))
+            proj["metrics"] = manual.get("metrics", proj.get("metrics", []))
+            proj["key_features"] = manual.get("key_features", proj.get("key_features", []))
+            proj["problem_solved"] = manual.get("problem_solved", proj.get("problem_solved", ""))
+        
+        merged.append(proj)
+    
+    return merged
 
 
 # ============================================================================

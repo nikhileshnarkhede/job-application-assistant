@@ -1,66 +1,166 @@
 # Job Application Assistant
 
-An AI-powered job application automation system built with **LangGraph**, **RAG**, and **FastMCP** tools.
+An AI-powered job application automation system built with **LangGraph**, **LLM**, and **GitHub API** integration.
 
 ## 🎯 Features
 
-- **JD Extraction**: Parse job descriptions from URLs or text
-- **Skill Matching**: RAG-powered skill gap analysis
-- **GitHub Project Ranking**: Automatically select and rewrite relevant projects
-- **Experience Rewriting**: ATS-optimized bullet points aligned with JD
-- **Resume Generation**: Structured JSON output with strict schema
-- **ATS Optimization**: Auto-loop until score ≥ 95
-- **Resource Compliance**: Validate against guides, checklists, and rubrics
-- **Cover Letter Generation**: Technical, tailored cover letters
-- **Recruiter Email Generation**: Multiple versions (short/medium/long)
-- **Excel Tracking**: Automatic job application tracking
-- **Thread Isolation**: Each application gets its own folder and persistence
+- **JD Extraction**: Parse job descriptions from URLs or text using LLM
+- **Skill Matching**: Automated skill gap analysis against JD requirements
+- **GitHub Project Ranking**: Dynamically fetch and rank GitHub projects by JD relevance
+- **Experience Selection**: Select most relevant work experiences
+- **Content Rewriting**: ATS-optimized bullet points with action verbs and metrics
+- **Resume Generation**: Structured JSON output with JD-tailored summary
+- **ATS Optimization**: Iterative loop until score ≥ 95%
+- **Resource Compliance**: Validate against checklists and rubrics
+- **Cover Letter Generation**: Personalized cover letters with company research
+- **Email Generation**: Recruiter outreach emails (cold, follow-up, thank-you)
+- **Excel Tracking**: Automatic job application tracking spreadsheet
+- **Checkpointing**: Resume from any stage with SQLite persistence
 
 ## 🏗️ Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                    Master LangGraph Pipeline                      │
-├─────────────────────────────────────────────────────────────────┤
-│  JD → Skills → GitHub → Rewrite → Resume → ATS → Compliance     │
-│                           ↑                  │         │         │
-│                           └──────────────────┴─────────┘         │
-│                              (loops until passing)                │
-├─────────────────────────────────────────────────────────────────┤
-│                    → Excel → Cover Letter → Email                 │
-└─────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────────┐
+│                         PARENT GRAPH PIPELINE                            │
+├─────────────────────────────────────────────────────────────────────────┤
+│                                                                          │
+│   START                                                                  │
+│     │                                                                    │
+│     ▼                                                                    │
+│   ┌──────────────┐     ┌──────────────┐     ┌──────────────────────┐    │
+│   │ 1. Extract   │────►│ 2. Match     │────►│ 3a. Select           │    │
+│   │    JD        │     │    Skills    │     │     Experiences      │    │
+│   └──────────────┘     └──────────────┘     └──────────┬───────────┘    │
+│         │                                              │                 │
+│         │ [fail]                                       ▼                 │
+│         │                               ┌──────────────────────┐         │
+│         │                               │ 3b. Rank Projects    │         │
+│         │                               │     (GitHub API)     │         │
+│         │                               └──────────┬───────────┘         │
+│         │                                          │                     │
+│         │                                          ▼                     │
+│         │                               ┌──────────────────────┐         │
+│         │                               │ 4. Rewrite Content   │         │
+│         │                               └──────────┬───────────┘         │
+│         │                                          │                     │
+│         │                                          ▼                     │
+│         │                               ┌──────────────────────┐         │
+│         │                               │ 5. Build Resume      │         │
+│         │                               └──────────┬───────────┘         │
+│         │                                          │                     │
+│         │                                          ▼                     │
+│         │                               ┌──────────────────────┐         │
+│         │                               │ 6. ATS Optimize ◄────┼─┐       │
+│         │                               │    (retry loop)      │ │       │
+│         │                               └──────────┬───────────┘ │       │
+│         │                                          │             │       │
+│         │                                    [score < 95%]───────┘       │
+│         │                                          │                     │
+│         │                                          ▼                     │
+│         │                               ┌──────────────────────┐         │
+│         │                               │ 7. Compliance Check  │         │
+│         │                               └──────────┬───────────┘         │
+│         │                                          │                     │
+│         │                                          ▼                     │
+│         │                               ┌──────────────────────┐         │
+│         │                               │ 8. Cover Letter      │         │
+│         │                               └──────────┬───────────┘         │
+│         │                                          │                     │
+│         │                                          ▼                     │
+│         │                               ┌──────────────────────┐         │
+│         │                               │ 9. CL Compliance     │         │
+│         │                               └──────────┬───────────┘         │
+│         │                                          │                     │
+│         │                                          ▼                     │
+│         │                               ┌──────────────────────┐         │
+│         │                               │ 10. Generate Email   │         │
+│         │                               └──────────┬───────────┘         │
+│         │                                          │                     │
+│         │                                          ▼                     │
+│         │                               ┌──────────────────────┐         │
+│         │                               │ 11. Excel Tracker    │         │
+│         │                               └──────────┬───────────┘         │
+│         │                                          │                     │
+│         └──────────────────────────────────────────┼─────────────────────┤
+│                                                    ▼                     │
+│                                         ┌──────────────────────┐         │
+│                                         │ 12. Save Outputs     │         │
+│                                         └──────────┬───────────┘         │
+│                                                    │                     │
+│                                                    ▼                     │
+│                                                   END                    │
+│                                                                          │
+└─────────────────────────────────────────────────────────────────────────┘
 ```
-
-### Key Design Principles
-
-1. **Simple**: Each module does one thing well
-2. **Modular**: Subgraphs are self-contained and replaceable
-3. **Loosely Coupled**: Integration via LangGraph edges only
-4. **Maintainable**: External prompts, clear boundaries
-5. **Testable**: Each subgraph has its own test harness
 
 ## 📁 Project Structure
 
 ```
-project_root/
-├── main.py                 # Master pipeline
-├── mcp_server/             # FastMCP tools
-│   └── tools/              # File, Excel, RAG tools
-├── modules/                # 10 LangGraph subgraphs
-│   ├── jd_extractor/
-│   ├── skill_matcher/
-│   ├── github_ranker/
-│   ├── experience_rewriter/
-│   ├── resume_json_builder/
-│   ├── ats_optimizer/
-│   ├── resource_compliance/
-│   ├── cover_letter_generator/
-│   ├── recruiter_email_generator/
-│   └── excel_writer/
-├── resources/              # Guides, checklists, rubrics
-├── vectorstores/           # RAG indexes
-├── applications/           # Per-application thread folders
-└── data/                   # Checkpoints, cache, temp files
+job-application-assistant/
+│
+├── main.py                       # CLI entry point
+├── requirements.txt              # Python dependencies
+├── .env                          # Environment variables (API keys)
+│
+├── pipeline/                     # Parent graph implementation
+│   ├── __init__.py               # Package exports
+│   ├── config.py                 # All configuration parameters
+│   ├── state.py                  # ParentGraphState definition
+│   ├── nodes.py                  # 12 node functions
+│   ├── graph.py                  # Graph builder with conditional edges
+│   └── runner.py                 # Execution & checkpointing
+│
+├── subgraphs/                    # 12 LangGraph subgraphs
+│   ├── __init__.py               # Central exports for all subgraphs
+│   ├── test_constants.py         # Standard test JD URL/text
+│   ├── jd_extractor/             # Extract structured JD
+│   ├── skill_matcher/            # Match skills to JD
+│   ├── github_ranker/            # Rank GitHub projects
+│   ├── experience_selector/      # Select relevant experiences
+│   ├── experience_rewriter/      # Rewrite bullets with keywords
+│   ├── resume_builder/           # Assemble ResumeJSON
+│   ├── ats_optimizer/            # Optimize for ATS score
+│   ├── resource_compliance/      # Validate against checklists
+│   ├── cover_letter_generator/   # Generate cover letter
+│   ├── cover_letter_compliance/  # Validate cover letter
+│   ├── email_generator/          # Generate outreach emails
+│   └── excel_writer/             # Save to tracking spreadsheet
+│
+├── state/                        # Shared state models
+│   └── state_models.py           # StructuredJD, ResumeJSON, etc.
+│
+├── mcp_server/                   # MCP server & tools
+│   └── tools/
+│       ├── candidate_loader.py   # Load candidate data
+│       ├── github_project_loader.py  # GitHub API integration
+│       └── resource_loader.py    # Load resource files
+│
+├── resources/                    # Reference materials (READ-ONLY)
+│   ├── action_verbs.json
+│   ├── resume_checklist.md
+│   ├── resume_rubric.md
+│   ├── resume_writing_guide.md
+│   ├── cover_letter_checklist.md
+│   ├── cover_letter_rubric.md
+│   └── cover_letter_writing_guide.md
+│
+├── data/                         # Data files
+│   ├── candidate_experience.json # Candidate profile
+│   ├── github_projects.json      # Manual project overrides
+│   └── checkpoints/              # SQLite checkpoint DB
+│
+├── applications/                 # Generated outputs per application
+│   └── {company}_{timestamp}/
+│       ├── resume.json
+│       ├── cover_letter.txt
+│       ├── email.txt
+│       └── metadata.json
+│
+└── docs/                         # Documentation
+    ├── PROJECT_STRUCTURE.md
+    ├── STATE_ARCHITECTURE.md
+    ├── PIPELINE.md
+    └── SUBGRAPHS.md
 ```
 
 ## 🚀 Quick Start
@@ -74,7 +174,7 @@ cd job-application-assistant
 
 # Create virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate  # Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
@@ -83,86 +183,119 @@ pip install -r requirements.txt
 ### 2. Configuration
 
 ```bash
-# Copy and edit environment file
+# Copy environment template
 cp .env.example .env
-# Edit .env with your API keys
+
+# Edit .env with your API keys:
+# - OPENAI_API_KEY (required)
+# - GITHUB_TOKEN (required for project ranking)
+# - GITHUB_USERNAME (required for project ranking)
 ```
 
-### 3. Add Your Resources
-
-Place your files in the `resources/` folder:
-- `Action_Verbs.xlsx`
-- `Resume Checklist.txt`
-- `Resume guide.txt`
-- `Resume rubric.xlsx`
-- `Cover Letter Checklist.txt`
-- `Cover letter guide.txt`
-- `Cover letter rubric.xlsx`
-
-### 4. Run
+### 3. Run
 
 ```bash
-# Run the full pipeline
-python main.py --jd "https://example.com/job-posting"
+# Run with test JD (Amazon Applied Scientist)
+python main.py --test
 
-# Or with pasted JD text
+# Run with specific URL
+python main.py --jd-url "https://example.com/job-posting"
+
+# Run with pasted JD text
 python main.py --jd-text "We are looking for a Machine Learning Engineer..."
 
-# Test individual subgraphs
-python -m modules.jd_extractor.jd_extractor_subgraph
+# Show configuration
+python main.py --config
+
+# List checkpoints
+python main.py --list-checkpoints
+
+# Resume from checkpoint
+python main.py --resume <thread_id>
 ```
 
-## 🧪 Testing Individual Modules
+## 📊 CLI Options
+
+| Option | Description |
+|--------|-------------|
+| `--test` | Run with standard test JD URL |
+| `--jd-url URL` | Process job posting from URL |
+| `--jd-text TEXT` | Process raw JD text |
+| `--config` | Show current configuration |
+| `--list-checkpoints` | List available checkpoints |
+| `--resume THREAD_ID` | Resume from checkpoint |
+| `--no-checkpoints` | Disable checkpointing |
+
+## ⚙️ Configuration
+
+Edit `pipeline/config.py` to customize:
+
+```python
+RESUME_CONFIG = {
+    "max_experiences": 4,
+    "max_projects": 3,
+    "summary_max_words": 60,
+}
+
+ATS_CONFIG = {
+    "target_score": 95,
+    "max_iterations": 3,
+}
+
+PIPELINE_CONFIG = {
+    "compliance_pass_threshold": 85,
+    "enable_email_generation": True,
+    "save_to_excel": True,
+}
+```
+
+## 🧪 Testing Individual Subgraphs
 
 Each subgraph can be tested independently:
 
-```bash
-# Test JD Extractor
-python -m modules.jd_extractor.jd_extractor_subgraph
+```python
+from subgraphs import extract_jd_from_url, match_skills_to_jd
 
-# Test Skill Matcher
-python -m modules.skill_matcher.skill_matcher_subgraph
+# Test JD extraction
+result = extract_jd_from_url("https://example.com/job")
+print(result["structured_jd"])
 
-# Test any module
-python -m modules.<module_name>.<module_name>_subgraph
+# Test skill matching
+result = match_skills_to_jd(structured_jd=jd)
+print(result["skill_match_result"])
 ```
 
-## 📊 Application Tracking
+## 📦 Output Structure
 
 Each job application creates a dedicated folder:
 
 ```
-applications/<thread_id>_<company>/
-├── jd/                    # JD artifacts
-├── resume/                # Resume versions
-├── ats/                   # ATS iterations
-├── compliance/            # Rubric results
-├── cover_letter/          # Cover letters
-├── recruiter_emails/      # Email versions
-├── logs/                  # Debug logs
-└── metadata.json          # Application metadata
+applications/{company}_{timestamp}/
+├── resume.json           # Structured resume data
+├── cover_letter.txt      # Generated cover letter
+├── email.txt             # Outreach email
+└── metadata.json         # Scores and metrics
 ```
 
 ## 🔧 Customization
 
 ### Prompt Engineering
 
-All prompts are in external `.txt` files:
+All prompts are in external files:
 
 ```
-modules/<module>/prompts/
-├── main_prompt.txt        # Core instruction
-└── few_shot_examples.txt  # N-shot examples
+subgraphs/{subgraph}/prompts/
+├── system_prompt.txt       # LLM role/persona
+├── main_prompt.txt         # Task instructions
+└── few_shot_examples.txt   # N-shot examples
 ```
 
-Edit these files to tune the AI behavior without touching code.
+### Adding Resources
 
-### Thresholds
-
-Adjust in `.env`:
-- `ATS_SCORE_THRESHOLD=95`
-- `RESUME_RUBRIC_THRESHOLD=85`
-- `COVER_LETTER_RUBRIC_THRESHOLD=85`
+Place files in `resources/` folder:
+- `action_verbs.json` - Strong action verbs by category
+- `resume_checklist.md` - Resume validation checklist
+- `resume_rubric.md` - Resume scoring rubric
 
 ## 📝 License
 
@@ -170,4 +303,4 @@ MIT License - See LICENSE file for details.
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please read CONTRIBUTING.md for guidelines.
+Contributions are welcome! Please read the documentation in `docs/` before submitting PRs.

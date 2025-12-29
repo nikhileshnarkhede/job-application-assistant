@@ -1,354 +1,316 @@
-# 🧠 State Architecture for Job Application Pipeline
+# State Architecture
 
-## Core Principle
+**Last Updated:** December 29, 2024
+
+## Overview
+
+The Job Application Assistant uses a two-level state architecture:
+
+1. **Subgraph States** - Specific to each subgraph
+2. **Parent Graph State** - Unified state for the pipeline
+
+## State Models Location
+
 ```
-ParentState = JDExtractor + SkillMatcher + GitHubRanker + ExperienceSelector 
-            + ExperienceRewriter + ResumeBuilder + ATSOptimizer 
-            + ResourceCompliance + CoverLetterGenerator + EmailGenerator 
-            + ExcelWriter + PipelineControl + Resources + Metadata
-```
+state/
+└── state_models.py    # All shared models (StructuredJD, ResumeJSON, etc.)
 
----
+pipeline/
+└── state.py           # ParentGraphState (pipeline-specific)
 
-## 📊 State Flow Diagram
-
-```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                              PARENT STATE                                        │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                  │
-│  INPUT                           CANDIDATE DATA (pre-loaded)                     │
-│  ┌─────────────────┐            ┌──────────────────────────────┐                │
-│  │ raw_jd_text     │            │ candidate_header             │                │
-│  └────────┬────────┘            │ candidate_summary            │                │
-│           │                     │ candidate_education          │                │
-│           ▼                     │ candidate_certifications     │                │
-│  ┌─────────────────┐            │ candidate_skills             │                │
-│  │  JD EXTRACTOR   │            │ candidate_skills_flat        │                │
-│  │                 │            │ candidate_publications       │                │
-│  │ OUT:            │            │ candidate_experiences        │                │
-│  │ structured_jd   │            └──────────────────────────────┘                │
-│  └────────┬────────┘                                                            │
-│           │                                                                      │
-│           ├──────────────────┬─────────────────┬────────────────┐               │
-│           ▼                  ▼                 ▼                ▼               │
-│  ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐                   │
-│  │ SKILL MATCHER   │ │ GITHUB RANKER   │ │ EXP SELECTOR    │                   │
-│  │                 │ │                 │ │                 │                   │
-│  │ OUT:            │ │ OUT:            │ │ OUT:            │                   │
-│  │ skill_match_    │ │ selected_       │ │ selected_       │                   │
-│  │ result          │ │ projects        │ │ experiences     │                   │
-│  └────────┬────────┘ └────────┬────────┘ └────────┬────────┘                   │
-│           │                   │                   │                             │
-│           │                   └─────────┬─────────┘                             │
-│           │                             ▼                                       │
-│           │                    ┌─────────────────┐                              │
-│           │                    │ EXP REWRITER    │                              │
-│           │                    │                 │                              │
-│           │                    │ OUT:            │                              │
-│           │                    │ rewritten_      │                              │
-│           │                    │ experiences     │                              │
-│           │                    │ rewritten_      │                              │
-│           │                    │ projects        │                              │
-│           │                    └────────┬────────┘                              │
-│           │                             │                                       │
-│           │                             ▼                                       │
-│           │                    ┌─────────────────┐                              │
-│           │                    │ RESUME BUILDER  │                              │
-│           │                    │                 │                              │
-│           │                    │ OUT:            │                              │
-│           │                    │ resume_json     │                              │
-│           │                    └────────┬────────┘                              │
-│           │                             │                                       │
-│           │                             ▼                                       │
-│           │                    ┌─────────────────┐                              │
-│           │                    │ ATS OPTIMIZER   │◄──┐                          │
-│           │                    │                 │   │ Loop until               │
-│           │                    │ OUT:            │   │ ats_passed=True          │
-│           │                    │ ats_analysis    │   │ (score ≥ 95)             │
-│           │                    │ ats_passed      │───┘                          │
-│           │                    └────────┬────────┘                              │
-│           │                             │                                       │
-│           │                             ▼                                       │
-│           │                    ┌─────────────────┐                              │
-│           │                    │ RESOURCE        │◄──┐                          │
-│           │                    │ COMPLIANCE      │   │ Loop until               │
-│           │                    │                 │   │ compliance_passed=True   │
-│           │                    │ OUT:            │   │ (rubric ≥ 3.5)           │
-│           │                    │ compliance_     │───┘                          │
-│           │                    │ result          │                              │
-│           │                    │ compliance_     │                              │
-│           │                    │ passed          │                              │
-│           │                    └────────┬────────┘                              │
-│           │                             │                                       │
-│           ▼                             ▼                                       │
-│  ┌─────────────────────────────────────────────────────────────┐               │
-│  │                    COVER LETTER GENERATOR                    │               │
-│  │                                                              │               │
-│  │  OUT: cover_letter_text, cover_letter_json                   │               │
-│  └─────────────────────────────┬───────────────────────────────┘               │
-│                                │                                                │
-│                                ▼                                                │
-│                       ┌─────────────────┐                                       │
-│                       │ CL COMPLIANCE   │◄──┐                                   │
-│                       │                 │   │ Loop until                        │
-│                       │ OUT:            │   │ cl_passed=True                    │
-│                       │ cl_compliance_  │   │ (rubric ≥ 2.5)                    │
-│                       │ result          │───┘                                   │
-│                       │ cl_passed       │                                       │
-│                       └────────┬────────┘                                       │
-│                                │                                                │
-│                                ▼                                                │
-│                       ┌─────────────────┐                                       │
-│                       │ EMAIL GENERATOR │                                       │
-│                       │                 │                                       │
-│                       │ OUT:            │                                       │
-│                       │ recruiter_email │                                       │
-│                       └────────┬────────┘                                       │
-│                                │                                                │
-│                                ▼                                                │
-│                       ┌─────────────────┐                                       │
-│                       │ EXCEL WRITER    │                                       │
-│                       │                 │                                       │
-│                       │ OUT:            │                                       │
-│                       │ output_files    │                                       │
-│                       │ excel_updated   │                                       │
-│                       │ application_id  │                                       │
-│                       └─────────────────┘                                       │
-│                                                                                  │
-│  RESOURCES (pre-loaded)              PIPELINE CONTROL                           │
-│  ┌────────────────────────┐         ┌────────────────────────┐                 │
-│  │ action_verbs           │         │ pipeline_status        │                 │
-│  │ resume_checklist       │         │ current_stage          │                 │
-│  │ resume_rubric          │         │ error_message          │                 │
-│  │ cover_letter_checklist │         │ total_iterations       │                 │
-│  │ cover_letter_rubric    │         │ created_at             │                 │
-│  │ resume_guide           │         │ last_updated           │                 │
-│  │ cover_letter_guide     │         └────────────────────────┘                 │
-│  └────────────────────────┘                                                     │
-│                                                                                  │
-└─────────────────────────────────────────────────────────────────────────────────┘
+subgraphs/{name}/
+└── state.py           # Subgraph-specific state
 ```
 
----
+## Core Data Models
 
-## 📋 Subgraph State Requirements
+### StructuredJD (JD Extractor Output)
 
-### 1️⃣ JD Extractor
-| Input | Output |
-|-------|--------|
-| `raw_jd_text` | `structured_jd` |
-|  | `extraction_error` |
-
-### 2️⃣ Skill Matcher
-| Input | Output |
-|-------|--------|
-| `structured_jd` | `skill_match_result` |
-| `candidate_skills_flat` | |
-
-### 3️⃣ GitHub Ranker
-| Input | Output |
-|-------|--------|
-| `structured_jd` | `selected_projects` |
-| `max_projects` | |
-
-### 4️⃣ Experience Selector
-| Input | Output |
-|-------|--------|
-| `structured_jd` | `selected_experiences` |
-| `candidate_experiences` | |
-| `max_experiences` | |
-
-### 5️⃣ Experience Rewriter
-| Input | Output |
-|-------|--------|
-| `structured_jd` | `rewritten_experiences` |
-| `selected_experiences` | `rewritten_projects` |
-| `selected_projects` | `rewrite_iteration` |
-| `action_verbs` | |
-| `resume_guide` | |
-
-### 6️⃣ Resume Builder
-| Input | Output |
-|-------|--------|
-| `structured_jd` | `resume_json` |
-| `candidate_header` | `resume_version` |
-| `candidate_summary` | |
-| `candidate_education` | |
-| `candidate_certifications` | |
-| `candidate_skills` | |
-| `candidate_publications` | |
-| `rewritten_experiences` | |
-| `rewritten_projects` | |
-
-### 7️⃣ ATS Optimizer
-| Input | Output |
-|-------|--------|
-| `structured_jd` | `ats_analysis` |
-| `resume_json` | `ats_iteration` |
-| `max_ats_iterations` | `ats_passed` |
-| | `resume_json` (updated) |
-
-### 8️⃣ Resource Compliance
-| Input | Output |
-|-------|--------|
-| `resume_json` | `compliance_result` |
-| `resume_checklist` | `compliance_iteration` |
-| `resume_rubric` | `compliance_passed` |
-| `action_verbs` | `resume_json` (updated) |
-| `max_compliance_iterations` | |
-
-### 9️⃣ Cover Letter Generator
-| Input | Output |
-|-------|--------|
-| `structured_jd` | `cover_letter_text` |
-| `candidate_header` | `cover_letter_json` |
-| `candidate_summary` | `cl_iteration` |
-| `skill_match_result` | |
-| `selected_experiences` | |
-| `cover_letter_guide` | |
-| `cover_letter_checklist` | |
-
-### 🔟 Cover Letter Compliance
-| Input | Output |
-|-------|--------|
-| `cover_letter_text` | `cl_compliance_result` |
-| `cover_letter_checklist` | `cl_iteration` |
-| `cover_letter_rubric` | `cl_passed` |
-| `max_cl_iterations` | `cover_letter_text` (updated) |
-
-### 1️⃣1️⃣ Email Generator
-| Input | Output |
-|-------|--------|
-| `structured_jd` | `recruiter_email` |
-| `candidate_header` | |
-| `candidate_summary` | |
-
-### 1️⃣2️⃣ Excel Writer
-| Input | Output |
-|-------|--------|
-| `structured_jd` | `excel_updated` |
-| `ats_analysis` | `application_id` |
-| `compliance_result` | |
-| `cl_compliance_result` | |
-| `output_files` | |
-
----
-
-## 🎯 Key Data Models
-
-### StructuredJD
 ```python
-class StructuredJD:
+class StructuredJD(BaseModel):
     company_name: str
     role_title: str
-    role_type: str          # ml_ai, data_science, etc.
+    role_type: str  # ml_ai, data_science, research, etc.
     location: str
     employment_type: str
     experience_required: str
+    
     skills_required: List[str]
     skills_preferred: List[str]
     responsibilities: List[str]
     qualifications: List[str]
-    keywords: List[str]     # ATS keywords
+    keywords: List[str]  # ATS keywords
+    
     company_info: str
+    extraction_confidence: float
 ```
 
-### SkillMatchResult
+### SkillMatchResult (Skill Matcher Output)
+
 ```python
-class SkillMatchResult:
+class SkillMatchResult(BaseModel):
     matched_skills: List[str]
     missing_skills: List[str]
     partial_matches: List[str]
     additional_skills: List[str]
+    
     match_percentage: float
     skill_gap_analysis: str
+    critical_missing: List[str]
 ```
 
-### SelectedExperience
+### SelectedProject (GitHub Ranker Output)
+
 ```python
-class SelectedExperience:
+class SelectedProject(BaseModel):
+    name: str
+    github_url: str
+    description: str
+    tech_stack: Dict[str, List[str]]
+    
+    relevance_score: float
+    matching_skills: List[str]
+    
+    bullets: List[str]
+    metrics: List[str]
+    key_features: List[str]
+```
+
+### SelectedExperience (Experience Selector Output)
+
+```python
+class SelectedExperience(BaseModel):
     id: int
     role: str
     company: str
-    dates: Dict[str, str]
-    location: Dict[str, str]
+    dates: Dict[str, Any]
+    location: Dict[str, Any]
+    
     relevance_score: float
+    matching_keywords: List[str]
+    
     original_bullets: List[str]
     rewritten_bullets: List[str]
     keywords_incorporated: List[str]
 ```
 
-### ResumeJSON
+### ResumeJSON (Resume Builder Output)
+
 ```python
-class ResumeJSON:
-    header: Dict[str, str]
+class ResumeJSON(BaseModel):
+    header: Dict[str, str]  # name, email, phone, linkedin, github
     summary: str
+    
     education: List[Dict]
     certifications: List[str]
+    
     experience: List[Dict]
     projects: List[Dict]
-    skills: Dict[str, str]
+    
+    skills: Dict[str, str]  # Category: "skill1, skill2, ..."
     publications: List[str]
+    
+    version: int
+    tailored_for: str
 ```
 
-### ATSAnalysis
+### ATSAnalysis (ATS Optimizer Output)
+
 ```python
-class ATSAnalysis:
-    score: int              # 0-100
+class ATSAnalysis(BaseModel):
+    score: int  # 0-100
+    
     keyword_density: float
     keywords_found: List[str]
     keywords_missing: List[str]
+    
     format_issues: List[str]
+    section_scores: Dict[str, int]
+    
     suggestions: List[str]
-    passed: bool            # score >= 95
+    passed: bool
 ```
 
-### ComplianceResult
+### ComplianceResult (Resource Compliance Output)
+
 ```python
-class ComplianceResult:
+class ComplianceResult(BaseModel):
     checklist_passed: bool
     checklist_failures: List[str]
-    rubric_score: float     # 0-4.0
-    rubric_passed: bool     # score >= 3.5
+    
+    rubric_score: float
+    rubric_section_scores: Dict[str, int]
+    rubric_passed: bool
+    
     action_verb_compliance: float
-    all_passed: bool
+    issues: List[str]
     suggestions: List[str]
 ```
 
----
+## Pipeline State
 
-## 🔄 Loop Conditions
+### ParentGraphState
 
-| Loop | Condition | Max Iterations |
-|------|-----------|----------------|
-| **ATS Optimizer** | `ats_passed == False` | 3 |
-| **Resource Compliance** | `compliance_passed == False` | 3 |
-| **Cover Letter Compliance** | `cl_passed == False` | 3 |
+The parent graph uses a simplified state that holds outputs from each subgraph:
 
----
-
-## 📁 File Location
-```
-state/
-├── __init__.py
-└── state_models.py     # All state definitions
-```
-
-## 🔧 Usage
 ```python
-from state import (
-    ParentState,
-    create_initial_state,
-    StructuredJD,
-    SkillMatchResult,
-    # ... etc
-)
-
-# Create initial state
-state = create_initial_state(raw_jd_text="...")
-
-# Access fields
-print(state.structured_jd)
-print(state.ats_passed)
+class ParentGraphState(BaseModel):
+    # Inputs
+    jd_url: Optional[str] = None
+    jd_text: Optional[str] = None
+    
+    # Stage 1: JD Extraction
+    structured_jd: Optional[Any] = None
+    extraction_error: Optional[str] = None
+    
+    # Stage 2: Skill Matching
+    skill_match_result: Optional[Any] = None
+    match_percentage: float = 0.0
+    
+    # Stage 3: Selection
+    selected_experiences: List[Any] = []
+    selected_projects: List[Any] = []
+    
+    # Stage 4: Rewriting
+    rewritten_experiences: List[Any] = []
+    rewritten_projects: List[Any] = []
+    
+    # Stage 5: Resume
+    resume_json: Optional[Any] = None
+    
+    # Stage 6: ATS
+    ats_score: float = 0.0
+    ats_passed: bool = False
+    ats_iteration: int = 0
+    
+    # Stage 7: Compliance
+    compliance_score: float = 0.0
+    compliance_passed: bool = False
+    
+    # Stage 8-9: Cover Letter
+    cover_letter: Optional[Any] = None
+    cover_letter_text: str = ""
+    cl_compliance_score: float = 0.0
+    
+    # Stage 10: Email
+    email: Optional[Any] = None
+    email_text: str = ""
+    
+    # Stage 11: Excel
+    excel_saved: bool = False
+    
+    # Stage 12: Outputs
+    output_folder: str = ""
+    
+    # Control
+    current_stage: str = ""
+    error_message: Optional[str] = None
 ```
+
+## State Flow
+
+```
+Input (jd_url/jd_text)
+        │
+        ▼
+┌───────────────────┐
+│ structured_jd     │ ← JD Extractor
+└───────┬───────────┘
+        │
+        ├───────────────────────────────────┐
+        │                                   │
+        ▼                                   ▼
+┌───────────────────┐             ┌───────────────────┐
+│ skill_match_result│             │ selected_projects │
+│                   │             │ selected_experiences│
+└───────┬───────────┘             └───────┬───────────┘
+        │                                 │
+        │                                 ▼
+        │                       ┌───────────────────┐
+        │                       │ rewritten_*       │
+        │                       └───────┬───────────┘
+        │                               │
+        └───────────────┬───────────────┘
+                        │
+                        ▼
+              ┌───────────────────┐
+              │ resume_json       │ ← Resume Builder
+              └───────┬───────────┘
+                      │
+        ┌─────────────┴─────────────┐
+        │                           │
+        ▼                           ▼
+┌───────────────────┐     ┌───────────────────┐
+│ ats_score         │     │ compliance_score  │
+│ ats_passed        │     │ compliance_passed │
+└───────┬───────────┘     └───────┬───────────┘
+        │                         │
+        └───────────┬─────────────┘
+                    │
+                    ▼
+          ┌───────────────────┐
+          │ cover_letter      │
+          │ cover_letter_text │
+          └───────┬───────────┘
+                  │
+                  ▼
+          ┌───────────────────┐
+          │ email             │
+          │ email_text        │
+          └───────┬───────────┘
+                  │
+                  ▼
+          ┌───────────────────┐
+          │ excel_saved       │
+          │ output_folder     │
+          └───────────────────┘
+```
+
+## Subgraph State Pattern
+
+Each subgraph has its own state that includes:
+
+```python
+class {Name}State(BaseModel):
+    # Inputs (from parent or previous subgraph)
+    structured_jd: Optional[StructuredJD] = None
+    ...
+    
+    # Intermediate data
+    ...
+    
+    # Outputs
+    ...
+    
+    # Control flags
+    {name}_complete: bool = False
+    error_message: Optional[str] = None
+    
+    class Config:
+        arbitrary_types_allowed = True
+```
+
+## State Synchronization
+
+Nodes in the parent graph call subgraph convenience functions and update parent state:
+
+```python
+def node_match_skills(state: ParentGraphState) -> Dict[str, Any]:
+    # Call subgraph function
+    result = match_skills_to_jd(structured_jd=state.structured_jd)
+    
+    # Return state updates
+    return {
+        "skill_match_result": result.get("skill_match_result"),
+        "match_percentage": result.get("match_percentage", 0),
+        "current_stage": "skills_matched"
+    }
+```
+
+## Best Practices
+
+1. **Use Optional types** for nullable fields
+2. **Use `Field(default_factory=list)`** for mutable defaults
+3. **Set `arbitrary_types_allowed = True`** for Pydantic models with complex types
+4. **Return dict updates** from nodes (not full state objects)
+5. **Keep state flat** - avoid deeply nested structures
