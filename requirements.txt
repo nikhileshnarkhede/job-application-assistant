@@ -1,0 +1,41 @@
+# LangChain & LangGraph
+langchain>=0.3.0
+langchain-openai>=0.2.0
+langchain-community>=0.3.0
+langgraph>=0.2.0
+langgraph-checkpoint>=1.0.0
+langsmith>=0.1.0
+
+# Pydantic for structured output
+pydantic>=2.0.0
+
+# OpenAI
+openai>=1.0.0
+
+# FastMCP for tool server
+fastmcp>=0.1.0
+
+# RAG & Embeddings
+chromadb>=0.4.0
+sentence-transformers>=2.2.0
+faiss-cpu>=1.7.0
+
+# Web Scraping
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+requests-html>=0.10.0
+
+# File Processing
+pandas>=2.0.0
+openpyxl>=3.1.0
+python-docx>=1.0.0
+
+# Utilities
+python-dotenv>=1.0.0
+uuid>=1.30
+aiofiles>=23.0.0
+
+# GitHub API (optional)
+PyGithub>=2.0.0
+
+ddgs

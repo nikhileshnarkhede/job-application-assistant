@@ -1,0 +1,811 @@
+{
+  "metadata": {
+    "source": "github_api",
+    "username": "nikhileshnarkhede",
+    "total_projects": 23
+  },
+  "projects": [
+    {
+      "id": 5,
+      "name": "High-Perform-Scientific-Compute",
+      "github_url": "https://github.com/nikhileshnarkhede/High-Perform-Scientific-Compute",
+      "local_path": null,
+      "status": "active",
+      "description": "With the explosion of digital music, recommending tracks based on genre has become crucial for streaming platforms. Traditional deep learning models like RNNs and LSTMs can classify audio data but are often slow and compute-intensive. In this project, I propose a solution using spectrograms and parallel computing to accelerate the process.",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "Jupyter Notebook",
+          "Python"
+        ],
+        "frameworks": [
+          "TensorFlow",
+          "Matplotlib",
+          "NumPy",
+          "Scikit-learn",
+          "Keras"
+        ],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [
+        "Deep Learning",
+        "Streaming",
+        "Rnn",
+        "Cnn",
+        "Real-Time",
+        "Lstm",
+        "Api",
+        "Classification"
+      ],
+      "relevance_tags": [
+        "ml_ai",
+        "computer_vision"
+      ],
+      "bullets_for_resume": [],
+      "relevance_score": 44.17,
+      "stars": 0,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "topics": [],
+      "updated_at": "2025-07-07T04:55:51Z"
+    },
+    {
+      "id": 1,
+      "name": "Chat_with_YouTube_Video",
+      "github_url": "https://github.com/nikhileshnarkhede/Chat_with_YouTube_Video",
+      "local_path": null,
+      "status": "active",
+      "description": "Ask questions about any YouTube video with this interactive Streamlit app! Uses LangChain, HuggingFace embeddings, and FAISS to provide accurate answers directly from the transcript. Fast, intuitive, and AI-powered.",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "Python"
+        ],
+        "frameworks": [
+          "Sentence Transformers",
+          "HuggingFace Transformers",
+          "LangChain",
+          "HuggingFace",
+          "FAISS",
+          "PyTorch",
+          "ChromaDB",
+          "OpenAI API",
+          "NumPy",
+          "Anthropic API",
+          "Scikit-learn",
+          "Streamlit"
+        ],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [
+        "Llm",
+        "Vector",
+        "Rag",
+        "Transformer",
+        "Retrieval",
+        "Embedding",
+        "Api"
+      ],
+      "relevance_tags": [
+        "rag_llm",
+        "ml_ai",
+        "nlp"
+      ],
+      "bullets_for_resume": [],
+      "relevance_score": 37.92,
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "topics": [],
+      "updated_at": "2025-10-22T23:07:53Z"
+    },
+    {
+      "id": 3,
+      "name": "Payday-Loan-Defaulter-Prediction",
+      "github_url": "https://github.com/nikhileshnarkhede/Payday-Loan-Defaulter-Prediction",
+      "local_path": null,
+      "status": "active",
+      "description": "In this project I have used paydayloan_collections.csv file for Predicting where person will default on payday loan. For this I have tried using ML model to train and predict. After Trying almost all the Algorithms LightGBM and CatBoost where the performing better than other. Another Approach to Predict  I used is Deep Learning FFN Architecture.",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "Jupyter Notebook",
+          "Python"
+        ],
+        "frameworks": [
+          "Scikit-learn",
+          "Pandas",
+          "Streamlit",
+          "NumPy"
+        ],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [
+        "Bot",
+        "Classification",
+        "Machine Learning"
+      ],
+      "relevance_tags": [
+        "ml_ai"
+      ],
+      "bullets_for_resume": [],
+      "relevance_score": 32.08,
+      "stars": 0,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "topics": [],
+      "updated_at": "2025-08-08T12:50:09Z"
+    },
+    {
+      "id": 6,
+      "name": "Data-Visualization-Final-Project",
+      "github_url": "https://github.com/nikhileshnarkhede/Data-Visualization-Final-Project",
+      "local_path": null,
+      "status": "active",
+      "description": "Project: Data-Visualization-Final-Project",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "HTML",
+          "JavaScript",
+          "CSS",
+          "Python"
+        ],
+        "frameworks": [],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [
+        "Machine Learning"
+      ],
+      "relevance_tags": [
+        "ml_ai"
+      ],
+      "bullets_for_resume": [],
+      "relevance_score": 32.08,
+      "stars": 0,
+      "forks": 0,
+      "language": "HTML",
+      "topics": [],
+      "updated_at": "2025-07-07T04:51:35Z"
+    },
+    {
+      "id": 4,
+      "name": "Real-Time-Evolving-Deep-Learning-Model-for-S-P-500-Momentum-and-Sentiment-Prediction",
+      "github_url": "https://github.com/nikhileshnarkhede/Real-Time-Evolving-Deep-Learning-Model-for-S-P-500-Momentum-and-Sentiment-Prediction",
+      "local_path": null,
+      "status": "active",
+      "description": "This project presents a real-time adaptive deep learning framework that combines Natural Language Processing (NLP) and Long Short-Term Memory (LSTM) networks to predict the momentum of the S&P 500 index using both historical price data and financial news sentiment.",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "Jupyter Notebook"
+        ],
+        "frameworks": [],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [
+        "Deep Learning",
+        "Nlp",
+        "Bert",
+        "Natural Language",
+        "Bot",
+        "Real-Time",
+        "Lstm",
+        "Classification"
+      ],
+      "relevance_tags": [
+        "ml_ai",
+        "nlp"
+      ],
+      "bullets_for_resume": [],
+      "relevance_score": 26.25,
+      "stars": 0,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "topics": [],
+      "updated_at": "2025-07-07T08:31:50Z"
+    },
+    {
+      "id": 12,
+      "name": "Music-Genre-Identification",
+      "github_url": "https://github.com/nikhileshnarkhede/Music-Genre-Identification",
+      "local_path": null,
+      "status": "active",
+      "description": "Project: Music-Genre-Identification",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "Jupyter Notebook"
+        ],
+        "frameworks": [],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [
+        "Deep Learning",
+        "Cnn"
+      ],
+      "relevance_tags": [
+        "ml_ai",
+        "computer_vision"
+      ],
+      "bullets_for_resume": [],
+      "relevance_score": 26.25,
+      "stars": 0,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "topics": [],
+      "updated_at": "2024-06-29T10:55:45Z"
+    },
+    {
+      "id": 18,
+      "name": "PPM-Emission-Predictor-",
+      "github_url": "https://github.com/nikhileshnarkhede/PPM-Emission-Predictor-",
+      "local_path": null,
+      "status": "active",
+      "description": "Predicting Vehicle Emissions with Machine Learning",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "Jupyter Notebook"
+        ],
+        "frameworks": [],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [
+        "Rag",
+        "Rest",
+        "Regression",
+        "Machine Learning"
+      ],
+      "relevance_tags": [
+        "rag_llm",
+        "ml_ai"
+      ],
+      "bullets_for_resume": [],
+      "relevance_score": 26.25,
+      "stars": 0,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "topics": [],
+      "updated_at": "2024-04-12T05:20:28Z"
+    },
+    {
+      "id": 2,
+      "name": "supply-chain-tracker",
+      "github_url": "https://github.com/nikhileshnarkhede/supply-chain-tracker",
+      "local_path": null,
+      "status": "active",
+      "description": "A Streamlit-based supply chain management app with MongoDB backend. Manage products, vendors, and orders with role-based login and insightful visual dashboards. Supports CSV upload/download and real-time analytics using Plotly.",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "Python"
+        ],
+        "frameworks": [
+          "Plotly",
+          "Pandas",
+          "Streamlit",
+          "NumPy"
+        ],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [
+        "Mongodb",
+        "Rag",
+        "Database"
+      ],
+      "relevance_tags": [
+        "rag_llm"
+      ],
+      "bullets_for_resume": [],
+      "relevance_score": 5.83,
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "topics": [],
+      "updated_at": "2025-08-10T04:26:57Z"
+    },
+    {
+      "id": 7,
+      "name": "Data-Visualization-Multi-View",
+      "github_url": "https://github.com/nikhileshnarkhede/Data-Visualization-Multi-View",
+      "local_path": null,
+      "status": "active",
+      "description": "Project: Data-Visualization-Multi-View",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "JavaScript",
+          "HTML",
+          "CSS"
+        ],
+        "frameworks": [],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [],
+      "relevance_tags": [],
+      "bullets_for_resume": [],
+      "relevance_score": 0.0,
+      "stars": 0,
+      "forks": 0,
+      "language": "JavaScript",
+      "topics": [],
+      "updated_at": "2024-11-22T23:22:51Z"
+    },
+    {
+      "id": 8,
+      "name": "Force_Simulation",
+      "github_url": "https://github.com/nikhileshnarkhede/Force_Simulation",
+      "local_path": null,
+      "status": "active",
+      "description": "Project: Force_Simulation",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "Jupyter Notebook",
+          "HTML"
+        ],
+        "frameworks": [],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [],
+      "relevance_tags": [],
+      "bullets_for_resume": [],
+      "relevance_score": 0.0,
+      "stars": 0,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "topics": [],
+      "updated_at": "2024-11-16T16:28:32Z"
+    },
+    {
+      "id": 9,
+      "name": "Data-Visualization",
+      "github_url": "https://github.com/nikhileshnarkhede/Data-Visualization",
+      "local_path": null,
+      "status": "active",
+      "description": "Project: Data-Visualization",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "JavaScript",
+          "HTML"
+        ],
+        "frameworks": [],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [
+        "Bot"
+      ],
+      "relevance_tags": [],
+      "bullets_for_resume": [],
+      "relevance_score": 0.0,
+      "stars": 0,
+      "forks": 0,
+      "language": "JavaScript",
+      "topics": [],
+      "updated_at": "2024-11-13T19:53:29Z"
+    },
+    {
+      "id": 10,
+      "name": "Data-Visualization-of-CT-Scan-of-Brain-using-D3js-",
+      "github_url": "https://github.com/nikhileshnarkhede/Data-Visualization-of-CT-Scan-of-Brain-using-D3js-",
+      "local_path": null,
+      "status": "active",
+      "description": "Project: Data-Visualization-of-CT-Scan-of-Brain-using-D3js-",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "HTML",
+          "CSS"
+        ],
+        "frameworks": [],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [],
+      "relevance_tags": [],
+      "bullets_for_resume": [],
+      "relevance_score": 0.0,
+      "stars": 0,
+      "forks": 0,
+      "language": "HTML",
+      "topics": [],
+      "updated_at": "2024-11-07T03:22:53Z"
+    },
+    {
+      "id": 11,
+      "name": "Face-Detection-and-Face-recognition-",
+      "github_url": "https://github.com/nikhileshnarkhede/Face-Detection-and-Face-recognition-",
+      "local_path": null,
+      "status": "active",
+      "description": "In this I have used CNN to deal with image data. I used the pretrain model called mtcnn, keras_vggface,",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "Jupyter Notebook"
+        ],
+        "frameworks": [],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [
+        "Neural Network",
+        "Vector",
+        "Cnn"
+      ],
+      "relevance_tags": [
+        "rag_llm",
+        "computer_vision"
+      ],
+      "bullets_for_resume": [],
+      "relevance_score": 0.0,
+      "stars": 1,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "topics": [],
+      "updated_at": "2024-09-02T20:21:47Z"
+    },
+    {
+      "id": 13,
+      "name": "FFN-to-classify-will-person-subscriber-to-a-particular-program-or-not.",
+      "github_url": "https://github.com/nikhileshnarkhede/FFN-to-classify-will-person-subscriber-to-a-particular-program-or-not.",
+      "local_path": null,
+      "status": "active",
+      "description": "In this I have used keras to build FFN architecture. To classify person will end up subscriber to the program or not.",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "Jupyter Notebook"
+        ],
+        "frameworks": [],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [],
+      "relevance_tags": [],
+      "bullets_for_resume": [],
+      "relevance_score": 0.0,
+      "stars": 0,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "topics": [],
+      "updated_at": "2024-06-29T10:13:09Z"
+    },
+    {
+      "id": 14,
+      "name": "Consumer-Complaints-Resolution",
+      "github_url": "https://github.com/nikhileshnarkhede/Consumer-Complaints-Resolution",
+      "local_path": null,
+      "status": "active",
+      "description": "Project: Consumer-Complaints-Resolution",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "Jupyter Notebook"
+        ],
+        "frameworks": [],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [
+        "Attention"
+      ],
+      "relevance_tags": [],
+      "bullets_for_resume": [],
+      "relevance_score": 0.0,
+      "stars": 0,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "topics": [],
+      "updated_at": "2024-06-29T09:06:29Z"
+    },
+    {
+      "id": 15,
+      "name": "Counterfeit-Medicines-Sales-Prediction",
+      "github_url": "https://github.com/nikhileshnarkhede/Counterfeit-Medicines-Sales-Prediction",
+      "local_path": null,
+      "status": "active",
+      "description": "Project: Counterfeit-Medicines-Sales-Prediction",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "Jupyter Notebook"
+        ],
+        "frameworks": [],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [
+        "Bot",
+        "Rest"
+      ],
+      "relevance_tags": [],
+      "bullets_for_resume": [],
+      "relevance_score": 0.0,
+      "stars": 0,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "topics": [],
+      "updated_at": "2024-06-29T08:43:01Z"
+    },
+    {
+      "id": 16,
+      "name": "Quora_Spam_Filter_Prediction_Using_Glove_and_fasttext",
+      "github_url": "https://github.com/nikhileshnarkhede/Quora_Spam_Filter_Prediction_Using_Glove_and_fasttext",
+      "local_path": null,
+      "status": "active",
+      "description": "In this I have used LSTM followed by FFN to classify whether the question ask in spam or not. I have used GLOVE , fasttext embedding to reducing the dimension. ",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "Jupyter Notebook"
+        ],
+        "frameworks": [],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [
+        "Embedding",
+        "Lstm"
+      ],
+      "relevance_tags": [
+        "rag_llm"
+      ],
+      "bullets_for_resume": [],
+      "relevance_score": 0.0,
+      "stars": 0,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "topics": [],
+      "updated_at": "2024-05-20T07:31:05Z"
+    },
+    {
+      "id": 17,
+      "name": "Amazon-cell-labels-sentiment-prediction-",
+      "github_url": "https://github.com/nikhileshnarkhede/Amazon-cell-labels-sentiment-prediction-",
+      "local_path": null,
+      "status": "active",
+      "description": "Amazon cell labels sentiment prediction  based on the product reviews from customer I have used fasttext from Facebook pretrain model to convert word into vector. After that I used LSTM followed by FFN to predict Sentiment in 1/0 .  1 --> good review and 0 --> bad review",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "Jupyter Notebook"
+        ],
+        "frameworks": [],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [
+        "Embedding",
+        "Vector",
+        "Lstm"
+      ],
+      "relevance_tags": [
+        "rag_llm"
+      ],
+      "bullets_for_resume": [],
+      "relevance_score": 0.0,
+      "stars": 0,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "topics": [],
+      "updated_at": "2024-05-05T05:10:15Z"
+    },
+    {
+      "id": 19,
+      "name": "Interest-Rate-Prediction-Using-Machine-learning-",
+      "github_url": "https://github.com/nikhileshnarkhede/Interest-Rate-Prediction-Using-Machine-learning-",
+      "local_path": null,
+      "status": "active",
+      "description": "In this I have used Machine Learning Algorithms to train and predict Interest rate. ",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "Jupyter Notebook"
+        ],
+        "frameworks": [],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [],
+      "relevance_tags": [],
+      "bullets_for_resume": [],
+      "relevance_score": 0.0,
+      "stars": 0,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "topics": [],
+      "updated_at": "2024-04-12T05:04:13Z"
+    },
+    {
+      "id": 20,
+      "name": "Data-Handling-with-Python",
+      "github_url": "https://github.com/nikhileshnarkhede/Data-Handling-with-Python",
+      "local_path": null,
+      "status": "active",
+      "description": "In this I have used I have documented almost all major data handling using pandas and numpy. ",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "Jupyter Notebook"
+        ],
+        "frameworks": [],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [],
+      "relevance_tags": [],
+      "bullets_for_resume": [],
+      "relevance_score": 0.0,
+      "stars": 0,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "topics": [],
+      "updated_at": "2024-04-12T04:39:46Z"
+    },
+    {
+      "id": 21,
+      "name": "transfer-learning-model-with-generic-image-of-ImageNet",
+      "github_url": "https://github.com/nikhileshnarkhede/transfer-learning-model-with-generic-image-of-ImageNet",
+      "local_path": null,
+      "status": "active",
+      "description": "In this I have used transfer learning concept for classify person has dog and cat in the given image.  I have keep the Convolution layer and pooling layer as its of ImageNet and added my own fully connected NN to classify.  ",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "Jupyter Notebook"
+        ],
+        "frameworks": [],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [],
+      "relevance_tags": [],
+      "bullets_for_resume": [],
+      "relevance_score": 0.0,
+      "stars": 0,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "topics": [],
+      "updated_at": "2024-04-11T12:52:39Z"
+    },
+    {
+      "id": 22,
+      "name": "MNIST_CLASSIFICATION_USING_CNN",
+      "github_url": "https://github.com/nikhileshnarkhede/MNIST_CLASSIFICATION_USING_CNN",
+      "local_path": null,
+      "status": "active",
+      "description": "In this I have used CNN to classify hand written has number from 0-9.",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "Jupyter Notebook"
+        ],
+        "frameworks": [],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [],
+      "relevance_tags": [],
+      "bullets_for_resume": [],
+      "relevance_score": 0.0,
+      "stars": 0,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "topics": [],
+      "updated_at": "2024-04-11T12:42:18Z"
+    },
+    {
+      "id": 23,
+      "name": "Pneumonia-detection-from-xray-using-CNN",
+      "github_url": "https://github.com/nikhileshnarkhede/Pneumonia-detection-from-xray-using-CNN",
+      "local_path": null,
+      "status": "active",
+      "description": "In this I have used CNN to classify person has Pneumonia or not based on given Xray. ",
+      "problem_solved": "",
+      "tech_stack": {
+        "languages": [
+          "HTML",
+          "Jupyter Notebook"
+        ],
+        "frameworks": [],
+        "tools": [],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [],
+      "metrics": [],
+      "keywords": [
+        "Cnn"
+      ],
+      "relevance_tags": [
+        "computer_vision"
+      ],
+      "bullets_for_resume": [],
+      "relevance_score": 0.0,
+      "stars": 0,
+      "forks": 0,
+      "language": "HTML",
+      "topics": [],
+      "updated_at": "2024-04-11T12:32:03Z"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+# Job Description Extraction Task
+
+## Your Task
+Parse the following job description and extract all relevant information into a structured JSON format.
+
+## Input Job Description
+```
+{raw_jd_text}
+```
+
+## Required Output Schema
+Extract the information into this exact JSON structure:
+
+```json
+{{
+  "company_name": "string - Company name",
+  "role_title": "string - Exact job title",
+  "role_type": "string - One of: ml_ai, data_science, research, software_engineering, data_engineering, scientific_ai, llm_ai_agents, robotics_automation, other",
+  "location": "string - Job location (city, state, country, or Remote)",
+  "employment_type": "string - full-time, part-time, contract, internship",
+  "experience_required": "string - Years of experience required (e.g., '3+ years', '5-7 years')",
+  "salary_range": "string or null - Salary range if mentioned",
+  
+  "skills_required": ["list of MUST-HAVE skills - technical and domain skills explicitly marked as required"],
+  "skills_preferred": ["list of NICE-TO-HAVE skills - skills mentioned as preferred, bonus, or plus"],
+  "responsibilities": ["list of key job responsibilities and duties"],
+  "qualifications": ["list of education and certification requirements"],
+  "keywords": ["list of ALL important keywords for ATS optimization - include technologies, methodologies, tools, frameworks, domain terms"],
+  
+  "company_info": "string - Brief description of the company if provided",
+  "benefits": ["list of benefits and perks mentioned"],
+  "application_url": "string or null - Application link if provided",
+  
+  "extraction_confidence": 0.0-1.0 (how confident you are in the extraction quality),
+  "raw_text_length": integer (character count of input text)
+}}
+```
+
+## Extraction Guidelines
+
+### For skills_required:
+- Include skills explicitly marked as "required", "must have", "essential"
+- Include skills mentioned in "Requirements" or "Qualifications" sections
+- Include programming languages, frameworks, tools that are clearly mandatory
+
+### For skills_preferred:
+- Include skills marked as "preferred", "nice to have", "bonus", "plus"
+- Include skills in "Preferred Qualifications" sections
+- Include skills that would be beneficial but not mandatory
+
+### For keywords:
+- Extract ALL technology names (Python, TensorFlow, AWS, etc.)
+- Extract methodology terms (Agile, CI/CD, MLOps, etc.)
+- Extract domain terms (machine learning, deep learning, NLP, etc.)
+- Extract tool names (Docker, Kubernetes, Git, etc.)
+- These will be used for ATS resume optimization
+
+### For role_type classification:
+- Analyze the primary focus of the role
+- Consider the team the role belongs to
+- Look at the main responsibilities
+
+## Output
+Respond ONLY with the JSON object. No explanations, no markdown code blocks, just pure JSON.

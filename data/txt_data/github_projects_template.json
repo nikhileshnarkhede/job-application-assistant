@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "last_updated": "2025-01-01",
+    "source": "manual",
+    "github_username": "",
+    "local_repos_path": ""
+  },
+  "projects": [
+    {
+      "id": 1,
+      "name": "Project Name Here",
+      "github_url": "https://github.com/username/repo",
+      "local_path": null,
+      "status": "completed",
+      "description": "Brief description of what the project does.",
+      "problem_solved": "What problem does this address?",
+      "tech_stack": {
+        "languages": ["Python"],
+        "frameworks": ["TensorFlow", "FastAPI"],
+        "tools": ["Docker", "Git"],
+        "databases": [],
+        "cloud": []
+      },
+      "key_features": [
+        "Feature 1",
+        "Feature 2",
+        "Feature 3"
+      ],
+      "metrics": [
+        "Achieved X% accuracy",
+        "Reduced Y by Z%"
+      ],
+      "keywords": ["ML", "Deep Learning", "API"],
+      "relevance_tags": ["ml_ai", "backend"],
+      "bullets_for_resume": [
+        "Developed [what] using [tech] achieving [result]",
+        "Implemented [feature] that [impact]"
+      ]
+    }
+  ],
+  "projects_placeholder_note": "Replace the above with your actual projects. See github_projects_template.txt for guidance."
+}

@@ -1,0 +1,61 @@
+{
+  "name": "job-application-assistant-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for Job Application Assistant",
+  "tools": {
+    "file_tools": {
+      "read_file": "Read content from a file",
+      "write_file": "Write content to a file",
+      "create_directory": "Create a directory",
+      "list_directory": "List files in a directory",
+      "file_exists": "Check if a file exists"
+    },
+    "excel_writer": {
+      "append_excel_row": "Append a row to the job tracker Excel",
+      "read_excel_sheet": "Read the job tracker Excel"
+    },
+    "resource_loader": {
+      "load_action_verbs": "Load action verbs from Excel",
+      "load_resume_checklist": "Load resume checklist",
+      "load_resume_guide": "Load resume writing guide",
+      "load_resume_rubric": "Load resume scoring rubric",
+      "load_cover_letter_checklist": "Load cover letter checklist",
+      "load_cover_letter_guide": "Load cover letter writing guide",
+      "load_cover_letter_rubric": "Load cover letter scoring rubric"
+    },
+    "prompt_loader": {
+      "load_main_prompt": "Load main prompt for a module",
+      "load_few_shot_examples": "Load few-shot examples for a module"
+    },
+    "thread_manager": {
+      "create_thread_folder": "Create a new application thread folder",
+      "get_thread_path": "Get path for a thread by ID",
+      "save_thread_metadata": "Save thread metadata",
+      "load_thread_metadata": "Load thread metadata"
+    },
+    "github_reader": {
+      "read_github_repo": "Read and analyze a GitHub repository",
+      "read_readme_files": "Read README files from a repository"
+    },
+    "rag_vectorstore": {
+      "create_vectorstore": "Create a new vectorstore",
+      "query_vectorstore": "Query a vectorstore",
+      "add_documents_to_store": "Add documents to a vectorstore"
+    },
+    "rule_engine": {
+      "validate_resume_rules": "Validate resume against all rules",
+      "validate_cover_letter_rules": "Validate cover letter against rules",
+      "check_action_verb_compliance": "Check action verb usage"
+    },
+    "ats_scoring": {
+      "calculate_ats_score": "Calculate ATS compatibility score",
+      "get_ats_feedback": "Get improvement feedback"
+    }
+  },
+  "config": {
+    "resources_path": "./resources",
+    "applications_path": "./applications",
+    "vectorstores_path": "./vectorstores",
+    "checkpoints_path": "./data/checkpoints"
+  }
+}

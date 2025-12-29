@@ -1,0 +1,169 @@
+# Few-Shot Examples for Project Bullet Generation
+
+## Example 1: RAG/LLM Project
+
+### Input:
+- Name: document-qa-rag
+- Description: A retrieval-augmented generation system for answering questions from PDF documents
+- Tech Stack: Python, LangChain, ChromaDB, OpenAI, FastAPI
+- Key Features: PDF parsing, semantic chunking, vector search, streaming responses
+- Metrics: 92% relevance score, 50+ documents indexed
+- Matching Skills: LangChain, RAG, Python, NLP
+
+### Output:
+Engineered RAG pipeline using LangChain and ChromaDB, enabling accurate Q&A across 50+ technical documents
+Implemented semantic chunking strategy with OpenAI embeddings, achieving 92% retrieval relevance
+Built FastAPI backend with streaming responses, reducing perceived latency by 60%
+
+---
+
+## Example 2: Machine Learning Model
+
+### Input:
+- Name: sentiment-classifier
+- Description: Fine-tuned BERT model for multi-class sentiment analysis on product reviews
+- Tech Stack: Python, PyTorch, HuggingFace Transformers, Weights & Biases
+- Key Features: Custom dataset, class balancing, hyperparameter tuning
+- Metrics: 94% accuracy, 0.91 F1 score
+- Matching Skills: PyTorch, Deep Learning, NLP, Transformers
+
+### Output:
+Fine-tuned BERT classifier using PyTorch achieving 94% accuracy on product sentiment analysis
+Implemented class-balanced sampling and hyperparameter optimization, improving F1 score to 0.91
+Tracked experiments with Weights & Biases, enabling reproducible model comparisons
+
+---
+
+## Example 3: Data Engineering Project
+
+### Input:
+- Name: etl-pipeline
+- Description: Automated data pipeline for processing e-commerce transaction logs
+- Tech Stack: Python, Apache Spark, Airflow, PostgreSQL, Docker
+- Key Features: Incremental processing, data validation, alerting
+- Metrics: 10M+ records daily, 99.9% uptime
+- Matching Skills: Spark, Airflow, SQL, Data Engineering
+
+### Output:
+Architected Spark-based ETL pipeline processing 10M+ daily transactions with 99.9% reliability
+Designed Airflow DAGs with incremental processing, reducing compute costs by 40%
+Implemented data quality checks and Slack alerting, catching 100% of schema violations
+
+---
+
+## Example 4: Web Application
+
+### Input:
+- Name: ml-dashboard
+- Description: Interactive dashboard for visualizing ML model performance metrics
+- Tech Stack: Python, Streamlit, Plotly, PostgreSQL, Docker
+- Key Features: Real-time updates, custom visualizations, model comparison
+- Metrics: Used by 5 data scientists daily
+- Matching Skills: Python, Data Visualization, SQL
+
+### Output:
+Developed Streamlit dashboard for real-time ML metrics visualization, used daily by 5-person data science team
+Created interactive Plotly charts enabling side-by-side model performance comparison
+Containerized with Docker for consistent deployment across development and production environments
+
+---
+
+## Example 5: Computer Vision Project
+
+### Input:
+- Name: object-detection-api
+- Description: REST API for real-time object detection using YOLO
+- Tech Stack: Python, PyTorch, YOLOv8, FastAPI, OpenCV
+- Key Features: Multiple model sizes, batch inference, GPU acceleration
+- Metrics: 45 FPS on GPU, 85% mAP
+- Matching Skills: Computer Vision, PyTorch, Deep Learning
+
+### Output:
+Built real-time object detection API using YOLOv8, achieving 45 FPS inference on GPU
+Implemented batch processing endpoint, increasing throughput by 3x for bulk image analysis
+Designed model selection interface supporting accuracy/speed trade-offs for different use cases
+
+---
+
+## Example 6: NLP/Text Processing
+
+### Input:
+- Name: resume-parser
+- Description: Automated resume parsing using NLP to extract structured information
+- Tech Stack: Python, spaCy, FastAPI, MongoDB
+- Key Features: Custom NER model, skill extraction, experience parsing
+- Metrics: 89% extraction accuracy, 200ms average latency
+- Matching Skills: NLP, Python, Machine Learning
+
+### Output:
+Developed NLP-powered resume parser using custom spaCy NER model with 89% extraction accuracy
+Engineered skill taxonomy matching algorithm, identifying 95% of technical skills from unstructured text
+Built FastAPI service processing resumes in under 200ms for high-volume recruitment workflows
+
+---
+
+## Example 7: Automation/Bot Project
+
+### Input:
+- Name: slack-analytics-bot
+- Description: Slack bot that provides on-demand analytics and automated reports
+- Tech Stack: Python, Slack SDK, Pandas, PostgreSQL, APScheduler
+- Key Features: Natural language queries, scheduled reports, visualization
+- Metrics: 50+ daily queries, 8 automated reports
+- Matching Skills: Python, SQL, Automation
+
+### Output:
+Created Slack bot handling 50+ daily analytics queries with natural language interface
+Automated 8 recurring reports using APScheduler, saving team 5+ hours weekly
+Integrated PostgreSQL analytics with Pandas for on-demand data insights
+
+---
+
+## Example 8: MLOps/Infrastructure
+
+### Input:
+- Name: ml-model-registry
+- Description: Internal model registry for versioning and deploying ML models
+- Tech Stack: Python, MLflow, FastAPI, Docker, Kubernetes
+- Key Features: Model versioning, A/B testing, rollback support
+- Metrics: 20+ models tracked, 99.5% deployment success rate
+- Matching Skills: MLOps, Docker, Kubernetes, Python
+
+### Output:
+Architected model registry using MLflow, managing 20+ production ML models with full version control
+Implemented A/B testing framework enabling data-driven model rollouts with automated rollback
+Deployed on Kubernetes with 99.5% deployment success rate and zero-downtime updates
+
+---
+
+## Example 9: Research/Scientific Computing
+
+### Input:
+- Name: physics-simulation
+- Description: GPU-accelerated physics simulation for particle dynamics
+- Tech Stack: Python, CUDA, NumPy, Matplotlib, C++
+- Key Features: Parallel computation, visualization, configurable parameters
+- Metrics: 100x speedup over CPU, 1M+ particles
+- Matching Skills: Python, Scientific Computing, GPU Programming
+
+### Output:
+Developed CUDA-accelerated particle simulation achieving 100x speedup over CPU implementation
+Optimized parallel algorithms to handle 1M+ particle interactions in real-time
+Created interactive visualization pipeline using Matplotlib for research analysis
+
+---
+
+## Example 10: API/Backend Service
+
+### Input:
+- Name: recommendation-api
+- Description: Personalized recommendation API using collaborative filtering
+- Tech Stack: Python, FastAPI, Redis, PostgreSQL, Scikit-learn
+- Key Features: Real-time recommendations, caching, A/B testing hooks
+- Metrics: <50ms latency, 1000 RPS
+- Matching Skills: Python, Machine Learning, SQL, API Development
+
+### Output:
+Built recommendation API using collaborative filtering, serving personalized results in under 50ms
+Implemented Redis caching layer, enabling 1000+ requests per second with 95% cache hit rate
+Designed A/B testing infrastructure for continuous recommendation algorithm improvement

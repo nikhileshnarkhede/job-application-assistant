@@ -1,0 +1,139 @@
+# Few-Shot Examples for Skill Gap Analysis
+
+## Example 1: High Match (92%)
+
+### Input:
+- JD Required: Python, TensorFlow, Machine Learning, SQL, Docker
+- JD Preferred: Kubernetes, AWS, MLOps
+- Matched: Python, TensorFlow, Machine Learning, SQL, Docker, AWS
+- Missing: Kubernetes, MLOps
+- Match: 92%
+
+### Analysis:
+Strong alignment with 92% skill match covering all required skills. The candidate's AWS experience partially addresses the cloud/DevOps gaps. Resume should prominently feature the matched technical stack while mentioning any container orchestration exposure to bridge the Kubernetes gap.
+
+---
+
+## Example 2: Good Match (75%)
+
+### Input:
+- JD Required: Python, PyTorch, NLP, Transformers, AWS
+- JD Preferred: LangChain, RAG, Vector Databases
+- Matched: Python, NLP, Transformers, AWS
+- Missing: PyTorch, LangChain, RAG, Vector Databases
+- Match: 75%
+
+### Analysis:
+Good foundational match at 75%, with the PyTorch gap being bridgeable if the candidate has TensorFlow experience (frameworks are transferable). The LLM-specific skills (LangChain, RAG) are emerging technologies where demonstrated NLP expertise and quick learning ability should be emphasized. Consider highlighting any relevant projects involving embeddings or semantic search.
+
+---
+
+## Example 3: Moderate Match (58%)
+
+### Input:
+- JD Required: Java, Spring Boot, Microservices, Kafka, PostgreSQL
+- JD Preferred: Docker, Kubernetes, AWS
+- Matched: PostgreSQL, Docker, AWS
+- Missing: Java, Spring Boot, Microservices, Kafka
+- Match: 58%
+
+### Analysis:
+Moderate alignment at 58% with significant gaps in core Java ecosystem skills. Unless the candidate has strong Java experience not captured in their profile, this role may be a stretch. The infrastructure skills (Docker, AWS, PostgreSQL) are valuable but secondary to the missing backend development requirements.
+
+---
+
+## Example 4: Low Match with Transferable Skills (45%)
+
+### Input:
+- JD Required: Scala, Spark, Airflow, Data Engineering, AWS
+- JD Preferred: Kafka, Delta Lake, DBT
+- Matched: AWS, Python (related to Spark/Airflow)
+- Missing: Scala, Spark, Airflow, Data Engineering, Kafka, Delta Lake, DBT
+- Match: 45%
+
+### Analysis:
+Low direct match at 45%, but if the candidate has strong Python data processing experience, the transition to Scala/Spark is feasible. The role requires a data engineering mindset which may be partially demonstrated through Python-based ETL work. Recommend highlighting any pipeline development, batch processing, or data transformation projects to bridge the gap.
+
+---
+
+## Example 5: Excellent Match (95%)
+
+### Input:
+- JD Required: Python, scikit-learn, Pandas, SQL, Statistical Analysis
+- JD Preferred: Tableau, A/B Testing, Communication Skills
+- Matched: Python, scikit-learn, Pandas, SQL, Statistical Analysis, Tableau, A/B Testing
+- Missing: None critical
+- Match: 95%
+
+### Analysis:
+Excellent skill alignment at 95% with all required and most preferred skills matched. This is a strong candidacy where the resume should directly mirror JD keywords for maximum ATS optimization. Focus on quantifying impact in data analysis projects to differentiate from other qualified candidates.
+
+---
+
+## Example 6: Research Role Match (70%)
+
+### Input:
+- JD Required: PhD, PyTorch, Deep Learning, Research Publications, C++
+- JD Preferred: Reinforcement Learning, Robotics, ROS
+- Matched: PyTorch, Deep Learning, Research Publications
+- Missing: PhD, C++, Reinforcement Learning, Robotics, ROS
+- Match: 70%
+
+### Analysis:
+Solid technical match at 70% for the core ML skills, but the PhD requirement and C++ proficiency are potential blockers depending on how strictly enforced. If the candidate has equivalent research experience (publications, conference presentations), emphasize this strongly. The robotics/RL skills are preferred and can be addressed through demonstrated learning agility.
+
+---
+
+## Example 7: LLM/AI Agent Role (82%)
+
+### Input:
+- JD Required: Python, LangChain, RAG, Vector Databases, LLM APIs
+- JD Preferred: Fine-tuning, Prompt Engineering, Agent Frameworks
+- Matched: Python, LangChain, RAG, LLM APIs, Prompt Engineering
+- Missing: Vector Databases (specific), Fine-tuning, Agent Frameworks
+- Match: 82%
+
+### Analysis:
+Strong match at 82% for this emerging LLM engineering role. The candidate's RAG experience likely involves vector databases even if not explicitly listed—clarify this in the resume. Fine-tuning and agent frameworks are rapidly evolving areas where project-based learning can be highlighted as demonstrated adaptability to new AI paradigms.
+
+---
+
+## Example 8: MLOps Role (68%)
+
+### Input:
+- JD Required: Python, Docker, Kubernetes, CI/CD, MLflow, AWS
+- JD Preferred: Terraform, Monitoring, SageMaker
+- Matched: Python, Docker, AWS, CI/CD
+- Missing: Kubernetes, MLflow, Terraform, Monitoring, SageMaker
+- Match: 68%
+
+### Analysis:
+Moderate match at 68% with core DevOps skills present but MLOps-specific tooling gaps. Kubernetes is increasingly essential for ML infrastructure—any container orchestration experience should be emphasized. Consider highlighting any model deployment, experiment tracking, or pipeline automation work to demonstrate MLOps mindset even without specific tool experience.
+
+---
+
+## Example 9: Data Scientist Role (88%)
+
+### Input:
+- JD Required: Python, Machine Learning, Statistics, SQL, Data Visualization
+- JD Preferred: Deep Learning, NLP, Cloud Platforms
+- Matched: Python, Machine Learning, Statistics, SQL, Data Visualization, Deep Learning, NLP
+- Missing: Cloud Platforms (general)
+- Match: 88%
+
+### Analysis:
+Excellent match at 88% with all core data science competencies covered plus advanced skills in deep learning and NLP. The cloud platform gap is minor and commonly addressed through brief exposure sections. Resume should lead with the strong ML/DL experience and quantified project outcomes to maximize impact.
+
+---
+
+## Example 10: Entry-Level ML Role (78%)
+
+### Input:
+- JD Required: Python, Machine Learning basics, SQL, Git
+- JD Preferred: TensorFlow or PyTorch, Cloud experience, Kaggle
+- Matched: Python, Machine Learning, SQL, Git, PyTorch
+- Missing: Cloud experience, Kaggle competitions
+- Match: 78%
+
+### Analysis:
+Good match at 78% for an entry-level role, exceeding requirements with PyTorch experience. The cloud and Kaggle gaps are not critical for junior positions—focus on demonstrating strong fundamentals and learning velocity. Include any personal projects, coursework, or certifications that show initiative and practical application of ML concepts.

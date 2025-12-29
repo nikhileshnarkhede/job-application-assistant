@@ -1,0 +1,706 @@
+{
+  "candidate_info": {
+    "last_updated": "2025-01-01",
+    "total_experiences": 7,
+    "years_of_experience": "4+"
+  },
+  "header": {
+    "name": "Nikhilesh Narkhede",
+    "title": "AI Lab Research Engineer | Scientific AI | Machine Learning Research",
+    "phone": "+1 508-509-3697",
+    "email": "nnarkhede@umassd.edu",
+    "location": "Boston, US",
+    "linkedin": "linkedin.com/in/nikhileshnarkhede",
+    "github": "github.com/nikhileshnarkhede",
+    "contact_line": "Boston, US  •  +1 508-509-3697  •  nnarkhede@umassd.edu  •  linkedin.com/in/nikhileshnarkhede  •  github.com/nikhileshnarkhede"
+  },
+  "professional_summary": {
+    "default": "AI & ML researcher with experience in scientific AI, AI agents, and ML pipelines for sequential decision-making and multi-step problem-solving in scientific contexts. Skilled in AI models, LLM fine-tuning, domain adaptation, and integrating AI-driven research workflows in biotechnology, materials science, and automation environments.",
+    "ml_engineer": "AI & ML researcher with experience in scientific AI, AI agents, and ML pipelines for sequential decision-making and multi-step problem-solving in scientific contexts. Skilled in AI models, LLM fine-tuning, domain adaptation, and integrating AI-driven research workflows in biotechnology, materials science, and automation environments.",
+    "data_scientist": "Data Scientist with strong foundation in machine learning, deep learning, and statistical analysis. Experienced in developing predictive models, conducting EDA, and building end-to-end ML pipelines. Published researcher with expertise in applying ML to materials science and scientific computing.",
+    "research_scientist": "AI Research Scientist with peer-reviewed publication in applying machine learning to materials science. Expert in developing novel ML frameworks for low-data domains, scientific computing, and computational modeling. Strong background in mathematical modeling and numerical methods."
+  },
+  "education": [
+    {
+      "institution": "University of Massachusetts Dartmouth",
+      "location": "Dartmouth, MA",
+      "degree": "Master of Science",
+      "field": "Data Science",
+      "graduation": "May 2026",
+      "gpa": "4.0",
+      "coursework": [
+        "Advanced Math Statistics",
+        "Artificial Intelligence",
+        "Deep Learning",
+        "Machine Learning",
+        "High Performance Computing (HPC)",
+        "Advanced ML",
+        "Databases"
+      ],
+      "activities": ["Big Data Club", "Gen AI Club member"],
+      "highlights": ["Perfect 4.0 GPA"]
+    },
+    {
+      "institution": "Savitribai Phule Pune University",
+      "location": "Pune, India",
+      "degree": "Bachelor of Engineering",
+      "field": "Mechanical Engineering",
+      "graduation": "June 2023",
+      "gpa": "3.64",
+      "coursework": [
+        "AI & ML",
+        "Data Analytics Lab",
+        "Numerical & Statistical Methods",
+        "Programming & Problem Solving"
+      ],
+      "activities": [],
+      "highlights": ["Ranked 9 in University"]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Advanced Certification in AI & ML",
+      "issuer": "IIT Kanpur",
+      "year": null,
+      "credential_id": null
+    }
+  ],
+  "skills": {
+    "Programming": "Python, SQL, MATLAB",
+    "Frameworks": "TensorFlow, PyTorch, Scikit-learn, Keras, XGBoost, LightGBM, JAX",
+    "Scientific_AI": "AI models, AI agents, sequential decision-making, domain adaptation, multi-step problem-solving, scientific contexts",
+    "Core_Expertise": "Feature Engineering, Model Optimization, Pipeline Development, Predictive Modeling, NLP, CV",
+    "Databases_Tools": "PostgreSQL, MySQL, MongoDB, Tableau, Power BI, Flask, Git, GPU Computing"
+  },
+  "skills_for_resume": {
+    "Programming": ["Python", "SQL", "MATLAB"],
+    "Frameworks": ["TensorFlow", "PyTorch", "Scikit-learn", "Keras", "XGBoost", "LightGBM", "JAX"],
+    "Scientific_AI": ["AI models", "AI agents", "Sequential decision-making", "Domain adaptation", "Multi-step problem-solving"],
+    "Core_Expertise": ["Feature Engineering", "Model Optimization", "Pipeline Development", "Predictive Modeling", "NLP", "Computer Vision"],
+    "Databases_Tools": ["PostgreSQL", "MySQL", "MongoDB", "Tableau", "Power BI", "Flask", "Git", "GPU Computing"]
+  },
+  "skills_summary": {
+    "programming_languages": {
+      "expert": ["Python"],
+      "advanced": ["SQL", "MATLAB"],
+      "intermediate": ["C/C++"],
+      "familiar": ["R"]
+    },
+    "ml_ai_frameworks": [
+      "TensorFlow",
+      "PyTorch",
+      "Keras",
+      "Scikit-learn",
+      "XGBoost",
+      "LightGBM",
+      "JAX",
+      "NumPy",
+      "Pandas",
+      "LangChain",
+      "HuggingFace Transformers"
+    ],
+    "scientific_ai": [
+      "AI models",
+      "AI agents",
+      "Sequential decision-making",
+      "Domain adaptation",
+      "Multi-step problem-solving",
+      "Scientific contexts"
+    ],
+    "core_expertise": [
+      "Feature Engineering",
+      "Model Optimization",
+      "Pipeline Development",
+      "Predictive Modeling",
+      "NLP",
+      "Computer Vision (CV)",
+      "EDA",
+      "Statistical Analysis",
+      "Data Preprocessing",
+      "Cross-Validation",
+      "Hyperparameter Tuning"
+    ],
+    "databases_tools": [
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+      "Tableau",
+      "Power BI",
+      "Flask",
+      "Git",
+      "GPU Computing",
+      "Docker",
+      "Linux",
+      "Jupyter"
+    ],
+    "simulation_modeling": [
+      "ANSYS",
+      "CFD",
+      "Numerical Methods",
+      "Kinematic Modeling",
+      "Heat Transfer Modeling"
+    ],
+    "soft_skills": [
+      "Technical Writing",
+      "Teaching/Mentoring",
+      "Team Collaboration",
+      "Analytical Problem Solving",
+      "Research"
+    ]
+  },
+  "experiences": [
+    {
+      "id": 1,
+      "role": "Deep Learning Researcher",
+      "role_full": "Deep Learning Researcher (Mathematics & Computational Modeling Consultant)",
+      "company": "University of Massachusetts Dartmouth",
+      "employment_type": "Contract",
+      "dates": {
+        "start": "Feb 2025",
+        "end": "May 2025",
+        "duration_months": 4
+      },
+      "location": {
+        "city": "Greater Boston",
+        "state": "MA",
+        "country": "USA",
+        "type": "On-site"
+      },
+      "publication": {
+        "journal": "Journal of Composite Science",
+        "year": 2025,
+        "title": "Prediction of Mechanical and Fracture Properties of Lightweight Polyurethane Composites using Machine Learning Methods"
+      },
+      "scope": "Developed a full-stack machine learning workflow to model and predict mechanical and fracture properties of cenosphere-reinforced thermoset polyurethane composites — a complex low-data domain characterized by nonlinear material behavior.",
+      "bullets": {
+        "data_experimental": [
+          "Integrated multi-modal experimental datasets across 0–40% cenosphere volume fractions.",
+          "Engineered structured datasets capturing tensile/compressive modulus, tensile strength, specific strength, elongation at break, and fracture toughness.",
+          "Conducted exploratory data analysis (EDA) to quantify distributions, outliers, correlations, and nonlinearity."
+        ],
+        "ml_strategy": [
+          "Expanded the dataset using statistical bootstrapping, synthetic sampling, and uncertainty-aware augmentation.",
+          "Developed, trained, and optimized shallow ANN and deep DNN models using TensorFlow/Keras.",
+          "Performed systematic hyperparameter tuning (architecture depth, activation functions, learning rate, batch size, regularization).",
+          "Applied feature scaling, normalization, and cross-validation to improve model generalization.",
+          "Achieved exceptional predictive performance (R² > 0.99, low RMSE) and demonstrated reliable extrapolation beyond the experimentally measured reinforcement range."
+        ],
+        "outcome": [
+          "Showcased a scalable ML framework capable of replacing classical empirical formulations for material property estimation — accelerating materials design and innovation, especially in low-data environments."
+        ]
+      },
+      "bullets_flat": [
+        "Integrated multi-modal experimental datasets across 0–40% cenosphere volume fractions.",
+        "Engineered structured datasets capturing tensile/compressive modulus, tensile strength, specific strength, elongation at break, and fracture toughness.",
+        "Conducted exploratory data analysis (EDA) to quantify distributions, outliers, correlations, and nonlinearity.",
+        "Expanded the dataset using statistical bootstrapping, synthetic sampling, and uncertainty-aware augmentation.",
+        "Developed, trained, and optimized shallow ANN and deep DNN models using TensorFlow/Keras.",
+        "Performed systematic hyperparameter tuning (architecture depth, activation functions, learning rate, batch size, regularization).",
+        "Applied feature scaling, normalization, and cross-validation to improve model generalization.",
+        "Achieved exceptional predictive performance (R² > 0.99, low RMSE) and demonstrated reliable extrapolation beyond the experimentally measured reinforcement range.",
+        "Showcased a scalable ML framework capable of replacing classical empirical formulations for material property estimation — accelerating materials design and innovation, especially in low-data environments."
+      ],
+      "skills": [
+        "Machine Learning",
+        "Deep Learning",
+        "Statistical Sampling",
+        "Feature Engineering",
+        "Python",
+        "TensorFlow",
+        "Keras",
+        "NumPy",
+        "Pandas",
+        "Data Preprocessing",
+        "Model Optimization"
+      ],
+      "keywords": [
+        "ML",
+        "DL",
+        "ANN",
+        "DNN",
+        "TensorFlow",
+        "Keras",
+        "EDA",
+        "Hyperparameter Tuning",
+        "Cross-Validation",
+        "R²",
+        "RMSE",
+        "Low-Data ML",
+        "Materials Science",
+        "Scientific AI"
+      ],
+      "metrics": {
+        "r_squared": ">0.99",
+        "rmse": "low",
+        "volume_fraction_range": "0-40%"
+      },
+      "relevance_tags": ["ml_ai", "research", "deep_learning", "data_science", "scientific_ai"]
+    },
+    {
+      "id": 2,
+      "role": "Technical Content Intern",
+      "role_full": "Intern — Technical Content & Data Preparation",
+      "company": "Tech-Neo Publications LLP",
+      "employment_type": "Internship",
+      "dates": {
+        "start": "Jul 2023",
+        "end": "May 2024",
+        "duration_months": 11
+      },
+      "location": {
+        "city": "Remote",
+        "state": null,
+        "country": "India",
+        "type": "Remote"
+      },
+      "publication": null,
+      "scope": "Technical STEM content creation and data preparation for educational materials.",
+      "bullets": {
+        "primary": [
+          "Authored and reviewed technical STEM content involving computational thinking, data-driven examples, and algorithmic problem-solving.",
+          "Prepared structured datasets, verified numerical accuracy, and assisted in developing problem banks relevant to engineering and analytical curriculum.",
+          "Improved content clarity through quantitative examples and mathematical modeling."
+        ]
+      },
+      "bullets_flat": [
+        "Authored and reviewed technical STEM content involving computational thinking, data-driven examples, and algorithmic problem-solving.",
+        "Prepared structured datasets, verified numerical accuracy, and assisted in developing problem banks relevant to engineering and analytical curriculum.",
+        "Improved content clarity through quantitative examples and mathematical modeling."
+      ],
+      "skills": [
+        "Data Handling",
+        "Technical Writing",
+        "Python",
+        "MATLAB",
+        "Analytical Thinking"
+      ],
+      "keywords": [
+        "Technical Writing",
+        "STEM Content",
+        "Data Preparation",
+        "Curriculum Development",
+        "Educational Content"
+      ],
+      "metrics": null,
+      "relevance_tags": ["technical_writing", "content_creation", "education"]
+    },
+    {
+      "id": 3,
+      "role": "Research Assistant",
+      "role_full": "Research Assistant — Computational Modeling & Simulation",
+      "company": "Armament Research and Development Establishment (ARDE), DRDO",
+      "employment_type": "Research Position",
+      "dates": {
+        "start": "Sep 2022",
+        "end": "Mar 2023",
+        "duration_months": 7
+      },
+      "location": {
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "type": "On-site"
+      },
+      "publication": null,
+      "project": "Design and Analysis of Propulsion System for Artillery Rocket",
+      "scope": "Simulation-driven engineering for defense propulsion systems using CFD and numerical methods.",
+      "bullets": {
+        "primary": [
+          "Applied simulation-driven engineering using CFD, heat-transfer modeling, and MATLAB/Python-based numerical workflows.",
+          "Built parametric models to evaluate combustion dynamics, thermal stresses, and structural responses using ANSYS and MATLAB.",
+          "Performed sensitivity analyses and optimization studies to improve propulsion efficiency and reliability.",
+          "Produced data-driven insights that influenced system design decisions."
+        ]
+      },
+      "bullets_flat": [
+        "Applied simulation-driven engineering using CFD, heat-transfer modeling, and MATLAB/Python-based numerical workflows.",
+        "Built parametric models to evaluate combustion dynamics, thermal stresses, and structural responses using ANSYS and MATLAB.",
+        "Performed sensitivity analyses and optimization studies to improve propulsion efficiency and reliability.",
+        "Produced data-driven insights that influenced system design decisions."
+      ],
+      "skills": [
+        "Numerical Modeling",
+        "CFD",
+        "Python",
+        "MATLAB",
+        "Simulation",
+        "Data Analysis",
+        "Computational Engineering"
+      ],
+      "keywords": [
+        "CFD",
+        "ANSYS",
+        "Simulation",
+        "Propulsion",
+        "Thermal Analysis",
+        "Numerical Methods",
+        "Defense Research",
+        "Heat Transfer"
+      ],
+      "metrics": null,
+      "relevance_tags": ["research", "simulation", "computational_engineering", "defense"]
+    },
+    {
+      "id": 4,
+      "role": "Project Trainee",
+      "role_full": "Project Trainee — Data-Driven Manufacturing Support",
+      "company": "Bajaj Auto Ltd",
+      "employment_type": "Trainee",
+      "dates": {
+        "start": "Mar 2022",
+        "end": "Jun 2022",
+        "duration_months": 4
+      },
+      "location": {
+        "city": "Chakan",
+        "state": "Maharashtra",
+        "country": "India",
+        "type": "On-site"
+      },
+      "publication": null,
+      "scope": "Data analytics for manufacturing process optimization and maintenance.",
+      "bullets": {
+        "primary": [
+          "Conducted quantitative analysis of production data to support process optimization and Total Productive Maintenance (TPM).",
+          "Used Excel/Python for trend monitoring, downtime pattern analysis, and process improvement reporting.",
+          "Collaborated with engineering teams to define data requirements and interpret operational metrics."
+        ]
+      },
+      "bullets_flat": [
+        "Conducted quantitative analysis of production data to support process optimization and Total Productive Maintenance (TPM).",
+        "Used Excel/Python for trend monitoring, downtime pattern analysis, and process improvement reporting.",
+        "Collaborated with engineering teams to define data requirements and interpret operational metrics."
+      ],
+      "skills": [
+        "Data Analysis",
+        "Manufacturing Analytics",
+        "KPI Tracking",
+        "Process Optimization"
+      ],
+      "keywords": [
+        "Manufacturing",
+        "TPM",
+        "Production Analytics",
+        "KPI",
+        "Process Optimization",
+        "Industry 4.0",
+        "Automotive"
+      ],
+      "metrics": null,
+      "relevance_tags": ["data_analytics", "manufacturing", "industry"]
+    },
+    {
+      "id": 5,
+      "role": "CAD Engineer",
+      "role_full": "Computer-Aided Design Engineer — Robotics & Kinematic Modeling",
+      "company": "Artenal",
+      "employment_type": "Contract",
+      "dates": {
+        "start": "Jan 2022",
+        "end": "Jun 2022",
+        "duration_months": 6
+      },
+      "location": {
+        "city": "Vancouver",
+        "state": "BC",
+        "country": "Canada",
+        "type": "Remote"
+      },
+      "publication": null,
+      "scope": "Computational modeling and kinematic analysis for robotic systems.",
+      "bullets": {
+        "primary": [
+          "Built computational models of robotic mechanisms, including delta robots, robotic arms, and agricultural automation systems.",
+          "Performed forward and inverse kinematic calculations, optimization of joint angles, and motion-path simulations.",
+          "Utilized Python/MATLAB to validate kinematic behavior and to generate simulation-driven insights."
+        ]
+      },
+      "bullets_flat": [
+        "Built computational models of robotic mechanisms, including delta robots, robotic arms, and agricultural automation systems.",
+        "Performed forward and inverse kinematic calculations, optimization of joint angles, and motion-path simulations.",
+        "Utilized Python/MATLAB to validate kinematic behavior and to generate simulation-driven insights."
+      ],
+      "skills": [
+        "Mathematical Modeling",
+        "Kinematics",
+        "Python",
+        "MATLAB",
+        "Robotics Simulation",
+        "Problem Solving"
+      ],
+      "keywords": [
+        "Robotics",
+        "Kinematics",
+        "Delta Robot",
+        "Motion Planning",
+        "CAD",
+        "Automation",
+        "Agricultural Robotics",
+        "Inverse Kinematics"
+      ],
+      "metrics": null,
+      "relevance_tags": ["robotics", "automation", "simulation", "cad"]
+    },
+    {
+      "id": 6,
+      "role": "Coding Tutor",
+      "role_full": "Coding Tutor — Programming, Logic, and Foundations of Computer Science",
+      "company": "CodeKaroYaaro",
+      "employment_type": "Part-time",
+      "dates": {
+        "start": "Sep 2021",
+        "end": "Nov 2021",
+        "duration_months": 3
+      },
+      "location": {
+        "city": "Remote",
+        "state": null,
+        "country": "India",
+        "type": "Remote"
+      },
+      "publication": null,
+      "scope": "Teaching programming fundamentals and computer science concepts.",
+      "bullets": {
+        "primary": [
+          "Taught programming logic, data handling, control structures, and object-oriented programming to early learners.",
+          "Designed course material, recorded conceptual video lectures, and guided students in algorithmic thinking."
+        ]
+      },
+      "bullets_flat": [
+        "Taught programming logic, data handling, control structures, and object-oriented programming to early learners.",
+        "Designed course material, recorded conceptual video lectures, and guided students in algorithmic thinking."
+      ],
+      "skills": [
+        "Python",
+        "C/C++",
+        "OOP",
+        "Pedagogy",
+        "Logical Reasoning"
+      ],
+      "keywords": [
+        "Teaching",
+        "Programming",
+        "OOP",
+        "Python",
+        "C++",
+        "Education",
+        "Mentoring",
+        "Computer Science"
+      ],
+      "metrics": null,
+      "relevance_tags": ["education", "programming", "mentoring"]
+    },
+    {
+      "id": 7,
+      "role": "Technical Member",
+      "role_full": "Technical Member — Engineering & Analytical Problem Solving",
+      "company": "Abhiyantrix Academy",
+      "employment_type": "Member/Volunteer",
+      "dates": {
+        "start": "May 2020",
+        "end": "May 2021",
+        "duration_months": 12
+      },
+      "location": {
+        "city": null,
+        "state": null,
+        "country": "India",
+        "type": "Hybrid"
+      },
+      "publication": null,
+      "scope": "Engineering problem solving and technical analysis support.",
+      "bullets": {
+        "primary": [
+          "Contributed to research-driven engineering problem solving using mathematical modeling and structured analysis.",
+          "Supported project teams through simulation, modeling, and requirement-driven technical evaluation."
+        ]
+      },
+      "bullets_flat": [
+        "Contributed to research-driven engineering problem solving using mathematical modeling and structured analysis.",
+        "Supported project teams through simulation, modeling, and requirement-driven technical evaluation."
+      ],
+      "skills": [
+        "Analytical Thinking",
+        "Mathematical Modeling",
+        "Team Collaboration",
+        "Problem Solving"
+      ],
+      "keywords": [
+        "Engineering Analysis",
+        "Problem Solving",
+        "Team Collaboration",
+        "Research",
+        "Technical Evaluation"
+      ],
+      "metrics": null,
+      "relevance_tags": ["research", "engineering", "collaboration"]
+    }
+  ],
+  "relevance_mapping": {
+    "ml_ai": {
+      "primary": [1],
+      "secondary": [3],
+      "supporting": [5]
+    },
+    "data_science": {
+      "primary": [1],
+      "secondary": [4],
+      "supporting": [3]
+    },
+    "research": {
+      "primary": [1],
+      "secondary": [3],
+      "supporting": [7]
+    },
+    "robotics_automation": {
+      "primary": [5],
+      "secondary": [3],
+      "supporting": [1]
+    },
+    "technical_writing": {
+      "primary": [2],
+      "secondary": [6],
+      "supporting": [1]
+    },
+    "software_engineering": {
+      "primary": [1],
+      "secondary": [5],
+      "supporting": [6]
+    },
+    "simulation_engineering": {
+      "primary": [3],
+      "secondary": [5],
+      "supporting": [1]
+    },
+    "scientific_ai": {
+      "primary": [1],
+      "secondary": [3],
+      "supporting": [5]
+    },
+    "llm_ai_agents": {
+      "primary": [1],
+      "secondary": [3],
+      "supporting": [2]
+    }
+  },
+  "all_skills_flat": [
+    "Python",
+    "SQL",
+    "MATLAB",
+    "TensorFlow",
+    "PyTorch",
+    "Scikit-learn",
+    "Keras",
+    "XGBoost",
+    "LightGBM",
+    "JAX",
+    "NumPy",
+    "Pandas",
+    "LangChain",
+    "HuggingFace Transformers",
+    "AI models",
+    "AI agents",
+    "Sequential decision-making",
+    "Domain adaptation",
+    "Multi-step problem-solving",
+    "Feature Engineering",
+    "Model Optimization",
+    "Pipeline Development",
+    "Predictive Modeling",
+    "NLP",
+    "Computer Vision",
+    "EDA",
+    "Statistical Analysis",
+    "Data Preprocessing",
+    "Cross-Validation",
+    "Hyperparameter Tuning",
+    "PostgreSQL",
+    "MySQL",
+    "MongoDB",
+    "Tableau",
+    "Power BI",
+    "Flask",
+    "Git",
+    "GPU Computing",
+    "Docker",
+    "Linux",
+    "ANSYS",
+    "CFD",
+    "Numerical Methods",
+    "Kinematics",
+    "Mathematical Modeling",
+    "Data Analysis",
+    "Technical Writing",
+    "C/C++"
+  ],
+  "all_keywords_flat": [
+    "ML",
+    "DL",
+    "ANN",
+    "DNN",
+    "TensorFlow",
+    "PyTorch",
+    "Keras",
+    "XGBoost",
+    "LightGBM",
+    "JAX",
+    "Scikit-learn",
+    "EDA",
+    "Hyperparameter Tuning",
+    "Cross-Validation",
+    "Scientific AI",
+    "AI Agents",
+    "LLM",
+    "Fine-tuning",
+    "Domain Adaptation",
+    "Sequential Decision-making",
+    "Multi-step Problem-solving",
+    "Feature Engineering",
+    "Model Optimization",
+    "Pipeline Development",
+    "Predictive Modeling",
+    "NLP",
+    "Computer Vision",
+    "CV",
+    "PostgreSQL",
+    "MySQL",
+    "MongoDB",
+    "Tableau",
+    "Power BI",
+    "Flask",
+    "Git",
+    "GPU Computing",
+    "Materials Science",
+    "Technical Writing",
+    "STEM Content",
+    "Data Preparation",
+    "CFD",
+    "ANSYS",
+    "Simulation",
+    "Propulsion",
+    "Thermal Analysis",
+    "Numerical Methods",
+    "Manufacturing",
+    "TPM",
+    "Production Analytics",
+    "KPI",
+    "Process Optimization",
+    "Industry 4.0",
+    "Robotics",
+    "Kinematics",
+    "Automation",
+    "RAG",
+    "Vector Database",
+    "Embeddings"
+  ],
+  "publications": [
+    {
+      "title": "Prediction of Mechanical and Fracture Properties of Lightweight Polyurethane Composites using Machine Learning Methods",
+      "journal": "Journal of Composite Science",
+      "year": 2025,
+      "authors": ["Nikhilesh Narkhede", "et al."],
+      "type": "Peer-reviewed",
+      "keywords": ["Machine Learning", "Materials Science", "Deep Learning", "ANN", "DNN"]
+    }
+  ]
+}

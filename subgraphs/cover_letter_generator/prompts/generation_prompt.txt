@@ -1,0 +1,136 @@
+# Cover Letter Generation Task
+
+Generate a personalized, compelling cover letter for this candidate.
+
+## CANDIDATE INFORMATION
+
+**Name:** {candidate_name}
+**Email:** {candidate_email}
+**Phone:** {candidate_phone}
+**Location:** {candidate_location}
+
+**Professional Summary:**
+{candidate_summary}
+
+**Key Skills:**
+{candidate_skills}
+
+**Recent Experience:**
+{candidate_experience}
+
+**Notable Achievements:**
+{candidate_achievements}
+
+---
+
+## TARGET POSITION
+
+**Company:** {company_name}
+**Role:** {role_title}
+**Location:** {job_location}
+
+**Job Requirements:**
+{job_requirements}
+
+**Responsibilities:**
+{job_responsibilities}
+
+**Required Skills:**
+{required_skills}
+
+**Preferred Skills:**
+{preferred_skills}
+
+---
+
+## COMPANY RESEARCH FINDINGS
+
+{company_research}
+
+---
+
+## CUSTOMIZATION OPTIONS
+
+**Tone:** {tone}
+**Focus Areas:** {focus_areas}
+**Referral:** {referral_info}
+**Custom Hook:** {custom_hook}
+
+---
+
+## GENERATION INSTRUCTIONS
+
+Write a complete cover letter following this structure:
+
+### INTRODUCTION (40-60 words)
+- Hook: Start with something compelling (company news, shared values, unique qualification)
+- Identify the specific position
+- Brief statement of why you're interested
+- DO NOT start with "I am writing to apply..."
+
+### BODY PARAGRAPH 1 - Skills & Qualifications (60-80 words)
+- Highlight 1-2 most relevant achievements with metrics
+- Connect directly to job requirements
+- Show unique value proposition
+
+### BODY PARAGRAPH 2 - Company Fit (60-80 words)
+- Reference specific company research (mission, values, recent news)
+- Explain why THIS company specifically
+- Show alignment with company goals
+
+### CLOSING (30-50 words)
+- Thank the reader
+- Express enthusiasm
+- Include call to action
+- Mention follow-up
+
+---
+
+## OUTPUT FORMAT
+
+Provide the cover letter in this exact format:
+
+```
+[HEADER]
+{candidate_name}
+{candidate_email} | {candidate_phone}
+{candidate_location}
+
+{date}
+
+{company_name}
+{job_location}
+
+[SALUTATION]
+Dear [Hiring Manager/Team Name],
+
+[INTRODUCTION]
+[Your compelling opening paragraph here]
+
+[BODY_1]
+[Skills and qualifications paragraph here]
+
+[BODY_2]
+[Company fit paragraph here]
+
+[CLOSING]
+[Closing paragraph here]
+
+[SIGNOFF]
+Sincerely,
+
+{candidate_name}
+```
+
+Also provide:
+
+KEYWORDS_USED: [list of JD keywords incorporated]
+COMPANY_REFERENCES: [list of company-specific details mentioned]
+WORD_COUNT: [total word count]
+PERSONALIZATION_SCORE: [0-100 based on specificity]
+
+---
+
+## BEGIN GENERATION
+
+Write the cover letter now, making it compelling, personalized, and professional:

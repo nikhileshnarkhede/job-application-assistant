@@ -1,0 +1,371 @@
+# Professional Email Examples - 15 Examples by Type
+
+These examples demonstrate effective email writing for job search.
+
+---
+
+## COLD OUTREACH EXAMPLES (5)
+
+### Example 1: Cold Outreach to Recruiter - Tech
+```
+SUBJECT: Senior ML Engineer - 6 Years Building Production Systems
+
+Hi Sarah,
+
+I noticed you recruit for Amazon's Applied Science team and recently filled several ML roles. I'm a Senior ML Engineer at Meta with 6 years of experience building recommendation systems serving 500M+ users.
+
+Your team's work on Alexa's NLU caught my attention—I led a similar project that improved intent recognition by 35%. I'd love to learn more about upcoming opportunities on your team.
+
+Would a brief 15-minute call work next week?
+
+Best regards,
+Alex Chen
+```
+**Why It Works:**
+- Specific about recipient's work
+- One quantified achievement
+- Clear, low-pressure ask
+- 89 words (perfect length)
+
+---
+
+### Example 2: Cold Outreach - Startup
+```
+SUBJECT: Full-Stack Engineer Excited About Notion's Database Vision
+
+Hi Marcus,
+
+Notion's recent launch of database relations solved a problem I've been thinking about for years. As someone who built similar features at Airtable, I'm genuinely excited about where you're taking the product.
+
+I have 5 years of full-stack experience with React/Node and led the team that shipped collaborative editing. I'd love to explore how I could contribute to Notion's engineering team.
+
+Open to a quick chat this week?
+
+Best,
+Jordan Park
+```
+**Why It Works:**
+- Shows genuine product knowledge
+- Relevant experience at competitor
+- Enthusiastic but professional
+- 86 words
+
+---
+
+### Example 3: Cold Outreach - Data Science
+```
+SUBJECT: Data Scientist | Published Researcher in Causal Inference
+
+Hi Dr. Martinez,
+
+Your recent paper on uplift modeling at Netflix caught my attention—I've cited your work in my own research on heterogeneous treatment effects.
+
+I'm a Data Scientist at Spotify with 4 years of experimentation experience and 3 publications in causal ML. I'm exploring opportunities where I can apply rigorous methodology to product decisions.
+
+Would you have 15 minutes to share your experience at Netflix?
+
+Thank you,
+Priya Sharma
+```
+**Why It Works:**
+- Academic credential connection
+- Specific paper reference
+- Asks for advice, not job
+- 85 words
+
+---
+
+### Example 4: Cold Outreach - Senior Role
+```
+SUBJECT: Engineering Director Inquiry - Google Cloud AI
+
+Dear Jennifer,
+
+Google Cloud's strategy of democratizing ML through Vertex AI aligns with my experience leading platform teams. At Microsoft, I directed a team of 40 engineers that built Azure ML's AutoML pipeline, now serving 10K+ enterprise customers.
+
+I'm exploring senior leadership opportunities in cloud AI infrastructure. Would you be open to a conversation about the Engineering Director roles on your team?
+
+Best regards,
+Michael Torres
+```
+**Why It Works:**
+- Matches seniority level
+- Quantified leadership experience
+- Strategic alignment shown
+- 82 words
+
+---
+
+### Example 5: Cold Outreach - Career Changer
+```
+SUBJECT: Physics PhD Transitioning to Quant Research
+
+Hi David,
+
+Your path from academia to Two Sigma resonates with me—I'm a Physics PhD finishing at MIT, looking to apply my quantitative skills in finance.
+
+My research in computational physics involved building Monte Carlo simulations and optimization algorithms. I've been studying derivatives pricing and recently placed in the top 5% of Kaggle's options trading competition.
+
+I'd appreciate any advice on making this transition. Would you have 20 minutes for a call?
+
+Best,
+Emily Watson
+```
+**Why It Works:**
+- Acknowledges shared background
+- Shows proactive learning (Kaggle)
+- Asks for advice, builds relationship
+- 95 words
+
+---
+
+## APPLICATION FOLLOW-UP EXAMPLES (3)
+
+### Example 6: Follow-Up - Standard
+```
+SUBJECT: Following Up: ML Engineer Application - Submitted Jan 15
+
+Hi Recruiting Team,
+
+I submitted my application for the ML Engineer position (Job ID: 12345) on January 15 and wanted to follow up on its status.
+
+I remain very excited about the opportunity to contribute to Stripe's fraud detection systems. My experience building real-time ML pipelines at Square directly aligns with this role.
+
+Please let me know if you need any additional information. I'm available for interviews at your convenience.
+
+Thank you,
+Ryan Kim
+```
+**Why It Works:**
+- Specific date and job ID
+- Reiterates fit briefly
+- Offers flexibility
+- 80 words
+
+---
+
+### Example 7: Follow-Up - After Referral
+```
+SUBJECT: Application Follow-Up: Data Scientist (Referred by Lisa Chen)
+
+Hi Aisha,
+
+Lisa Chen referred me for the Data Scientist position last week, and I submitted my application on January 20. I wanted to check on the next steps in the process.
+
+Lisa spoke highly of the team's work on customer segmentation—an area where I have 4 years of experience. I'm eager to discuss how I can contribute.
+
+Would you be able to share an update on the timeline?
+
+Best regards,
+Tom Nguyen
+```
+**Why It Works:**
+- Leverages referral connection
+- Specific about submission
+- Direct question about timeline
+- 82 words
+
+---
+
+### Example 8: Follow-Up - After Long Wait
+```
+SUBJECT: Checking In: Senior Engineer Application (4 Weeks Ago)
+
+Hi Taylor,
+
+I hope this message finds you well. I applied for the Senior Engineer position about four weeks ago and wanted to check if the role is still open.
+
+I understand hiring timelines can shift, but I wanted to reiterate my strong interest. My experience leading distributed systems at Uber makes this role particularly exciting for me.
+
+If the position has been filled, I'd appreciate knowing so I can adjust my search. Either way, thank you for your time.
+
+Best,
+Chris Park
+```
+**Why It Works:**
+- Acknowledges time politely
+- Not demanding
+- Offers graceful exit
+- 92 words
+
+---
+
+## REFERRAL REQUEST EXAMPLES (3)
+
+### Example 9: Referral - Close Connection
+```
+SUBJECT: Quick Favor: Could You Refer Me at Google?
+
+Hi Amanda,
+
+I hope you're doing well! I saw Google just posted an ML Engineer role on the Search team, and it looks like an incredible fit for my background.
+
+You know my work from our time at Meta—I led the ranking system that improved CTR by 40%. Would you be comfortable submitting an internal referral for me?
+
+I've attached my resume and can send you my tailored cover letter too. Happy to make it as easy as possible for you.
+
+Thank you so much!
+Best,
+Sam Lee
+```
+**Why It Works:**
+- Warm, established relationship
+- Specific role mentioned
+- Offers to make it easy
+- 105 words
+
+---
+
+### Example 10: Referral - Weaker Connection
+```
+SUBJECT: Referral Request - Applied Scientist at Amazon (We Met at NeurIPS)
+
+Hi Jason,
+
+We chatted briefly at NeurIPS last year about your work on Alexa's dialogue systems—your paper on context modeling was fascinating.
+
+I'm very interested in the Applied Scientist role on your team. My PhD research in conversational AI and 3 years at OpenAI building dialogue systems feel like a strong match.
+
+Would you be open to referring me, or if not, could you point me to the right person to connect with?
+
+Either way, I appreciate your time.
+
+Best regards,
+Nina Patel
+```
+**Why It Works:**
+- Reminds of connection context
+- Gives option to redirect
+- Respectful of weak tie
+- 98 words
+
+---
+
+### Example 11: Referral - LinkedIn Connection
+```
+SUBJECT: Seeking Your Advice on Stripe Opportunities
+
+Hi Marcus,
+
+I've followed your posts about building Stripe's ML infrastructure—your article on feature stores was particularly insightful.
+
+I'm a senior ML engineer exploring my next role, and Stripe's approach to financial ML deeply interests me. I noticed several open positions on your team.
+
+Before applying, I'd love to understand more about the team culture and what makes someone successful there. Would you have 15 minutes for a quick call? If there's a fit, I'd be grateful for a referral.
+
+Thank you,
+James Wilson
+```
+**Why It Works:**
+- Asks for advice first (lower pressure)
+- Shows genuine interest via content
+- Referral is secondary ask
+- 102 words
+
+---
+
+## THANK YOU EXAMPLES (2)
+
+### Example 12: Thank You - After Phone Screen
+```
+SUBJECT: Thank You - ML Engineer Phone Screen
+
+Hi Rebecca,
+
+Thank you for taking the time to speak with me today about the ML Engineer role. I enjoyed learning about the recommendation system challenges your team is tackling.
+
+Our discussion about real-time personalization particularly excited me—it's a problem I've thought deeply about and would love to solve at scale with your team.
+
+I look forward to the next steps and am happy to provide any additional information.
+
+Best regards,
+David Chen
+```
+**Why It Works:**
+- Prompt (same day)
+- References specific topic
+- Reiterates interest
+- 78 words
+
+---
+
+### Example 13: Thank You - After Onsite
+```
+SUBJECT: Thank You - Senior Data Scientist Interviews
+
+Hi Jennifer,
+
+I wanted to express my sincere gratitude for the opportunity to interview with the team yesterday. Meeting Sarah, Marcus, and yourself gave me a clear picture of the collaborative culture at Airbnb.
+
+The pricing optimization problem we discussed with Marcus was particularly fascinating—I've been thinking about the approach we whiteboarded and have some additional ideas I'd love to explore.
+
+Thank you again for your time and consideration. I'm very excited about the possibility of joining your team.
+
+Best regards,
+Elena Rodriguez
+```
+**Why It Works:**
+- Names specific interviewers
+- Shows continued thinking
+- Genuine enthusiasm
+- 95 words
+
+---
+
+## NETWORKING EXAMPLES (2)
+
+### Example 14: Networking - Industry Connection
+```
+SUBJECT: Fellow ML Engineer Seeking Your Perspective
+
+Hi Kevin,
+
+I came across your talk at MLConf on deploying transformers at scale—the latency optimization techniques were exactly what I've been struggling with.
+
+I'm a senior ML engineer at a Series B startup facing similar challenges. Would you have 20 minutes for a coffee chat? I'd love to hear more about how you approached the inference optimization problem.
+
+Happy to share my learnings on efficient fine-tuning in return.
+
+Best,
+Rachel Kim
+```
+**Why It Works:**
+- Specific shared interest
+- Offers value exchange
+- Reasonable time ask
+- 82 words
+
+---
+
+### Example 15: Networking - Alumni
+```
+SUBJECT: Stanford CS Alum Looking to Connect
+
+Hi Brian,
+
+I noticed we're both Stanford CS alumni (I graduated in 2018). I'm currently at Google working on NLP, but I'm curious about the startup path you've taken.
+
+I'd love to hear about your experience transitioning from big tech to founding your company. Would you be open to a 20-minute chat over coffee or Zoom?
+
+No pressure either way—I know you're busy building. Thanks for considering it!
+
+Best,
+Michelle Park
+```
+**Why It Works:**
+- Clear connection (alumni)
+- Specific interest (startup transition)
+- Low pressure
+- 85 words
+
+---
+
+## KEY PATTERNS ACROSS ALL EXAMPLES
+
+1. **Subject Lines**: Always specific, include role/context
+2. **Length**: 75-110 words for most types
+3. **Opening**: Never "I am writing to..."
+4. **One Achievement**: Pick ONE relevant highlight
+5. **Clear Ask**: Every email ends with specific request
+6. **Personalization**: At least 2 specific details
+7. **Closing**: Professional but warm

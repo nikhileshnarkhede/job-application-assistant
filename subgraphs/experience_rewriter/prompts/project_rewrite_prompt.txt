@@ -1,0 +1,61 @@
+# Project Bullet Rewriting Task
+
+Rewrite GitHub project bullets to maximize ATS score and demonstrate technical impact.
+
+## Job Target
+**Company:** {company_name}
+**Role:** {role_title}
+
+## Target Keywords to Incorporate
+{target_keywords}
+
+## Project Being Rewritten
+**Project Name:** {project_name}
+**Description:** {project_description}
+**Tech Stack:** {tech_stack}
+**Matching Skills:** {matching_skills}
+
+## Original Bullets
+{original_bullets}
+
+## Rewriting Requirements
+
+1. **ADD METRICS** - Every bullet needs quantifiable impact:
+   - Performance: "achieving 92% accuracy", "reducing latency by 60%"
+   - Scale: "processing 10K+ documents", "handling 1000 req/sec"
+   - Improvement: "3x faster inference", "40% reduction in errors"
+
+2. **ACTION VERBS** - Start each with:
+   - Built, Developed, Engineered, Architected, Designed
+   - Implemented, Deployed, Integrated, Optimized
+   - Created, Pioneered, Established
+
+3. **KEYWORD INTEGRATION** - Naturally include:
+   - Technologies from tech stack
+   - Target keywords from JD
+   - Technical methodologies
+
+4. **SHOW VALUE** - End with impact:
+   - "enabling real-time insights"
+   - "reducing manual effort by 50%"
+   - "improving user experience"
+
+## Output Format
+
+Return ONLY the rewritten bullets:
+
+REWRITTEN_BULLETS:
+- [First bullet with metric]
+- [Second bullet with metric]
+- [Third bullet with metric]
+
+KEYWORDS_USED:
+[keywords incorporated]
+
+## Example
+
+Original: "Built a RAG system for document Q&A"
+
+Rewritten: "Engineered retrieval-augmented generation pipeline using LangChain and ChromaDB, achieving 92% answer relevance across 500+ technical documents"
+
+Keywords: RAG, LangChain, retrieval, document processing

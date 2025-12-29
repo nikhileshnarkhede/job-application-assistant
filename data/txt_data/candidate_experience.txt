@@ -1,0 +1,210 @@
+# CANDIDATE EXPERIENCE DATA
+# This file contains structured experience data for resume generation
+# Each experience entry includes: role, company, dates, location, type, bullets, skills
+
+================================================================================
+EXPERIENCE 1: Deep Learning Researcher
+================================================================================
+Role: Deep Learning Researcher (Mathematics & Computational Modeling Consultant)
+Company: University of Massachusetts Dartmouth
+Employment Type: Contract
+Dates: Feb 2025 – May 2025
+Location: Greater Boston, MA (On-site)
+
+Publication:
+- Journal: Journal of Composite Science (2025)
+- Title: "Prediction of Mechanical and Fracture Properties of Lightweight Polyurethane Composites using Machine Learning Methods"
+
+Scope:
+- Developed a full-stack machine learning workflow to model and predict mechanical and fracture properties of cenosphere-reinforced thermoset polyurethane composites — a complex low-data domain characterized by nonlinear material behavior.
+
+Bullets - Data & Experimental Framework:
+- Integrated multi-modal experimental datasets across 0–40% cenosphere volume fractions.
+- Engineered structured datasets capturing tensile/compressive modulus, tensile strength, specific strength, elongation at break, and fracture toughness.
+- Conducted exploratory data analysis (EDA) to quantify distributions, outliers, correlations, and nonlinearity.
+
+Bullets - ML Strategy & Computational Methods:
+- Expanded the dataset using statistical bootstrapping, synthetic sampling, and uncertainty-aware augmentation.
+- Developed, trained, and optimized shallow ANN and deep DNN models using TensorFlow/Keras.
+- Performed systematic hyperparameter tuning (architecture depth, activation functions, learning rate, batch size, regularization).
+- Applied feature scaling, normalization, and cross-validation to improve model generalization.
+- Achieved exceptional predictive performance (R² > 0.99, low RMSE) and demonstrated reliable extrapolation beyond the experimentally measured reinforcement range.
+
+Outcome:
+- Showcased a scalable ML framework capable of replacing classical empirical formulations for material property estimation — accelerating materials design and innovation, especially in low-data environments.
+
+Skills: Machine Learning, Deep Learning, Statistical Sampling, Feature Engineering, Python, TensorFlow, Keras, NumPy, Pandas, Data Preprocessing, Model Optimization
+
+Keywords: ML, DL, ANN, DNN, TensorFlow, Keras, EDA, Hyperparameter Tuning, Cross-Validation, R², RMSE, Low-Data ML, Materials Science
+
+================================================================================
+EXPERIENCE 2: Technical Content Intern
+================================================================================
+Role: Intern — Technical Content & Data Preparation
+Company: Tech-Neo Publications LLP
+Employment Type: Internship
+Dates: Jul 2023 – May 2024
+Location: Remote / India
+
+Bullets:
+- Authored and reviewed technical STEM content involving computational thinking, data-driven examples, and algorithmic problem-solving.
+- Prepared structured datasets, verified numerical accuracy, and assisted in developing problem banks relevant to engineering and analytical curriculum.
+- Improved content clarity through quantitative examples and mathematical modeling.
+
+Skills: Data Handling, Technical Writing, Python, MATLAB, Analytical Thinking
+
+Keywords: Technical Writing, STEM Content, Data Preparation, Curriculum Development
+
+================================================================================
+EXPERIENCE 3: Research Assistant - DRDO
+================================================================================
+Role: Research Assistant — Computational Modeling & Simulation
+Company: Armament Research and Development Establishment (ARDE), DRDO
+Employment Type: Research Position
+Dates: Sep 2022 – Mar 2023
+Location: Pune, India (On-site)
+
+Project: Design and Analysis of Propulsion System for Artillery Rocket
+
+Bullets:
+- Applied simulation-driven engineering using CFD, heat-transfer modeling, and MATLAB/Python-based numerical workflows.
+- Built parametric models to evaluate combustion dynamics, thermal stresses, and structural responses using ANSYS and MATLAB.
+- Performed sensitivity analyses and optimization studies to improve propulsion efficiency and reliability.
+- Produced data-driven insights that influenced system design decisions.
+
+Skills: Numerical Modeling, CFD, Python, MATLAB, Simulation, Data Analysis, Computational Engineering
+
+Keywords: CFD, ANSYS, Simulation, Propulsion, Thermal Analysis, Numerical Methods, Defense Research
+
+================================================================================
+EXPERIENCE 4: Project Trainee - Bajaj Auto
+================================================================================
+Role: Project Trainee — Data-Driven Manufacturing Support
+Company: Bajaj Auto Ltd
+Employment Type: Trainee
+Dates: Mar 2022 – Jun 2022
+Location: Chakan, India (On-site)
+
+Bullets:
+- Conducted quantitative analysis of production data to support process optimization and Total Productive Maintenance (TPM).
+- Used Excel/Python for trend monitoring, downtime pattern analysis, and process improvement reporting.
+- Collaborated with engineering teams to define data requirements and interpret operational metrics.
+
+Skills: Data Analysis, Manufacturing Analytics, KPI Tracking, Process Optimization
+
+Keywords: Manufacturing, TPM, Production Analytics, KPI, Process Optimization, Industry 4.0
+
+================================================================================
+EXPERIENCE 5: CAD Engineer - Robotics
+================================================================================
+Role: Computer-Aided Design Engineer — Robotics & Kinematic Modeling
+Company: Artenal
+Employment Type: Contract/Remote
+Dates: Jan 2022 – Jun 2022
+Location: Vancouver, Canada (Remote)
+
+Bullets:
+- Built computational models of robotic mechanisms, including delta robots, robotic arms, and agricultural automation systems.
+- Performed forward and inverse kinematic calculations, optimization of joint angles, and motion-path simulations.
+- Utilized Python/MATLAB to validate kinematic behavior and to generate simulation-driven insights.
+
+Skills: Mathematical Modeling, Kinematics, Python, MATLAB, Robotics Simulation, Problem Solving
+
+Keywords: Robotics, Kinematics, Delta Robot, Motion Planning, CAD, Automation, Agricultural Robotics
+
+================================================================================
+EXPERIENCE 6: Coding Tutor
+================================================================================
+Role: Coding Tutor — Programming, Logic, and Foundations of Computer Science
+Company: CodeKaroYaaro
+Employment Type: Part-time
+Dates: Sep 2021 – Nov 2021
+Location: Remote
+
+Bullets:
+- Taught programming logic, data handling, control structures, and object-oriented programming to early learners.
+- Designed course material, recorded conceptual video lectures, and guided students in algorithmic thinking.
+
+Skills: Python, C/C++, OOP, Pedagogy, Logical Reasoning
+
+Keywords: Teaching, Programming, OOP, Python, C++, Education, Mentoring
+
+================================================================================
+EXPERIENCE 7: Technical Member
+================================================================================
+Role: Technical Member — Engineering & Analytical Problem Solving
+Company: Abhiyantrix Academy
+Employment Type: Member/Volunteer
+Dates: May 2020 – May 2021
+Location: India
+
+Bullets:
+- Contributed to research-driven engineering problem solving using mathematical modeling and structured analysis.
+- Supported project teams through simulation, modeling, and requirement-driven technical evaluation.
+
+Skills: Analytical Thinking, Mathematical Modeling, Team Collaboration, Problem Solving
+
+Keywords: Engineering Analysis, Problem Solving, Team Collaboration, Research
+
+================================================================================
+SKILLS SUMMARY (Aggregated from all experiences)
+================================================================================
+
+Programming Languages:
+- Python (Expert)
+- MATLAB (Advanced)
+- C/C++ (Intermediate)
+
+ML/AI Frameworks:
+- TensorFlow
+- Keras
+- NumPy
+- Pandas
+
+Simulation & Modeling:
+- ANSYS
+- CFD
+- Numerical Methods
+- Kinematic Modeling
+
+Domain Expertise:
+- Machine Learning / Deep Learning
+- Materials Science ML
+- Robotics & Automation
+- Manufacturing Analytics
+- Computational Engineering
+
+Soft Skills:
+- Technical Writing
+- Teaching/Mentoring
+- Team Collaboration
+- Analytical Problem Solving
+
+================================================================================
+EXPERIENCE RELEVANCE TAGS (for JD matching)
+================================================================================
+
+For ML/AI Roles:
+- PRIMARY: Experience 1 (Deep Learning Researcher)
+- SECONDARY: Experience 3 (DRDO - Computational Modeling)
+- SUPPORTING: Experience 5 (Robotics - Python/MATLAB)
+
+For Data Science/Analytics Roles:
+- PRIMARY: Experience 1 (Deep Learning Researcher)
+- SECONDARY: Experience 4 (Bajaj - Manufacturing Analytics)
+- SUPPORTING: Experience 3 (DRDO - Data Analysis)
+
+For Research Roles:
+- PRIMARY: Experience 1 (Deep Learning Researcher)
+- SECONDARY: Experience 3 (DRDO Research)
+- SUPPORTING: Experience 7 (Abhiyantrix - Research)
+
+For Robotics/Automation Roles:
+- PRIMARY: Experience 5 (Artenal - Robotics)
+- SECONDARY: Experience 3 (DRDO - Simulation)
+- SUPPORTING: Experience 1 (ML for Engineering)
+
+For Technical Writing/Content Roles:
+- PRIMARY: Experience 2 (Tech-Neo Publications)
+- SECONDARY: Experience 6 (Coding Tutor)
+- SUPPORTING: Experience 1 (Publication)

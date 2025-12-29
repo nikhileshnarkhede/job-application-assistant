@@ -1,0 +1,406 @@
+# Resume Compliance Evaluation - 20 Examples
+
+These examples demonstrate proper evaluation of resume elements.
+
+---
+
+## Example Set 1: Personal Information Evaluation
+
+### Good Example (PASS)
+```
+Header: John Smith | john.smith@gmail.com | (555) 123-4567 | linkedin.com/in/johnsmith
+
+Evaluation:
+- [PASS] Located at the top of the page | Clean, prominent placement
+- [PASS] First and last name in larger font | Name stands out appropriately
+- [PASS] One phone number included | Professional format
+- [PASS] One professional email address | Gmail is acceptable
+- [PASS] LinkedIn URL included | Active profile linked
+- [PASS] Does not take excessive space | Single line header
+```
+
+### Bad Example (FAIL)
+```
+Header: Johnny | johnny123@yahoo.com | Home: 555-1234, Cell: 555-5678, Work: 555-9999
+
+Evaluation:
+- [FAIL] Located at the top of the page | Name only, incomplete
+- [FAIL] First and last name | Missing last name
+- [FAIL] One phone number included | Three numbers is confusing
+- [FAIL] Professional email address | Unprofessional format
+- [FAIL] LinkedIn URL included | Missing
+- [PASS] Does not take excessive space | Compact but incomplete
+```
+
+---
+
+## Example Set 2: Education Section Evaluation
+
+### Good Example (PASS)
+```
+Education:
+Massachusetts Institute of Technology, Cambridge, MA
+Bachelor of Science in Computer Science, May 2024
+GPA: 3.8/4.0, Dean's List (6 semesters)
+Relevant Coursework: Machine Learning, Distributed Systems, Algorithms
+
+Evaluation:
+- [PASS] Institution name with city and state | Complete location
+- [PASS] Degree listed accurately | BS in CS clearly stated
+- [PASS] Graduation date | May 2024 properly formatted
+- [PASS] Major title complete | Computer Science specified
+- [PASS] GPA included if above 3.0 | 3.8 prominently displayed
+- [PASS] Dean's list or academic awards | 6 semesters noted
+```
+
+### Average Example (Partial)
+```
+Education:
+MIT
+Computer Science, 2024
+
+Evaluation:
+- [FAIL] Institution name with city and state | Missing location
+- [FAIL] Degree listed accurately | Missing degree type (BS/BA)
+- [PASS] Graduation date | Year included
+- [PASS] Major title complete | CS mentioned
+- [FAIL] GPA included if above 3.0 | GPA not listed
+- [FAIL] Dean's list or academic awards | Not mentioned
+```
+
+---
+
+## Example Set 3: Experience Bullets Evaluation
+
+### Excellent Bullets (Score: 4)
+```
+- Engineered distributed data pipeline using Apache Spark, processing 50TB daily with 99.9% uptime
+- Led team of 5 engineers to deliver ML recommendation system, increasing user engagement by 35%
+- Reduced model inference latency from 200ms to 45ms through optimization and caching strategies
+
+Evaluation:
+- [PASS] Bullets start with action verbs | Engineered, Led, Reduced
+- [PASS] Action verbs in appropriate tense | Past tense for past role
+- [PASS] Achievements quantified | 50TB, 99.9%, 5 engineers, 35%, 200ms to 45ms
+- [PASS] No passive phrases | Active voice throughout
+```
+
+### Poor Bullets (Score: 1)
+```
+- I was responsible for data pipeline development
+- Worked with team on ML projects
+- Helped to improve system performance
+
+Evaluation:
+- [FAIL] Bullets start with action verbs | Starts with "I was", "Worked", "Helped"
+- [FAIL] Action verbs in appropriate tense | Inconsistent tense
+- [FAIL] Achievements quantified | No metrics or numbers
+- [FAIL] No passive phrases | "Responsible for", "Worked with"
+```
+
+---
+
+## Example Set 4: Skills Section Evaluation
+
+### Good Skills (PASS)
+```
+Skills:
+Programming Languages: Python, Java, C++, SQL, JavaScript
+ML/AI: PyTorch, TensorFlow, Scikit-learn, Hugging Face
+Cloud & Infrastructure: AWS (EC2, S3, Lambda), Docker, Kubernetes
+Languages: English (Native), Spanish (Conversational)
+
+Evaluation:
+- [PASS] Skills organized by category | 4 clear categories
+- [PASS] Technical skills highlighted | Programming, ML, Cloud prominent
+- [PASS] No soft skill adjectives | No "hardworking", "team player"
+- [PASS] Language proficiency specified | Native/Conversational levels noted
+```
+
+### Poor Skills (FAIL)
+```
+Skills: Python, hardworking, team player, Java, good communication, Microsoft Word, email
+
+Evaluation:
+- [FAIL] Skills organized by category | Flat list, no organization
+- [PASS] Technical skills highlighted | Python, Java present
+- [FAIL] No soft skill adjectives | Contains "hardworking", "team player", "good communication"
+- [FAIL] Language proficiency specified | Not mentioned
+Notes: Remove soft skills and obvious skills (Word, email). Organize by category.
+```
+
+---
+
+## Example Set 5: Format Evaluation
+
+### Excellent Format (Score: 4)
+```
+Format Assessment:
+- Page length: 1 page, appropriately filled
+- Margins: 0.75 inches on all sides
+- Font: 11pt Arial, consistent throughout
+- Sections: Clearly labeled with bold headers
+- White space: Balanced, easy to scan
+- No graphics, tables, or images
+
+RUBRIC: FORMAT: 4 | Professional appearance, easy to scan, no errors. Ready for ATS and human review.
+```
+
+### Poor Format (Score: 1)
+```
+Format Assessment:
+- Page length: 3 pages for entry-level candidate
+- Margins: Inconsistent (0.3" left, 1.5" right)
+- Font: Mixed fonts (Times, Arial, Comic Sans)
+- Sections: No clear headers
+- White space: Overcrowded, hard to read
+- Contains: Photo, table layout, text boxes
+
+RUBRIC: FORMAT: 1 | Significant formatting issues. Would likely fail ATS parsing and be difficult for recruiters to scan.
+```
+
+---
+
+## Example Set 6: Pronoun Detection
+
+### No Pronouns (PASS)
+```
+Text: "Developed machine learning models for prediction. Led team of engineers. Achieved 40% improvement."
+
+- [PASS] No personal pronouns | Clean, professional tone
+```
+
+### Contains Pronouns (FAIL)
+```
+Text: "I developed ML models that helped my team. We achieved great results together."
+
+- [FAIL] No personal pronouns | Contains: "I", "my", "We"
+Notes: Remove all instances of I, me, my, we, our. Rewrite as: "Developed ML models. Achieved results collaboratively."
+```
+
+---
+
+## Example Set 7: Quantified Achievements
+
+### Well Quantified (PASS)
+```
+Bullet: "Reduced customer churn by 25% ($2.5M annual savings) through predictive ML model serving 10M users"
+
+- [PASS] Achievements quantified | Contains: 25%, $2.5M, 10M users
+```
+
+### Not Quantified (FAIL)
+```
+Bullet: "Improved customer retention through machine learning solutions"
+
+- [FAIL] Achievements quantified | No metrics provided
+Notes: Add specific numbers: By how much? How many customers? What was the business impact?
+```
+
+---
+
+## Example Set 8: Date Format Consistency
+
+### Consistent Dates (PASS)
+```
+Experience 1: Jan 2022 - Present
+Experience 2: Jun 2020 - Dec 2021
+Experience 3: May 2018 - May 2020
+
+- [PASS] Dates in consistent format | MMM YYYY throughout
+```
+
+### Inconsistent Dates (FAIL)
+```
+Experience 1: January 2022 - Present
+Experience 2: 06/2020 - 12/2021
+Experience 3: 2018 - 2020
+
+- [FAIL] Dates in consistent format | Mixed formats (full month, numeric, year only)
+Notes: Standardize to "MMM YYYY" format throughout.
+```
+
+---
+
+## Example Set 9: Action Verb Variety
+
+### Varied Verbs (PASS)
+```
+Bullets:
+- Engineered data pipelines...
+- Led cross-functional team...
+- Optimized database queries...
+- Implemented CI/CD workflows...
+- Mentored junior developers...
+
+- [PASS] Strong, varied action verbs | 5 different verbs used
+```
+
+### Repetitive Verbs (FAIL)
+```
+Bullets:
+- Developed ML models...
+- Developed data pipeline...
+- Developed API endpoints...
+- Developed testing framework...
+
+- [FAIL] Strong, varied action verbs | "Developed" used 4 times
+Notes: Vary verbs: Engineered, Built, Architected, Implemented
+```
+
+---
+
+## Example Set 10: Overall Scoring Example
+
+### Resume A - Excellent (Grade: A)
+```
+CHECKLIST_RESULTS:
+SECTION: Personal Information
+- [PASS] Located at the top | Clean header
+- [PASS] Name in larger font | 14pt bold
+- [PASS] Phone number | (555) 123-4567
+- [PASS] Professional email | john.doe@gmail.com
+- [PASS] LinkedIn URL | Included
+- [PASS] Appropriate space | Single line
+
+SECTION: Education
+- [PASS] Institution with location | Stanford University, CA
+- [PASS] Degree accurate | MS Computer Science
+- [PASS] Graduation date | May 2023
+- [PASS] Major complete | Computer Science
+- [PASS] GPA above 3.0 | 3.9
+- [PASS] Academic honors | Dean's List
+
+SECTION: Experience
+- [PASS] Employer with location | Google, Mountain View, CA
+- [PASS] Dates formatted | Jun 2023 - Present
+- [PASS] Title clear | Software Engineer
+- [PASS] Action verbs | Engineered, Led, Optimized
+- [PASS] Appropriate tense | Present for current
+- [PASS] Quantified | 40%, 5x, $2M
+- [PASS] Reverse chronological | Most recent first
+- [PASS] No passive phrases | Active voice
+- [PASS] No repetition | Unique descriptions
+
+SECTION: Skills
+- [PASS] Organized | 4 categories
+- [PASS] Technical prominent | Python, Java, ML
+- [PASS] No soft skills | Technical only
+- [PASS] Languages specified | Spanish (Fluent)
+
+SECTION: Format
+- [PASS] No graphics | Clean text
+- [PASS] No headers/footers | Standard layout
+- [PASS] No photos | Professional
+- [PASS] Clear sections | Bold headers
+- [PASS] 1-2 pages | 1 page
+- [PASS] Consistent margins | 0.75"
+- [PASS] Consistent font | 11pt Arial
+- [PASS] Labeled sections | All labeled
+
+SECTION: Content
+- [PASS] No pronouns | Clean
+- [PASS] No spelling errors | Verified
+- [PASS] No grammar errors | Verified
+- [PASS] Keyword-rich | Industry terms
+- [PASS] Varied verbs | 10+ unique
+- [PASS] Logical flow | Clear progression
+- [PASS] Optimal order | Experience first
+
+RUBRIC_SCORES:
+FORMAT: 4 | Excellent layout, professional appearance, ATS-ready
+EDUCATION: 4 | Complete with honors, GPA, and relevant details
+EXPERIENCE: 4 | Strong action verbs, quantified achievements, clear progression
+ACTIVITIES: 3 | Good but could highlight more leadership
+
+STRENGTHS:
+1. Excellent quantification of achievements with specific metrics
+2. Strong action verbs varied throughout experience section
+3. Clean, professional format optimized for ATS
+4. Technical skills well-organized and relevant to target role
+
+IMPROVEMENTS:
+1. [LOW] Could add more leadership examples in activities section
+2. [LOW] Consider adding certifications if applicable
+
+OVERALL:
+CHECKLIST_SCORE: 95%
+RUBRIC_SCORE: 94%
+OVERALL_SCORE: 95%
+GRADE: A
+PASSED: YES
+```
+
+---
+
+## Example Set 11-20: Common Issues and How to Evaluate
+
+### 11. Missing Location in Experience
+```
+- [FAIL] Employer with city and state | "Google" - Missing location
+Fix: Add "Google, Mountain View, CA"
+```
+
+### 12. Unclear Job Title
+```
+- [FAIL] Position title clear | "Various responsibilities" - Not a title
+Fix: Use actual title: "Software Engineer" or "Data Analyst"
+```
+
+### 13. Irrelevant High School
+```
+- [FAIL] High school removed | Listed despite being 5 years post-college
+Fix: Remove high school education for candidates 2+ years in college
+```
+
+### 14. Too Many Pages
+```
+- [FAIL] Appropriate length | 4 pages for entry-level
+Fix: Condense to 1 page, focus on relevant experience only
+```
+
+### 15. Template-Based Design
+```
+- [FAIL] Original design | Obvious Word template with shading
+Fix: Create clean, custom layout without template elements
+```
+
+### 16. Obvious Skills Listed
+```
+- [FAIL] No obvious skills | Lists "Microsoft Word, Email, Internet"
+Fix: Remove basic skills everyone has. Focus on specialized tools.
+```
+
+### 17. Passive Voice Throughout
+```
+- [FAIL] No passive phrases | "Was responsible for", "Worked on"
+Fix: "Led", "Developed", "Managed" - Active verbs only
+```
+
+### 18. No Certifications When Relevant
+```
+- [FAIL] Certifications if applicable | AWS role but no AWS certs
+Fix: Add AWS certifications or note "In progress"
+```
+
+### 19. Inconsistent Formatting
+```
+- [FAIL] Consistent font and spacing | Mixed 10pt, 11pt, 12pt
+Fix: Standardize to single font size (10-12pt)
+```
+
+### 20. Missing Keywords
+```
+- [FAIL] Keyword-rich | Generic descriptions, no industry terms
+Fix: Add relevant technical terms from job descriptions
+```
+
+---
+
+## Key Evaluation Principles
+
+1. **Be Consistent**: Same standard for all sections
+2. **Be Specific**: Cite exact issues, not vague concerns
+3. **Be Constructive**: Every FAIL includes how to fix
+4. **Be Prioritized**: Critical issues flagged as [CRITICAL]
+5. **Be Fair**: Acknowledge strengths alongside improvements

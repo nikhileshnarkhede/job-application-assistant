@@ -1,0 +1,110 @@
+# Email Generation Task
+
+Generate a professional {email_type} email.
+
+## RECIPIENT INFORMATION
+
+**Name:** {recipient_name}
+**Title:** {recipient_title}
+**Company:** {recipient_company}
+**How Found:** {how_found}
+**Mutual Connections:** {mutual_connections}
+**Notes:** {recipient_notes}
+
+---
+
+## CANDIDATE INFORMATION
+
+**Name:** {candidate_name}
+**Current Role:** {candidate_role}
+**Location:** {candidate_location}
+
+**Key Qualifications:**
+{candidate_qualifications}
+
+**Top Achievement:**
+{top_achievement}
+
+---
+
+## TARGET POSITION
+
+**Company:** {company_name}
+**Role:** {role_title}
+**Location:** {job_location}
+
+**Key Requirements:**
+{key_requirements}
+
+---
+
+## EMAIL CONFIGURATION
+
+**Type:** {email_type}
+**Tone:** {tone}
+**Additional Context:** {custom_context}
+
+{type_specific_info}
+
+---
+
+## GUIDELINES FOR {email_type_upper}
+
+**Ideal Length:** {ideal_length} words
+**Key Elements to Include:**
+{key_elements}
+
+**Things to Avoid:**
+{avoid_elements}
+
+---
+
+## GENERATION INSTRUCTIONS
+
+Write a {email_type} email that:
+
+1. **Opens Strong**: No "I am writing to..." - hook them immediately
+2. **Is Concise**: Stay within {ideal_length} words
+3. **Is Personalized**: Reference specific details about recipient/company
+4. **Has Clear Ask**: One specific, actionable request
+5. **Shows Value**: Lead with what you offer, not what you want
+6. **Is Professional**: Match the tone to {tone}
+
+---
+
+## OUTPUT FORMAT
+
+Provide the email in this exact format:
+
+```
+SUBJECT: [Your subject line here]
+
+SUBJECT_ALT_1: [Alternative subject line 1]
+SUBJECT_ALT_2: [Alternative subject line 2]
+
+---
+
+[Greeting],
+
+[Body paragraph 1]
+
+[Body paragraph 2 if needed]
+
+[Closing with clear ask]
+
+[Sign-off],
+[Candidate Name]
+
+---
+
+WORD_COUNT: [number]
+HAS_CLEAR_ASK: [YES/NO]
+HAS_VALUE_PROPOSITION: [YES/NO]
+PERSONALIZATION_ELEMENTS: [list what was personalized]
+```
+
+---
+
+## BEGIN GENERATION
+
+Write the {email_type} email now:

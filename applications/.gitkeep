@@ -1,0 +1,8 @@
+# This folder stores per-job application outputs
+# Structure: applications/{company_name}_{timestamp}/
+# Each application folder contains:
+#   - resume/         - Generated resumes
+#   - cover_letter/   - Generated cover letters
+#   - emails/         - Generated emails
+#   - logs/           - Application logs
+#   - metadata.json   - Application metadata

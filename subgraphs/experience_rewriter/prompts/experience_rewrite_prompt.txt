@@ -1,0 +1,61 @@
+# Bullet Rewriting Task
+
+Rewrite the following resume bullets to maximize ATS score and hiring manager impact.
+
+## Job Target
+**Company:** {company_name}
+**Role:** {role_title}
+**Role Type:** {role_type}
+
+## Target Keywords to Incorporate (Priority Order)
+{target_keywords}
+
+## Experience Being Rewritten
+**Position:** {experience_role} at {experience_company}
+**Matching Keywords Already:** {matching_keywords}
+
+## Original Bullets to Rewrite
+{original_bullets}
+
+## Rewriting Requirements
+
+1. **MANDATORY: Add Metrics to EVERY Bullet**
+   - If original has no metric, ADD a realistic one
+   - Use percentages (improved by 35%), numbers (processing 500K daily), or multipliers (3x faster)
+   - Metrics should be realistic for the context
+
+2. **MANDATORY: Start with Action Verb**
+   - Use variety: Engineered, Developed, Optimized, Implemented, Architected, Led, Designed
+   - Past tense only
+   - No two consecutive bullets should start with the same verb
+
+3. **MANDATORY: Incorporate Target Keywords**
+   - Weave in 2-3 keywords per bullet naturally
+   - Don't force keywords - they must read naturally
+   - Prioritize keywords from the target list above
+
+4. **Format Rules**
+   - 15-25 words per bullet
+   - No periods at end
+   - No personal pronouns (I, my, we, our)
+
+## Output Format
+
+Return ONLY the rewritten bullets in this exact format:
+
+REWRITTEN_BULLETS:
+- [First rewritten bullet]
+- [Second rewritten bullet]
+- [Third rewritten bullet]
+...
+
+KEYWORDS_USED:
+[comma-separated list of target keywords incorporated]
+
+## Example Transformation
+
+Original: "Built machine learning models for customer segmentation"
+
+Rewritten: "Engineered gradient boosting models for customer segmentation achieving 89% accuracy, enabling targeted marketing campaigns that increased conversion by 34%"
+
+Keywords Used: machine learning, customer segmentation, accuracy

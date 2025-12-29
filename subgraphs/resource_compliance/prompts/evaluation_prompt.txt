@@ -1,0 +1,142 @@
+# Resume Compliance Evaluation Task
+
+Evaluate this resume against the checklist and rubric criteria.
+
+## RESUME CONTENT
+
+### Header/Personal Info:
+{header_info}
+
+### Summary:
+{summary}
+
+### Education:
+{education}
+
+### Experience:
+{experience}
+
+### Projects:
+{projects}
+
+### Skills:
+{skills}
+
+### Certifications:
+{certifications}
+
+---
+
+## EVALUATION INSTRUCTIONS
+
+### Part 1: Checklist Validation
+
+For each section, evaluate every checklist item and mark as PASS or FAIL.
+
+**Personal Information:**
+{personal_info_checklist}
+
+**Education:**
+{education_checklist}
+
+**Experience:**
+{experience_checklist}
+
+**Skills:**
+{skills_checklist}
+
+**Format:**
+{format_checklist}
+
+**Content:**
+{content_checklist}
+
+### Part 2: Rubric Scoring
+
+Score each category from 1-4:
+
+**Format (Weight: 20%)**
+- 4: Fills page, no errors, easy to scan
+- 3: Almost fills page, minor issues
+- 2: Font/spacing not appealing, errors present
+- 1: Too short/long, multiple errors
+
+**Education (Weight: 20%)**
+- 4: Complete, organized, includes all relevant info
+- 3: Well organized but missing some extras
+- 2: Basic info only, not well organized
+- 1: Missing crucial information
+
+**Experience (Weight: 40%)**
+- 4: Well-defined, action verbs, quantified achievements
+- 3: Good but not detailed enough
+- 2: Paragraph form, missing details
+- 1: No order, incomplete information
+
+**Activities/Honors (Weight: 20%)**
+- 4: Well organized with skills and leadership
+- 3: Includes info but difficult to follow
+- 2: Missing key information
+- 1: Missing or very little info
+
+---
+
+## OUTPUT FORMAT
+
+Respond in this exact format:
+
+```
+CHECKLIST_RESULTS:
+SECTION: Personal Information
+- [PASS/FAIL] Item description | Notes if any
+- [PASS/FAIL] Item description | Notes if any
+...
+
+SECTION: Education
+- [PASS/FAIL] Item description | Notes if any
+...
+
+SECTION: Experience
+- [PASS/FAIL] Item description | Notes if any
+...
+
+SECTION: Skills
+- [PASS/FAIL] Item description | Notes if any
+...
+
+SECTION: Format
+- [PASS/FAIL] Item description | Notes if any
+...
+
+SECTION: Content
+- [PASS/FAIL] Item description | Notes if any
+...
+
+RUBRIC_SCORES:
+FORMAT: [1-4] | Feedback
+EDUCATION: [1-4] | Feedback
+EXPERIENCE: [1-4] | Feedback
+ACTIVITIES: [1-4] | Feedback
+
+STRENGTHS:
+1. [Specific strength]
+2. [Specific strength]
+3. [Specific strength]
+
+IMPROVEMENTS:
+1. [CRITICAL] Issue description - How to fix
+2. [HIGH] Issue description - How to fix
+3. [MEDIUM] Issue description - How to fix
+...
+
+OVERALL:
+CHECKLIST_SCORE: [X]%
+RUBRIC_SCORE: [X]%
+OVERALL_SCORE: [X]%
+GRADE: [A/B/C/D/F]
+PASSED: [YES/NO]
+```
+
+## BEGIN EVALUATION
+
+Evaluate the resume now:

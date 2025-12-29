@@ -1,0 +1,100 @@
+# ============================================================================
+# JOB APPLICATION ASSISTANT - Git Ignore
+# ============================================================================
+
+# Environment (NEVER commit API keys!)
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ============================================================================
+# APPLICATION DATA
+# ============================================================================
+
+# Application folders (per-job outputs)
+applications/*/
+
+# Output files (generated during testing/usage)
+output/
+subgraphs/*/output/
+
+# Data artifacts
+data/checkpoints/*.sqlite
+data/checkpoints/*.db
+data/tmp/*
+data/embeddings_cache/*
+
+# Vector stores (can be rebuilt from source)
+vectorstores/*/
+
+# Test artifacts
+*.test.json
+*.test.xlsx
+*_test.xlsx
+*_test.json
+
+# ============================================================================
+# LOGS & TEMP
+# ============================================================================
+
+*.log
+logs/
+tmp/
+temp/
+
+# ============================================================================
+# OS FILES
+# ============================================================================
+
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ============================================================================
+# JUPYTER
+# ============================================================================
+
+.ipynb_checkpoints/
+*.ipynb
+
+# ============================================================================
+# KEEP THESE (empty directories need .gitkeep)
+# ============================================================================
+# !applications/.gitkeep
+# !data/checkpoints/.gitkeep
+# !output/.gitkeep

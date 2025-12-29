@@ -1,0 +1,44 @@
+# Professional Summary Generation Task
+
+Generate a tailored professional summary for the following job application.
+
+## Target Position
+**Company:** {company_name}
+**Role:** {role_title}
+**Role Type:** {role_type}
+
+## Key Skills to Highlight (from JD)
+{matched_skills}
+
+## Candidate Background
+**Current/Recent Role:** {recent_role}
+**Years of Experience:** {years_experience}
+
+**Top Achievements (with metrics):**
+{top_achievements}
+
+**Base Summary (for reference):**
+{base_summary}
+
+## Requirements
+
+1. **Length**: 3-4 sentences, 50-80 words
+2. **Metrics**: Include at least 1 specific metric from achievements above
+3. **Skills**: Naturally incorporate 3-4 matched skills
+4. **Tone**: Match the role type:
+   - Research/Scientist: Innovation, publications, methodology
+   - Engineer: Scale, production, reliability
+   - Data Science: Insights, business impact, experimentation
+
+3. **Format**:
+   - Start with strong descriptor (Results-driven, Innovative, etc.)
+   - No personal pronouns (I, my, me)
+   - End with value proposition or company alignment
+
+## Output Format
+
+Return ONLY the professional summary text, nothing else. No quotes, no labels, just the summary.
+
+## Example Output
+
+Results-driven Machine Learning Engineer with 5+ years building production ML systems at scale. Delivered models achieving 34% accuracy improvement and deployed inference pipelines serving 100K+ daily predictions. Expert in PyTorch, deep learning, and AWS infrastructure. Passionate about developing innovative AI solutions that drive measurable business outcomes.

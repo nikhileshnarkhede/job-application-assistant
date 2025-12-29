@@ -1,0 +1,44 @@
+# Project Bullet Generation Task
+
+Generate 2-3 resume bullet points for this GitHub project.
+
+## Project Details
+- **Name:** {project_name}
+- **Description:** {description}
+- **Tech Stack:** {tech_stack}
+- **Key Features:** {key_features}
+- **Metrics:** {metrics}
+- **Skills to Highlight:** {matching_skills}
+
+## Requirements
+
+1. Start each bullet with a different action verb:
+   - Build/Develop: Built, Developed, Created, Engineered
+   - Design: Designed, Architected, Structured
+   - Implement: Implemented, Deployed, Integrated
+   - Optimize: Optimized, Enhanced, Improved, Accelerated
+   - Lead: Led, Spearheaded, Pioneered
+
+2. Include the matching skills naturally in context
+
+3. Quantify where possible:
+   - Performance improvements (X% faster, reduced by Y%)
+   - Scale (processed N documents, handles M requests)
+   - Accuracy (achieved Z% accuracy)
+
+4. Keep each bullet under 20 words
+
+5. Focus on:
+   - What was built
+   - How it was built (technologies)
+   - Why it matters (impact)
+
+## Output Format
+
+Return ONLY the bullet points, one per line.
+No numbering, no dashes, just the text.
+
+Example output:
+Built real-time recommendation engine using collaborative filtering, improving user engagement by 25%
+Implemented automated data pipeline with Apache Airflow, processing 500K records daily with 99.9% reliability
+Designed RESTful API with FastAPI and PostgreSQL, achieving sub-100ms response times at scale

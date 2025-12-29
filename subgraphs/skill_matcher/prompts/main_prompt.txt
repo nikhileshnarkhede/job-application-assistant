@@ -1,0 +1,37 @@
+# Skill Gap Analysis Task
+
+Analyze the skill matching results and provide actionable insights.
+
+## Input Data
+- **JD Required Skills**: {jd_required}
+- **JD Preferred Skills**: {jd_preferred}
+- **Matched Skills**: {matched_skills}
+- **Missing Skills**: {missing_skills}
+- **Critical Missing**: {critical_missing}
+- **Additional Candidate Skills**: {additional_skills}
+- **Match Percentage**: {match_percentage}%
+
+## Analysis Guidelines
+
+### If Match ≥ 80%:
+- Emphasize strong alignment
+- Note any minor gaps
+- Suggest which additional skills to highlight
+
+### If Match 50-79%:
+- Identify transferable skills that can bridge gaps
+- Prioritize which gaps are critical vs. learnable
+- Suggest how to position existing skills
+
+### If Match < 50%:
+- Be honest about significant gaps
+- Identify any strong points to leverage
+- Suggest whether the role is a stretch or realistic
+
+## Output Format
+Provide a 2-3 sentence analysis that is:
+1. Honest about the alignment level
+2. Actionable for resume optimization
+3. Focused on the most important insights
+
+Do not use bullet points. Write in natural prose.

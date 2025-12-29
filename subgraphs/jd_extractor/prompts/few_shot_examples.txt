@@ -1,0 +1,664 @@
+# Few-Shot Examples for JD Extraction
+
+Below are 10 examples of job descriptions and their corresponding structured extractions. Use these as reference for consistent, accurate extraction.
+
+---
+
+## Example 1: Machine Learning Engineer (Tech Giant)
+
+### Input JD:
+```
+Machine Learning Engineer - Google
+Location: Mountain View, CA (Hybrid)
+
+About the Role:
+Join Google's AI Research team to develop cutting-edge machine learning models that power billions of searches daily.
+
+Responsibilities:
+- Design and implement ML models for search ranking
+- Collaborate with research scientists on novel algorithms
+- Optimize model performance for production scale
+- Mentor junior engineers
+
+Requirements:
+- MS/PhD in Computer Science, Machine Learning, or related field
+- 5+ years of experience in ML engineering
+- Expert in Python, TensorFlow, and PyTorch
+- Experience with distributed computing (MapReduce, Spark)
+- Strong publication record preferred
+
+Nice to Have:
+- Experience with transformer architectures
+- Contributions to open-source ML projects
+- Experience with TPU/GPU optimization
+
+Benefits:
+- Competitive salary ($180k-$280k)
+- Stock options
+- Health, dental, vision insurance
+- 401k matching
+```
+
+### Output:
+```json
+{
+  "company_name": "Google",
+  "role_title": "Machine Learning Engineer",
+  "role_type": "ml_ai",
+  "location": "Mountain View, CA (Hybrid)",
+  "employment_type": "full-time",
+  "experience_required": "5+ years",
+  "salary_range": "$180k-$280k",
+  "skills_required": ["Python", "TensorFlow", "PyTorch", "Machine Learning", "Distributed Computing", "MapReduce", "Spark"],
+  "skills_preferred": ["Transformer architectures", "Open-source contributions", "TPU optimization", "GPU optimization"],
+  "responsibilities": [
+    "Design and implement ML models for search ranking",
+    "Collaborate with research scientists on novel algorithms",
+    "Optimize model performance for production scale",
+    "Mentor junior engineers"
+  ],
+  "qualifications": ["MS/PhD in Computer Science, Machine Learning, or related field", "Strong publication record preferred"],
+  "keywords": ["Machine Learning", "ML", "Python", "TensorFlow", "PyTorch", "Distributed Computing", "MapReduce", "Spark", "Transformer", "TPU", "GPU", "AI Research", "Search Ranking", "Production Scale"],
+  "company_info": "Google's AI Research team developing cutting-edge machine learning models",
+  "benefits": ["Competitive salary", "Stock options", "Health insurance", "Dental insurance", "Vision insurance", "401k matching"],
+  "application_url": null,
+  "extraction_confidence": 0.95,
+  "raw_text_length": 892
+}
+```
+
+---
+
+## Example 2: Data Scientist (Startup)
+
+### Input JD:
+```
+Data Scientist
+Acme Analytics | Remote (US)
+
+We're a Series B startup revolutionizing retail analytics. Looking for a data scientist to join our growing team.
+
+What You'll Do:
+- Build predictive models for customer behavior
+- Analyze large datasets to derive business insights
+- Create dashboards and visualizations for stakeholders
+- Work closely with product and engineering teams
+
+What We're Looking For:
+- 3+ years as a Data Scientist or similar role
+- Proficiency in Python, SQL, and statistical analysis
+- Experience with scikit-learn, pandas, and numpy
+- Strong communication skills
+- Bachelor's degree in quantitative field
+
+Bonus Points:
+- Experience with retail/e-commerce data
+- Knowledge of A/B testing methodologies
+- Familiarity with cloud platforms (AWS/GCP)
+
+We Offer:
+- Fully remote work
+- Unlimited PTO
+- Equity package
+```
+
+### Output:
+```json
+{
+  "company_name": "Acme Analytics",
+  "role_title": "Data Scientist",
+  "role_type": "data_science",
+  "location": "Remote (US)",
+  "employment_type": "full-time",
+  "experience_required": "3+ years",
+  "salary_range": null,
+  "skills_required": ["Python", "SQL", "Statistical Analysis", "scikit-learn", "pandas", "numpy", "Communication Skills"],
+  "skills_preferred": ["Retail data", "E-commerce data", "A/B testing", "AWS", "GCP"],
+  "responsibilities": [
+    "Build predictive models for customer behavior",
+    "Analyze large datasets to derive business insights",
+    "Create dashboards and visualizations for stakeholders",
+    "Work closely with product and engineering teams"
+  ],
+  "qualifications": ["Bachelor's degree in quantitative field"],
+  "keywords": ["Data Scientist", "Python", "SQL", "Statistical Analysis", "scikit-learn", "pandas", "numpy", "Predictive Models", "Customer Behavior", "Dashboards", "Visualizations", "A/B Testing", "AWS", "GCP", "Retail Analytics"],
+  "company_info": "Series B startup revolutionizing retail analytics",
+  "benefits": ["Fully remote work", "Unlimited PTO", "Equity package"],
+  "application_url": null,
+  "extraction_confidence": 0.92,
+  "raw_text_length": 756
+}
+```
+
+---
+
+## Example 3: AI Research Scientist
+
+### Input JD:
+```
+AI Research Scientist
+OpenAI - San Francisco, CA
+
+About OpenAI:
+We're building safe AGI that benefits all of humanity.
+
+The Role:
+As an AI Research Scientist, you'll push the boundaries of what's possible with large language models and contribute to fundamental AI research.
+
+Responsibilities:
+- Conduct original research in deep learning, NLP, or reinforcement learning
+- Publish papers at top-tier venues (NeurIPS, ICML, ICLR)
+- Develop and scale novel algorithms
+- Collaborate with a world-class research team
+
+Minimum Qualifications:
+- PhD in Machine Learning, AI, Computer Science, or related field
+- Track record of publications in top ML conferences
+- Deep expertise in PyTorch or JAX
+- Strong mathematical foundations (linear algebra, probability, optimization)
+
+Preferred Qualifications:
+- Experience with large-scale language models
+- Knowledge of RLHF (Reinforcement Learning from Human Feedback)
+- Experience with distributed training
+- 2+ years post-PhD research experience
+
+Compensation: $300k - $500k + equity
+```
+
+### Output:
+```json
+{
+  "company_name": "OpenAI",
+  "role_title": "AI Research Scientist",
+  "role_type": "research",
+  "location": "San Francisco, CA",
+  "employment_type": "full-time",
+  "experience_required": "2+ years post-PhD research experience",
+  "salary_range": "$300k - $500k + equity",
+  "skills_required": ["Deep Learning", "PyTorch", "JAX", "Linear Algebra", "Probability", "Optimization", "Machine Learning Research"],
+  "skills_preferred": ["Large Language Models", "RLHF", "Reinforcement Learning from Human Feedback", "Distributed Training"],
+  "responsibilities": [
+    "Conduct original research in deep learning, NLP, or reinforcement learning",
+    "Publish papers at top-tier venues (NeurIPS, ICML, ICLR)",
+    "Develop and scale novel algorithms",
+    "Collaborate with a world-class research team"
+  ],
+  "qualifications": ["PhD in Machine Learning, AI, Computer Science, or related field", "Track record of publications in top ML conferences"],
+  "keywords": ["AI Research", "Deep Learning", "NLP", "Reinforcement Learning", "PyTorch", "JAX", "Large Language Models", "LLM", "RLHF", "NeurIPS", "ICML", "ICLR", "AGI", "Distributed Training", "Mathematical Foundations"],
+  "company_info": "OpenAI - Building safe AGI that benefits all of humanity",
+  "benefits": ["Equity"],
+  "application_url": null,
+  "extraction_confidence": 0.96,
+  "raw_text_length": 1021
+}
+```
+
+---
+
+## Example 4: LLM Engineer / AI Agent Developer
+
+### Input JD:
+```
+LLM Engineer - AI Agents Team
+Anthropic | Remote (US/UK/Canada)
+
+Join Anthropic's AI Agents team to build the next generation of helpful, harmless, and honest AI systems.
+
+Role Overview:
+We're looking for an engineer to help develop and deploy LLM-powered agents that can reason, plan, and take actions in complex environments.
+
+Key Responsibilities:
+- Design and implement LLM agent architectures
+- Build tool-use and function-calling capabilities
+- Develop evaluation frameworks for agent behavior
+- Optimize inference for production deployment
+- Collaborate with safety and alignment researchers
+
+Requirements:
+- 4+ years software engineering experience
+- 2+ years working with LLMs or NLP systems
+- Strong Python programming skills
+- Experience with LLM APIs (OpenAI, Anthropic, etc.)
+- Understanding of prompt engineering and few-shot learning
+- Experience with LangChain, LlamaIndex, or similar frameworks
+
+Nice to Have:
+- Experience with RAG (Retrieval Augmented Generation)
+- Knowledge of vector databases (Pinecone, Weaviate, Chroma)
+- Background in reinforcement learning
+- Contributions to open-source AI projects
+
+Salary: $200k - $350k depending on experience
+```
+
+### Output:
+```json
+{
+  "company_name": "Anthropic",
+  "role_title": "LLM Engineer - AI Agents Team",
+  "role_type": "llm_ai_agents",
+  "location": "Remote (US/UK/Canada)",
+  "employment_type": "full-time",
+  "experience_required": "4+ years software engineering, 2+ years LLM/NLP",
+  "salary_range": "$200k - $350k",
+  "skills_required": ["Python", "LLM", "NLP", "LLM APIs", "OpenAI API", "Anthropic API", "Prompt Engineering", "Few-shot Learning", "LangChain", "LlamaIndex"],
+  "skills_preferred": ["RAG", "Retrieval Augmented Generation", "Vector Databases", "Pinecone", "Weaviate", "Chroma", "Reinforcement Learning", "Open-source contributions"],
+  "responsibilities": [
+    "Design and implement LLM agent architectures",
+    "Build tool-use and function-calling capabilities",
+    "Develop evaluation frameworks for agent behavior",
+    "Optimize inference for production deployment",
+    "Collaborate with safety and alignment researchers"
+  ],
+  "qualifications": ["4+ years software engineering experience", "2+ years working with LLMs or NLP systems"],
+  "keywords": ["LLM", "Large Language Models", "AI Agents", "NLP", "Python", "LangChain", "LlamaIndex", "Prompt Engineering", "Few-shot Learning", "RAG", "Vector Databases", "Pinecone", "Weaviate", "Chroma", "Tool-use", "Function-calling", "Inference Optimization", "AI Safety"],
+  "company_info": "Anthropic - Building helpful, harmless, and honest AI systems",
+  "benefits": [],
+  "application_url": null,
+  "extraction_confidence": 0.94,
+  "raw_text_length": 1156
+}
+```
+
+---
+
+## Example 5: Software Engineer - Backend
+
+### Input JD:
+```
+Software Engineer, Backend
+Stripe | Seattle, WA or Remote
+
+About Stripe:
+Stripe builds financial infrastructure for the internet.
+
+What you'll do:
+- Design and build scalable backend services
+- Improve system reliability and performance
+- Write clean, maintainable code
+- Participate in code reviews and technical discussions
+
+We're looking for someone who has:
+- 3-5 years of backend development experience
+- Proficiency in one or more: Python, Ruby, Go, Java
+- Experience with PostgreSQL or similar databases
+- Understanding of RESTful API design
+- Experience with microservices architecture
+
+Bonus if you have:
+- Experience with payment systems
+- Knowledge of Kubernetes and Docker
+- Experience with event-driven architecture (Kafka)
+
+Compensation:
+Base: $150k - $220k
+Equity: 0.01% - 0.05%
+```
+
+### Output:
+```json
+{
+  "company_name": "Stripe",
+  "role_title": "Software Engineer, Backend",
+  "role_type": "software_engineering",
+  "location": "Seattle, WA or Remote",
+  "employment_type": "full-time",
+  "experience_required": "3-5 years",
+  "salary_range": "$150k - $220k + 0.01% - 0.05% equity",
+  "skills_required": ["Python", "Ruby", "Go", "Java", "PostgreSQL", "RESTful API", "Microservices Architecture", "Backend Development"],
+  "skills_preferred": ["Payment Systems", "Kubernetes", "Docker", "Event-driven Architecture", "Kafka"],
+  "responsibilities": [
+    "Design and build scalable backend services",
+    "Improve system reliability and performance",
+    "Write clean, maintainable code",
+    "Participate in code reviews and technical discussions"
+  ],
+  "qualifications": ["3-5 years of backend development experience"],
+  "keywords": ["Backend", "Python", "Ruby", "Go", "Java", "PostgreSQL", "RESTful API", "Microservices", "Kubernetes", "Docker", "Kafka", "Payment Systems", "Scalable", "Reliability", "Performance"],
+  "company_info": "Stripe - Builds financial infrastructure for the internet",
+  "benefits": ["Equity"],
+  "application_url": null,
+  "extraction_confidence": 0.93,
+  "raw_text_length": 789
+}
+```
+
+---
+
+## Example 6: Data Engineer
+
+### Input JD:
+```
+Senior Data Engineer
+Netflix - Los Gatos, CA (Hybrid)
+
+The Opportunity:
+Join our Data Platform team to build the infrastructure that powers Netflix's data-driven culture.
+
+What You Will Do:
+- Design and maintain data pipelines processing petabytes daily
+- Build real-time streaming systems using Kafka and Flink
+- Optimize data warehouse performance on Spark and Presto
+- Develop data quality and monitoring frameworks
+- Partner with data scientists and analysts
+
+What We Need:
+- 5+ years of data engineering experience
+- Expert-level SQL and Python skills
+- Experience with Spark, Kafka, and Airflow
+- Knowledge of data modeling and warehouse design
+- Experience with cloud platforms (AWS preferred)
+- BS in Computer Science or equivalent
+
+Nice to Have:
+- Experience with real-time analytics
+- Knowledge of Iceberg or Delta Lake
+- Experience at petabyte scale
+
+Netflix Culture:
+We value freedom and responsibility. Unlimited vacation, top-of-market compensation.
+```
+
+### Output:
+```json
+{
+  "company_name": "Netflix",
+  "role_title": "Senior Data Engineer",
+  "role_type": "data_engineering",
+  "location": "Los Gatos, CA (Hybrid)",
+  "employment_type": "full-time",
+  "experience_required": "5+ years",
+  "salary_range": null,
+  "skills_required": ["SQL", "Python", "Spark", "Kafka", "Airflow", "Data Modeling", "Data Warehouse Design", "AWS"],
+  "skills_preferred": ["Real-time Analytics", "Iceberg", "Delta Lake", "Petabyte Scale"],
+  "responsibilities": [
+    "Design and maintain data pipelines processing petabytes daily",
+    "Build real-time streaming systems using Kafka and Flink",
+    "Optimize data warehouse performance on Spark and Presto",
+    "Develop data quality and monitoring frameworks",
+    "Partner with data scientists and analysts"
+  ],
+  "qualifications": ["BS in Computer Science or equivalent"],
+  "keywords": ["Data Engineer", "Data Pipelines", "ETL", "SQL", "Python", "Spark", "Kafka", "Flink", "Airflow", "Presto", "Data Warehouse", "AWS", "Real-time Streaming", "Iceberg", "Delta Lake", "Petabyte", "Data Quality"],
+  "company_info": "Netflix Data Platform team - Powers Netflix's data-driven culture",
+  "benefits": ["Unlimited vacation", "Top-of-market compensation"],
+  "application_url": null,
+  "extraction_confidence": 0.94,
+  "raw_text_length": 923
+}
+```
+
+---
+
+## Example 7: Computer Vision Engineer
+
+### Input JD:
+```
+Computer Vision Engineer
+Tesla Autopilot - Palo Alto, CA
+
+About the Team:
+We're building the world's most advanced autonomous driving system.
+
+Responsibilities:
+- Develop perception algorithms for object detection and tracking
+- Train and optimize deep neural networks for real-time inference
+- Work with camera, radar, and ultrasonic sensor data
+- Improve model accuracy and reduce false positives
+- Deploy models on custom neural network accelerators
+
+Required:
+- MS/PhD in Computer Vision, Robotics, or ML
+- 3+ years experience in computer vision
+- Expertise in CNNs, object detection (YOLO, SSD, etc.)
+- Strong C++ and Python skills
+- Experience with TensorFlow or PyTorch
+- Experience with embedded systems a plus
+
+Preferred:
+- Experience with autonomous vehicles
+- Knowledge of sensor fusion
+- Experience with TensorRT or ONNX
+- Published research in CV conferences (CVPR, ICCV, ECCV)
+```
+
+### Output:
+```json
+{
+  "company_name": "Tesla",
+  "role_title": "Computer Vision Engineer",
+  "role_type": "ml_ai",
+  "location": "Palo Alto, CA",
+  "employment_type": "full-time",
+  "experience_required": "3+ years",
+  "salary_range": null,
+  "skills_required": ["Computer Vision", "CNNs", "Object Detection", "YOLO", "SSD", "C++", "Python", "TensorFlow", "PyTorch", "Deep Neural Networks"],
+  "skills_preferred": ["Autonomous Vehicles", "Sensor Fusion", "TensorRT", "ONNX", "Embedded Systems", "CVPR", "ICCV", "ECCV"],
+  "responsibilities": [
+    "Develop perception algorithms for object detection and tracking",
+    "Train and optimize deep neural networks for real-time inference",
+    "Work with camera, radar, and ultrasonic sensor data",
+    "Improve model accuracy and reduce false positives",
+    "Deploy models on custom neural network accelerators"
+  ],
+  "qualifications": ["MS/PhD in Computer Vision, Robotics, or ML"],
+  "keywords": ["Computer Vision", "CV", "Perception", "Object Detection", "Tracking", "CNNs", "YOLO", "SSD", "C++", "Python", "TensorFlow", "PyTorch", "Real-time Inference", "Autonomous Driving", "Autopilot", "Sensor Fusion", "TensorRT", "Neural Network Accelerators"],
+  "company_info": "Tesla Autopilot - Building the world's most advanced autonomous driving system",
+  "benefits": [],
+  "application_url": null,
+  "extraction_confidence": 0.93,
+  "raw_text_length": 867
+}
+```
+
+---
+
+## Example 8: MLOps Engineer
+
+### Input JD:
+```
+MLOps Engineer
+Databricks - Remote (US)
+
+Role Summary:
+Bridge the gap between ML research and production. Build and maintain the infrastructure that enables our data science teams to deploy models at scale.
+
+What You'll Do:
+- Build CI/CD pipelines for ML model deployment
+- Implement model monitoring and observability
+- Manage ML experiment tracking infrastructure
+- Optimize model serving latency and throughput
+- Ensure reproducibility and version control of ML artifacts
+
+Requirements:
+- 4+ years in DevOps, MLOps, or Platform Engineering
+- Experience with Kubernetes, Docker, and container orchestration
+- Proficiency in Python and bash scripting
+- Experience with ML frameworks (TensorFlow, PyTorch, scikit-learn)
+- Knowledge of MLflow, Kubeflow, or similar platforms
+- Experience with cloud platforms (AWS, Azure, or GCP)
+
+Preferred:
+- Experience with Databricks platform
+- Knowledge of Terraform or Pulumi for IaC
+- Experience with model serving (TensorFlow Serving, Triton)
+- Background in distributed systems
+
+Benefits: Full health coverage, 401k match, RSUs, unlimited PTO
+Salary Range: $160,000 - $240,000
+```
+
+### Output:
+```json
+{
+  "company_name": "Databricks",
+  "role_title": "MLOps Engineer",
+  "role_type": "ml_ai",
+  "location": "Remote (US)",
+  "employment_type": "full-time",
+  "experience_required": "4+ years",
+  "salary_range": "$160,000 - $240,000",
+  "skills_required": ["Kubernetes", "Docker", "Container Orchestration", "Python", "Bash", "TensorFlow", "PyTorch", "scikit-learn", "MLflow", "Kubeflow", "AWS", "Azure", "GCP"],
+  "skills_preferred": ["Databricks", "Terraform", "Pulumi", "IaC", "TensorFlow Serving", "Triton", "Distributed Systems"],
+  "responsibilities": [
+    "Build CI/CD pipelines for ML model deployment",
+    "Implement model monitoring and observability",
+    "Manage ML experiment tracking infrastructure",
+    "Optimize model serving latency and throughput",
+    "Ensure reproducibility and version control of ML artifacts"
+  ],
+  "qualifications": ["4+ years in DevOps, MLOps, or Platform Engineering"],
+  "keywords": ["MLOps", "DevOps", "CI/CD", "Kubernetes", "Docker", "Python", "TensorFlow", "PyTorch", "MLflow", "Kubeflow", "AWS", "Azure", "GCP", "Model Deployment", "Model Monitoring", "Model Serving", "Terraform", "Triton", "Distributed Systems"],
+  "company_info": "Databricks - Enabling data science teams to deploy models at scale",
+  "benefits": ["Full health coverage", "401k match", "RSUs", "Unlimited PTO"],
+  "application_url": null,
+  "extraction_confidence": 0.95,
+  "raw_text_length": 1034
+}
+```
+
+---
+
+## Example 9: NLP Engineer (Startup)
+
+### Input JD:
+```
+NLP Engineer
+AI Startup (Stealth) - New York, NY
+
+We're a well-funded stealth startup building conversational AI for enterprise.
+
+The Role:
+Looking for an NLP engineer to help build our core language understanding system.
+
+Responsibilities:
+- Develop NLP models for intent classification and entity extraction
+- Fine-tune large language models for domain-specific tasks
+- Build text preprocessing and normalization pipelines
+- Evaluate model performance and iterate on improvements
+- Collaborate with product to define ML requirements
+
+Must Have:
+- 2-4 years NLP/ML experience
+- Strong Python skills
+- Experience with transformers (BERT, RoBERTa, T5)
+- Familiarity with Hugging Face ecosystem
+- Understanding of NLP fundamentals (tokenization, embeddings, attention)
+
+Nice to Have:
+- Experience with conversational AI
+- Knowledge of speech-to-text systems
+- Startup experience
+- Published NLP research
+
+Comp: $140k-$180k + meaningful equity
+Apply: careers@stealthai.com
+```
+
+### Output:
+```json
+{
+  "company_name": "AI Startup (Stealth)",
+  "role_title": "NLP Engineer",
+  "role_type": "llm_ai_agents",
+  "location": "New York, NY",
+  "employment_type": "full-time",
+  "experience_required": "2-4 years",
+  "salary_range": "$140k-$180k + meaningful equity",
+  "skills_required": ["Python", "NLP", "Transformers", "BERT", "RoBERTa", "T5", "Hugging Face", "Tokenization", "Embeddings", "Attention Mechanism"],
+  "skills_preferred": ["Conversational AI", "Speech-to-text", "Startup Experience", "Published NLP Research"],
+  "responsibilities": [
+    "Develop NLP models for intent classification and entity extraction",
+    "Fine-tune large language models for domain-specific tasks",
+    "Build text preprocessing and normalization pipelines",
+    "Evaluate model performance and iterate on improvements",
+    "Collaborate with product to define ML requirements"
+  ],
+  "qualifications": ["2-4 years NLP/ML experience"],
+  "keywords": ["NLP", "Natural Language Processing", "Python", "Transformers", "BERT", "RoBERTa", "T5", "Hugging Face", "Intent Classification", "Entity Extraction", "Fine-tuning", "LLM", "Conversational AI", "Text Preprocessing", "Embeddings"],
+  "company_info": "Well-funded stealth startup building conversational AI for enterprise",
+  "benefits": ["Meaningful equity"],
+  "application_url": "careers@stealthai.com",
+  "extraction_confidence": 0.91,
+  "raw_text_length": 856
+}
+```
+
+---
+
+## Example 10: Robotics/Automation Engineer
+
+### Input JD:
+```
+Robotics Engineer - Perception & Planning
+Boston Dynamics | Waltham, MA
+
+Join the team that's redefining what robots can do!
+
+About the Role:
+We're seeking a robotics engineer to work on perception and motion planning for our next-generation robots.
+
+What You'll Do:
+- Develop perception algorithms using LIDAR, cameras, and IMU data
+- Implement motion planning and trajectory optimization
+- Work on SLAM and localization systems
+- Integrate software with ROS-based robot systems
+- Test algorithms on physical robot platforms
+
+Requirements:
+- MS or PhD in Robotics, CS, or EE
+- 3+ years robotics experience
+- Strong C++ programming (modern C++14/17)
+- Experience with ROS/ROS2
+- Knowledge of perception (point cloud processing, SLAM)
+- Experience with motion planning algorithms (RRT, PRM, etc.)
+
+Preferred:
+- Experience with legged robots
+- Knowledge of control theory
+- Experience with real-time systems
+- Publications in robotics conferences (ICRA, IROS)
+
+We offer competitive salary and the chance to work on the most advanced robots in the world!
+```
+
+### Output:
+```json
+{
+  "company_name": "Boston Dynamics",
+  "role_title": "Robotics Engineer - Perception & Planning",
+  "role_type": "robotics_automation",
+  "location": "Waltham, MA",
+  "employment_type": "full-time",
+  "experience_required": "3+ years",
+  "salary_range": null,
+  "skills_required": ["C++", "C++14", "C++17", "ROS", "ROS2", "Perception", "Point Cloud Processing", "SLAM", "Motion Planning", "RRT", "PRM", "Trajectory Optimization"],
+  "skills_preferred": ["Legged Robots", "Control Theory", "Real-time Systems", "ICRA", "IROS"],
+  "responsibilities": [
+    "Develop perception algorithms using LIDAR, cameras, and IMU data",
+    "Implement motion planning and trajectory optimization",
+    "Work on SLAM and localization systems",
+    "Integrate software with ROS-based robot systems",
+    "Test algorithms on physical robot platforms"
+  ],
+  "qualifications": ["MS or PhD in Robotics, CS, or EE"],
+  "keywords": ["Robotics", "Perception", "Motion Planning", "C++", "ROS", "ROS2", "LIDAR", "SLAM", "Localization", "Trajectory Optimization", "Point Cloud", "IMU", "RRT", "PRM", "Control Theory", "Real-time Systems"],
+  "company_info": "Boston Dynamics - Redefining what robots can do",
+  "benefits": ["Competitive salary"],
+  "application_url": null,
+  "extraction_confidence": 0.94,
+  "raw_text_length": 978
+}
+```
+
+---
+
+## Usage Notes
+
+1. **Consistency**: Always extract in the same format shown above
+2. **Keywords**: Include all technical terms, tools, frameworks - they're critical for ATS
+3. **Role Type**: Classify based on primary job function, not just title
+4. **Confidence**: Lower confidence if JD is vague, poorly written, or missing key information
+5. **Null values**: Use null (not "N/A" or "Not specified") for missing optional fields
+6. **Lists**: Use empty lists [] for missing list fields, never null for lists

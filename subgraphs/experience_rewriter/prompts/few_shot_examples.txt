@@ -1,0 +1,146 @@
+# Few-Shot Examples for Bullet Rewriting
+
+## Example 1: ML Engineering Experience
+
+### Context
+- Target Role: Machine Learning Engineer at Amazon
+- Target Keywords: machine learning, deep learning, PyTorch, TensorFlow, AWS, model deployment, ML pipelines, optimization
+
+### Original Bullets
+1. "Developed machine learning models for product recommendation"
+2. "Built data pipelines for training ML models"
+3. "Deployed models to production"
+4. "Improved model performance through hyperparameter tuning"
+
+### Rewritten Bullets
+1. "Engineered deep learning recommendation models using PyTorch, achieving 34% improvement in click-through rate and driving $2.3M incremental revenue"
+2. "Architected scalable ML pipelines on AWS SageMaker processing 15M+ daily events, reducing model training time by 65%"
+3. "Deployed production ML models serving 100K+ predictions/minute with 99.9% uptime using Kubernetes and AWS infrastructure"
+4. "Optimized neural network performance through systematic hyperparameter tuning, boosting model accuracy from 78% to 91%"
+
+### Keywords Incorporated
+machine learning, deep learning, PyTorch, AWS, ML pipelines, model deployment, optimization, SageMaker
+
+---
+
+## Example 2: Data Science Experience
+
+### Context
+- Target Role: Applied Scientist
+- Target Keywords: statistical analysis, A/B testing, Python, SQL, experimentation, causal inference, data modeling
+
+### Original Bullets
+1. "Analyzed customer data to find insights"
+2. "Created dashboards for business teams"
+3. "Ran experiments to test new features"
+4. "Built predictive models"
+
+### Rewritten Bullets
+1. "Conducted statistical analysis on 5M+ customer records using Python and SQL, uncovering behavioral patterns that increased retention by 23%"
+2. "Designed interactive analytics dashboards in Tableau serving 50+ stakeholders, reducing reporting time by 40% and enabling data-driven decisions"
+3. "Led A/B testing framework development supporting 200+ experiments annually, applying causal inference methods to validate $15M in product decisions"
+4. "Built gradient boosting predictive models achieving 87% accuracy in churn prediction, enabling proactive interventions saving $800K annually"
+
+### Keywords Incorporated
+statistical analysis, A/B testing, Python, SQL, experimentation, causal inference, data modeling, predictive models
+
+---
+
+## Example 3: Research Scientist Experience
+
+### Context
+- Target Role: Research Scientist - NLP
+- Target Keywords: NLP, transformers, BERT, language models, deep learning, research, publication, PyTorch
+
+### Original Bullets
+1. "Worked on NLP research projects"
+2. "Published paper at a conference"
+3. "Implemented transformer models"
+4. "Collaborated with research team"
+
+### Rewritten Bullets
+1. "Pioneered NLP research on domain adaptation for transformers, achieving 28% improvement in zero-shot transfer learning performance"
+2. "Published peer-reviewed research at ACL 2023 on efficient BERT fine-tuning, cited 45+ times within first year"
+3. "Implemented custom transformer architectures in PyTorch, reducing inference latency by 55% while maintaining 96% of baseline accuracy"
+4. "Led cross-functional research collaboration with 8-person team, accelerating experiment iteration cycles by 3x through systematic methodology"
+
+### Keywords Incorporated
+NLP, transformers, BERT, language models, deep learning, research, publication, PyTorch
+
+---
+
+## Example 4: MLOps/Infrastructure Experience
+
+### Context
+- Target Role: ML Platform Engineer
+- Target Keywords: MLOps, Kubernetes, Docker, CI/CD, model serving, infrastructure, monitoring, automation
+
+### Original Bullets
+1. "Set up ML infrastructure"
+2. "Automated model deployment"
+3. "Monitored model performance"
+4. "Managed computing resources"
+
+### Rewritten Bullets
+1. "Architected end-to-end MLOps infrastructure on Kubernetes, enabling 50+ data scientists to deploy models with 90% less manual intervention"
+2. "Implemented automated CI/CD pipelines for ML models using Docker and GitHub Actions, reducing deployment time from 2 days to 30 minutes"
+3. "Designed comprehensive model monitoring system tracking 25+ metrics, detecting drift with 95% accuracy and reducing silent failures by 80%"
+4. "Optimized cloud infrastructure automation reducing compute costs by 35% while supporting 3x growth in model training workloads"
+
+### Keywords Incorporated
+MLOps, Kubernetes, Docker, CI/CD, model serving, infrastructure, monitoring, automation
+
+---
+
+## Example 5: Computer Vision Experience
+
+### Context
+- Target Role: Computer Vision Engineer
+- Target Keywords: computer vision, object detection, image classification, CNN, deep learning, OpenCV, real-time processing
+
+### Original Bullets
+1. "Built object detection system"
+2. "Processed images for quality control"
+3. "Trained CNN models"
+4. "Integrated vision system with production"
+
+### Rewritten Bullets
+1. "Developed real-time object detection system using YOLOv5, achieving 94% mAP at 45 FPS for manufacturing defect identification"
+2. "Engineered computer vision pipeline with OpenCV processing 10K+ images/hour, automating quality control and reducing manual inspection by 75%"
+3. "Trained custom CNN architectures for multi-class image classification, achieving 97% accuracy across 50+ product categories"
+4. "Deployed deep learning vision models to edge devices, enabling real-time processing with sub-50ms latency and 99.5% uptime"
+
+### Keywords Incorporated
+computer vision, object detection, image classification, CNN, deep learning, OpenCV, real-time processing
+
+---
+
+## Example 6: Project Bullets (GitHub)
+
+### Context
+- Project: LLM-powered Document QA System
+- Target Keywords: LLM, RAG, vector database, embeddings, NLP, Python, API
+
+### Original Bullets
+1. "Built a document question answering system"
+2. "Used LangChain for the implementation"
+3. "Stored embeddings in a vector database"
+
+### Rewritten Bullets
+1. "Engineered production-ready RAG pipeline using LangChain and GPT-4, achieving 91% answer accuracy across 1000+ technical documents"
+2. "Implemented semantic search with sentence embeddings and ChromaDB, reducing query latency by 60% while improving relevance by 35%"
+3. "Deployed RESTful API serving LLM-powered document QA, handling 500+ daily queries with sub-2s response time"
+
+### Keywords Incorporated
+LLM, RAG, vector database, embeddings, NLP, Python, API, LangChain
+
+---
+
+## Key Patterns to Notice
+
+1. **Every bullet has a metric** - percentages, numbers, or multipliers
+2. **Action verbs vary** - no repetition of same verb
+3. **Keywords flow naturally** - not forced or awkward
+4. **Impact is clear** - business value or technical achievement
+5. **Specificity wins** - exact tools, frameworks, scale mentioned
+6. **Results emphasized** - not just tasks, but outcomes

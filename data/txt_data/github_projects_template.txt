@@ -1,0 +1,165 @@
+# GITHUB PROJECTS DATA
+# This file will store your project information for the pipeline
+# You can either:
+#   1. Fill this manually
+#   2. Let the system scan your local repos folder
+#   3. Fetch from GitHub API
+
+================================================================================
+INSTRUCTIONS
+================================================================================
+
+Option 1: MANUAL ENTRY (Recommended for accuracy)
+- Fill in each project section below with your actual project details
+- Include: name, description, tech stack, key features, metrics
+
+Option 2: LOCAL REPO SCAN
+- Set GITHUB_REPOS_PATH in .env to your repos folder
+- System will scan README.md files and detect tech from code
+
+Option 3: GITHUB API
+- Set GITHUB_USERNAME in .env
+- System will fetch public repos via API
+
+================================================================================
+PROJECT TEMPLATE
+================================================================================
+
+PROJECT: [Project Name]
+----------------------------------------
+GitHub URL: https://github.com/[username]/[repo]
+Local Path: D:\Projects\[repo]  (optional)
+Status: Active / Completed / Archived
+
+Description:
+[2-3 sentence description of what the project does]
+
+Problem Solved:
+[What problem does this project address?]
+
+Tech Stack:
+- Languages: [Python, JavaScript, etc.]
+- Frameworks: [TensorFlow, React, FastAPI, etc.]
+- Tools: [Docker, AWS, Git, etc.]
+- Databases: [PostgreSQL, MongoDB, Redis, etc.]
+
+Key Features:
+- [Feature 1]
+- [Feature 2]
+- [Feature 3]
+
+Metrics/Results:
+- [e.g., "Achieved 95% accuracy on test set"]
+- [e.g., "Reduced inference time by 40%"]
+- [e.g., "Handles 10K requests/second"]
+
+Keywords for Matching:
+[ML, Deep Learning, NLP, Computer Vision, API, Web App, etc.]
+
+Relevance Tags:
+[ml_ai, web_dev, data_science, automation, research, etc.]
+
+================================================================================
+YOUR PROJECTS (Fill these in)
+================================================================================
+
+PROJECT 1: [Your Most Impressive ML Project]
+----------------------------------------
+GitHub URL: 
+Local Path: 
+Status: 
+
+Description:
+
+
+Problem Solved:
+
+
+Tech Stack:
+- Languages: 
+- Frameworks: 
+- Tools: 
+- Databases: 
+
+Key Features:
+- 
+- 
+- 
+
+Metrics/Results:
+- 
+- 
+
+Keywords for Matching:
+
+
+Relevance Tags:
+
+
+================================================================================
+
+PROJECT 2: [Your Second Best Project]
+----------------------------------------
+GitHub URL: 
+Local Path: 
+Status: 
+
+Description:
+
+
+Tech Stack:
+- Languages: 
+- Frameworks: 
+- Tools: 
+
+Key Features:
+- 
+- 
+- 
+
+Metrics/Results:
+- 
+- 
+
+Keywords for Matching:
+
+
+Relevance Tags:
+
+
+================================================================================
+
+PROJECT 3: [Another Relevant Project]
+----------------------------------------
+GitHub URL: 
+Local Path: 
+Status: 
+
+Description:
+
+
+Tech Stack:
+- Languages: 
+- Frameworks: 
+- Tools: 
+
+Key Features:
+- 
+- 
+- 
+
+Metrics/Results:
+- 
+- 
+
+Keywords for Matching:
+
+
+Relevance Tags:
+
+
+================================================================================
+
+[Add more projects as needed...]
+
+================================================================================

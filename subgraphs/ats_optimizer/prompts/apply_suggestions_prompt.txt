@@ -1,0 +1,74 @@
+# Apply ATS Optimization Suggestions
+
+Apply the following approved suggestions to improve the resume's ATS score.
+
+## Context
+
+**Target Role:** {role_title} at {company_name}
+**Current Score:** {current_score}/100
+**Target Score:** {target_score}/100
+**Iteration:** {iteration}/{max_iterations}
+
+## Suggestions to Apply
+
+{suggestions_to_apply}
+
+## Current Resume Sections
+
+### Summary:
+{current_summary}
+
+### Skills:
+{current_skills}
+
+### Experience:
+{current_experience}
+
+### Projects:
+{current_projects}
+
+## Your Task
+
+Apply ONLY the suggestions listed above. For each section that needs modification:
+
+1. Make the exact changes specified in the suggestions
+2. Ensure the modified text flows naturally
+3. Do not make any other changes
+4. Preserve all formatting and structure
+
+## Output Format
+
+Return the modified sections in this exact format:
+
+```
+MODIFIED_SUMMARY:
+[Full modified summary text, or "NO_CHANGE" if unchanged]
+
+MODIFIED_SKILLS:
+[Full modified skills as JSON dict, or "NO_CHANGE" if unchanged]
+Example: {{"Programming": "Python, Java, C++", "ML/AI": "PyTorch, TensorFlow"}}
+
+MODIFIED_EXPERIENCE:
+[List of modified experience entries as JSON array, or "NO_CHANGE" if unchanged]
+Each entry: {{"role": "...", "company": "...", "bullets": ["bullet1", "bullet2", ...]}}
+
+MODIFIED_PROJECTS:
+[List of modified project entries as JSON array, or "NO_CHANGE" if unchanged]
+Each entry: {{"name": "...", "bullets": ["bullet1", "bullet2", ...]}}
+
+CHANGES_MADE:
+[Bullet list of what was changed]
+- Added "keyword1" to experience bullet 2
+- Added "keyword2" to summary
+- etc.
+```
+
+## Rules
+
+1. Only modify sections mentioned in suggestions
+2. Keep changes minimal and targeted
+3. Preserve all other content exactly
+4. Ensure JSON is valid and parseable
+5. Report all changes made
+
+## Apply Suggestions Now:

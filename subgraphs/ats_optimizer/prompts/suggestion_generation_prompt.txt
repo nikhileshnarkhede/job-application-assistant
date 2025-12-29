@@ -1,0 +1,142 @@
+# ATS Optimization Task
+
+You must generate EXACTLY {num_suggestions} specific suggestions to improve this resume's ATS score.
+
+## CURRENT SITUATION
+
+**Company:** {company_name}
+**Role:** {role_title}
+**Current Score:** {current_score}/100 (Target: {target_score}/100)
+**Gap:** {score_gap} points needed
+
+## KEYWORD ANALYSIS
+
+**✅ FOUND ({found_count} keywords):**
+{keywords_found}
+
+**❌ MISSING ({missing_count} keywords):**
+
+**🔴 HIGH PRIORITY - Required Skills (Weight 3.0):**
+{high_priority_missing}
+
+**🟡 MEDIUM PRIORITY - Preferred Skills (Weight 2.0):**
+{medium_priority_missing}
+
+**🟢 LOW PRIORITY - General Keywords (Weight 1.0):**
+{low_priority_missing}
+
+## CURRENT RESUME CONTENT
+
+**SUMMARY:**
+{current_summary}
+
+**SKILLS:**
+{current_skills}
+
+**EXPERIENCE (Top Role Bullets):**
+{current_experience_bullets}
+
+**PROJECTS:**
+{current_project_bullets}
+
+---
+
+## YOUR TASK
+
+Generate EXACTLY {num_suggestions} suggestions following these rules:
+
+### RULE 1: Target HIGH PRIORITY First
+- At least 70% of suggestions must target 🔴 HIGH PRIORITY keywords
+- These are required skills - missing them = automatic rejection
+
+### RULE 2: Be Extremely Specific
+For each suggestion, provide:
+- The EXACT original text
+- The EXACT modified text
+- No vague advice like "consider adding" - give the actual text
+
+### RULE 3: Make Keywords Fit Naturally
+BAD: "Used Python and Java and C++ and algorithms"
+GOOD: "Engineered high-performance Python and Java applications leveraging advanced algorithms and data structures for distributed computing"
+
+### RULE 4: One Suggestion Can Add Multiple Keywords
+If keywords are related, combine them naturally:
+- "algorithms" + "data structures" → "...optimized algorithms and data structures..."
+- "distributed computing" + "parallel computing" → "...distributed and parallel computing systems..."
+
+### RULE 5: Fix Format Issues in Suggestions
+If a bullet has pronouns or is too long, fix that too while adding keywords.
+
+---
+
+## OUTPUT FORMAT
+
+You MUST use this EXACT format for each suggestion:
+
+SUGGESTION 1:
+KEYWORD: [primary keyword being added]
+ALSO_ADDS: [any additional keywords this change adds, or "none"]
+PRIORITY: HIGH/MEDIUM/LOW
+TARGET_SECTION: summary/skills/experience/projects
+ORIGINAL_TEXT: [exact current text, or "NEW" if adding to skills]
+MODIFIED_TEXT: [exact new text with keyword(s) incorporated]
+WHY_THIS_WORKS: [1 sentence explaining why this is effective]
+POINT_IMPACT: +[number] points
+
+SUGGESTION 2:
+...
+
+(Continue for all {num_suggestions} suggestions)
+
+---
+
+## EXAMPLES OF GOOD SUGGESTIONS
+
+**Example 1 - Adding to Experience:**
+SUGGESTION 1:
+KEYWORD: algorithms
+ALSO_ADDS: data structures, high-performance computing
+PRIORITY: HIGH
+TARGET_SECTION: experience
+ORIGINAL_TEXT: Built machine learning models for prediction tasks
+MODIFIED_TEXT: Engineered high-performance machine learning algorithms leveraging optimized data structures, reducing inference latency by 45%
+WHY_THIS_WORKS: Naturally incorporates 3 missing keywords while improving the bullet with metrics
+POINT_IMPACT: +8 points
+
+**Example 2 - Adding to Skills:**
+SUGGESTION 2:
+KEYWORD: Java
+ALSO_ADDS: none
+PRIORITY: HIGH
+TARGET_SECTION: skills
+ORIGINAL_TEXT: NEW
+MODIFIED_TEXT: Add "Java" to Programming Languages category
+WHY_THIS_WORKS: Direct addition of required skill to skills section
+POINT_IMPACT: +3 points
+
+**Example 3 - Fixing Format + Adding Keyword:**
+SUGGESTION 3:
+KEYWORD: distributed computing
+ALSO_ADDS: parallel computing, Unix
+PRIORITY: HIGH
+TARGET_SECTION: experience
+ORIGINAL_TEXT: I developed systems that processed data across multiple servers using parallel techniques
+MODIFIED_TEXT: Architected distributed computing systems processing 10TB+ daily across Unix-based parallel infrastructure
+WHY_THIS_WORKS: Removes pronoun "I", adds 3 keywords, adds scale metric, more professional
+POINT_IMPACT: +9 points
+
+---
+
+## CRITICAL REMINDERS
+
+1. **NEVER suggest adding skills the candidate doesn't plausibly have**
+2. **ALWAYS remove pronouns (I, me, my, we, our) when modifying bullets**
+3. **ALWAYS keep bullets under 150 characters after modification**
+4. **ALWAYS start bullets with past-tense action verbs**
+5. **Target the HIGHEST impact missing keywords first**
+
+---
+
+## BEGIN
+
+Generate your {num_suggestions} suggestions now. Remember: be SPECIFIC, be NATURAL, target HIGH PRIORITY keywords first.
