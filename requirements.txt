@@ -39,3 +39,6 @@ aiofiles>=23.0.0
 PyGithub>=2.0.0
 
 ddgs
+
+# Streamlit GUI
+streamlit>=1.28.0

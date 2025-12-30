@@ -16,6 +16,7 @@ An AI-powered job application automation system built with **LangGraph**, **LLM*
 - **Email Generation**: Recruiter outreach emails (cold, follow-up, thank-you)
 - **Excel Tracking**: Automatic job application tracking spreadsheet
 - **Checkpointing**: Resume from any stage with SQLite persistence
+- **Streamlit GUI**: User-friendly web interface for easy interaction
 
 ## 🏗️ Architecture
 
@@ -213,6 +214,27 @@ python main.py --list-checkpoints
 # Resume from checkpoint
 python main.py --resume <thread_id>
 ```
+
+## 🖥️ Streamlit GUI
+
+For a user-friendly web interface:
+
+```bash
+# Run Streamlit app
+streamlit run streamlit_app/app.py
+```
+
+Open `http://localhost:8501` in your browser.
+
+### GUI Pages
+
+| Page | Description |
+|------|-------------|
+| 🏠 **Home** | Dashboard with overview |
+| ⚙️ **Configure** | Adjust pipeline settings |
+| 🚀 **Run Pipeline** | Input JD and execute |
+| 📄 **Resume** | View and copy resume |
+| ✉️ **Cover Letter & Email** | View generated documents |
 
 ## 📊 CLI Options
 
