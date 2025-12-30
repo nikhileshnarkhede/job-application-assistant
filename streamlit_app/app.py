@@ -85,6 +85,7 @@ def main():
         - 🚀 **Run Pipeline** - Process JD
         - 📄 **Resume** - View Results
         - ✉️ **Cover Letter & Email** - View Documents
+        - 👤 **Candidate Profile** - Edit Your Info
         """)
         
         st.markdown("---")
@@ -142,6 +143,9 @@ def main():
         
         if st.button("✉️ View Cover Letter & Email", use_container_width=True):
             st.switch_page("pages/4_✉️_Cover_Letter_Email.py")
+        
+        if st.button("👤 Edit Candidate Profile", use_container_width=True):
+            st.switch_page("pages/5_👤_Candidate_Profile.py")
         
         st.markdown("---")
         

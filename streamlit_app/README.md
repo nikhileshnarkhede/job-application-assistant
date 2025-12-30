@@ -11,6 +11,7 @@ A user-friendly web interface for the Job Application Assistant pipeline.
 | 🚀 **Run Pipeline** | Input JD (URL or text) and execute pipeline |
 | 📄 **Resume** | View and copy generated resume content |
 | ✉️ **Cover Letter & Email** | View and copy cover letter and email |
+| 👤 **Candidate Profile** | Edit your personal info, experiences, skills, education |
 
 ## Running the App
 
@@ -54,6 +55,16 @@ The app will open at `http://localhost:8501`
 - Analysis of key elements
 - Email tips and templates
 
+### Candidate Profile Page
+- Edit personal info (name, email, phone, links)
+- Add/edit work experiences with bullets
+- Manage education entries
+- Organize skills by category
+- Create role-specific professional summaries
+- Add publications and certifications
+- Import/export JSON profile
+- Auto-saves to `data/candidate_experience.json`
+
 ## Session State
 
 The app uses Streamlit session state to persist:
@@ -72,7 +83,8 @@ streamlit_app/
     ├── 1_⚙️_Configure.py     # Configuration page
     ├── 2_🚀_Run_Pipeline.py  # Pipeline execution page
     ├── 3_📄_Resume.py        # Resume display page
-    └── 4_✉️_Cover_Letter_Email.py  # Cover letter & email page
+    ├── 4_✉️_Cover_Letter_Email.py  # Cover letter & email page
+    └── 5_👤_Candidate_Profile.py   # Candidate info editor
 ```
 
 ## Requirements
