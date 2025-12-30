@@ -1,5 +1,9 @@
 # Job Application Assistant
 
+
+https://github.com/user-attachments/assets/f48ee384-1c78-4594-89c7-b363b2de36f7
+
+
 An AI-powered job application automation system built with **LangGraph**, **LLM**, and **GitHub API** integration.
 
 ## 🎯 Features
