@@ -2,7 +2,17 @@
 Candidate Experience Loader
 
 Loads and queries candidate experience data for resume tailoring.
-Includes: Header, Education, Experience, Skills, Certifications, Publications
+Supports the simplified JSON template structure.
+
+Template Structure:
+- header: name, location, email, phone, linkedin_url, github_url, portfolio_url
+- professional_summary: string
+- education: list of {institution, graduation_date, degree, location}
+- experience: list of {company, date_range, job_title, location, bullets}
+- research: {title, doi_url, doi_text}
+- projects: list of {name, subtitle, technologies, github_url, bullets}
+- skills: {ai_ml, ai_applications, mlops, frameworks} - all strings
+- certifications: list of {name, issuer, year}
 """
 
 import json
@@ -44,10 +54,23 @@ def get_header() -> Dict[str, str]:
     Get candidate header/contact information.
     
     Returns:
-        Dict with name, title, phone, email, location, linkedin, github
+        Dict with name, location, email, phone, linkedin, github, portfolio
     """
     data = load_candidate_data()
-    return data.get("header", {})
+    header = data.get("header", {})
+    
+    # Normalize to standard format for resume builder
+    return {
+        "name": header.get("name", ""),
+        "location": header.get("location", ""),
+        "email": header.get("email", ""),
+        "phone": header.get("phone", ""),
+        "linkedin": header.get("linkedin_url", ""),
+        "github": header.get("github_url", ""),
+        "portfolio": header.get("portfolio_url", ""),
+        # Legacy field for backward compatibility
+        "contact_line": f"{header.get('location', '')}  •  {header.get('phone', '')}  •  {header.get('email', '')}  •  {header.get('linkedin_url', '')}  •  {header.get('github_url', '')}"
+    }
 
 
 def get_name() -> str:
@@ -66,31 +89,16 @@ def get_contact_line() -> str:
 
 def get_professional_summary(role_type: str = "default") -> str:
     """
-    Get professional summary tailored to role type.
+    Get professional summary.
     
     Args:
-        role_type: One of: default, ml_engineer, data_scientist, research_scientist
+        role_type: Role type (ignored in simplified template - single summary)
     
     Returns:
         Professional summary string
     """
     data = load_candidate_data()
-    summaries = data.get("professional_summary", {})
-    
-    # Normalize role type
-    role_key = role_type.lower().replace(" ", "_").replace("-", "_")
-    
-    # Try exact match first
-    if role_key in summaries:
-        return summaries[role_key]
-    
-    # Try partial match
-    for key in summaries:
-        if role_key in key or key in role_key:
-            return summaries[key]
-    
-    # Default
-    return summaries.get("default", "")
+    return data.get("professional_summary", "")
 
 
 # ============================================================================
@@ -113,7 +121,7 @@ def get_education_formatted() -> List[Dict[str, str]]:
     Get education formatted for resume.
     
     Returns:
-        List of formatted education entries
+        List of formatted education entries with standard keys
     """
     education = get_education()
     formatted = []
@@ -122,12 +130,27 @@ def get_education_formatted() -> List[Dict[str, str]]:
         entry = {
             "institution": edu.get("institution", ""),
             "location": edu.get("location", ""),
-            "degree": f"{edu.get('degree', '')} in {edu.get('field', '')}",
-            "graduation": edu.get("graduation", ""),
-            "gpa": edu.get("gpa", ""),
-            "coursework": ", ".join(edu.get("coursework", [])),
-            "highlights": edu.get("highlights", [])
+            "degree": edu.get("degree", ""),
+            "graduation": edu.get("graduation_date", ""),
+            # Parse GPA from degree string if present
+            "gpa": "",
+            "coursework": "",
+            "highlights": []
         }
+        
+        # Try to extract GPA from degree string (e.g., "M.S. in Data Science, GPA: 4.0; Coursework: ML, NLP")
+        degree_str = edu.get("degree", "")
+        if "GPA:" in degree_str:
+            parts = degree_str.split("GPA:")
+            if len(parts) > 1:
+                gpa_part = parts[1].split(";")[0].strip()
+                entry["gpa"] = gpa_part
+        
+        if "Coursework:" in degree_str:
+            parts = degree_str.split("Coursework:")
+            if len(parts) > 1:
+                entry["coursework"] = parts[1].strip()
+        
         formatted.append(entry)
     
     return formatted
@@ -171,9 +194,71 @@ def get_certifications_formatted() -> List[str]:
 # ============================================================================
 
 def get_all_experiences() -> List[Dict[str, Any]]:
-    """Get all experience entries."""
+    """
+    Get all experience entries.
+    
+    Returns:
+        List of experience dictionaries with normalized keys
+    """
     data = load_candidate_data()
-    return data.get("experiences", [])
+    experiences = data.get("experience", [])
+    
+    # Normalize to standard format expected by pipeline
+    normalized = []
+    for idx, exp in enumerate(experiences):
+        normalized_exp = {
+            "id": idx + 1,
+            "role": exp.get("job_title", ""),
+            "role_full": exp.get("job_title", ""),
+            "company": exp.get("company", ""),
+            "employment_type": "",
+            "dates": {
+                "start": exp.get("date_range", "").split(" -- ")[0] if " -- " in exp.get("date_range", "") else "",
+                "end": exp.get("date_range", "").split(" -- ")[1] if " -- " in exp.get("date_range", "") else "",
+                "duration": exp.get("date_range", "")
+            },
+            "location": {
+                "city": exp.get("location", "").split(",")[0].strip() if "," in exp.get("location", "") else exp.get("location", ""),
+                "state": exp.get("location", "").split(",")[1].strip() if "," in exp.get("location", "") else "",
+                "country": "",
+                "type": "Remote" if "Remote" in exp.get("location", "") else "On-site"
+            },
+            "bullets_flat": exp.get("bullets", []),
+            "skills": extract_skills_from_bullets(exp.get("bullets", [])),
+            "keywords": extract_keywords_from_bullets(exp.get("bullets", [])),
+            "relevance_tags": ["ml_ai"]  # Default tag
+        }
+        normalized.append(normalized_exp)
+    
+    return normalized
+
+
+def extract_skills_from_bullets(bullets: List[str]) -> List[str]:
+    """Extract skills from bullet points (looks for 'Skills:' line)."""
+    skills = []
+    for bullet in bullets:
+        if bullet.startswith("Skills:"):
+            skills_text = bullet.replace("Skills:", "").strip()
+            skills = [s.strip() for s in skills_text.split(",")]
+            break
+    return skills
+
+
+def extract_keywords_from_bullets(bullets: List[str]) -> List[str]:
+    """Extract keywords from bullet points."""
+    keywords = set()
+    tech_terms = [
+        "Python", "TensorFlow", "PyTorch", "Machine Learning", "Deep Learning",
+        "NLP", "LLM", "API", "Git", "Docker", "AWS", "ML", "AI", "RAG",
+        "Scikit-learn", "Keras", "Data", "Model", "Pipeline"
+    ]
+    
+    for bullet in bullets:
+        for term in tech_terms:
+            if term.lower() in bullet.lower():
+                keywords.add(term)
+    
+    return list(keywords)
 
 
 def get_experience_by_id(exp_id: int) -> Optional[Dict[str, Any]]:
@@ -188,51 +273,19 @@ def get_experience_by_id(exp_id: int) -> Optional[Dict[str, Any]]:
 def get_experiences_by_relevance(role_type: str) -> Dict[str, List[Dict[str, Any]]]:
     """
     Get experiences sorted by relevance for a given role type.
-    
-    Args:
-        role_type: One of: ml_ai, data_science, research, robotics_automation,
-                   technical_writing, software_engineering, simulation_engineering,
-                   scientific_ai, llm_ai_agents
+    In simplified template, all experiences are treated as primary.
     
     Returns:
         Dict with 'primary', 'secondary', 'supporting' experience lists
     """
-    data = load_candidate_data()
-    relevance_mapping = data.get("relevance_mapping", {})
-    experiences = data.get("experiences", [])
+    experiences = get_all_experiences()
     
-    # Normalize role type
-    role_key = role_type.lower().replace(" ", "_").replace("-", "_")
-    
-    # Try to find matching role type
-    if role_key not in relevance_mapping:
-        # Try fuzzy matching
-        for key in relevance_mapping:
-            if role_key in key or key in role_key:
-                role_key = key
-                break
-        else:
-            # Default to ml_ai if no match
-            role_key = "ml_ai"
-    
-    mapping = relevance_mapping.get(role_key, {"primary": [], "secondary": [], "supporting": []})
-    
-    result = {
-        "primary": [],
-        "secondary": [],
-        "supporting": []
+    # In simplified template, prioritize by order (first = most relevant)
+    return {
+        "primary": experiences[:2] if len(experiences) >= 2 else experiences,
+        "secondary": experiences[2:3] if len(experiences) >= 3 else [],
+        "supporting": experiences[3:] if len(experiences) >= 4 else []
     }
-    
-    for exp in experiences:
-        exp_id = exp.get("id")
-        if exp_id in mapping.get("primary", []):
-            result["primary"].append(exp)
-        elif exp_id in mapping.get("secondary", []):
-            result["secondary"].append(exp)
-        elif exp_id in mapping.get("supporting", []):
-            result["supporting"].append(exp)
-    
-    return result
 
 
 def get_relevant_experiences_for_jd(jd_keywords: List[str], top_n: int = 4) -> List[Dict[str, Any]]:
@@ -253,32 +306,18 @@ def get_relevant_experiences_for_jd(jd_keywords: List[str], top_n: int = 4) -> L
     
     for exp in experiences:
         # Calculate relevance score
-        exp_keywords = set()
-        
-        # Add skills
-        for skill in exp.get("skills", []):
-            exp_keywords.add(skill.lower())
-        
-        # Add keywords
-        for kw in exp.get("keywords", []):
-            exp_keywords.add(kw.lower())
-        
-        # Calculate overlap
-        overlap = len(exp_keywords & jd_keywords_lower)
+        exp_text = " ".join(exp.get("bullets_flat", [])).lower()
+        score = sum(1 for kw in jd_keywords_lower if kw in exp_text)
         
         # Bonus for recent experience
-        recency_bonus = 0
-        if exp.get("id") == 1:  # Most recent
-            recency_bonus = 2
-        elif exp.get("id") <= 3:
-            recency_bonus = 1
-        
-        score = overlap + recency_bonus
+        if exp.get("id") == 1:
+            score += 2
+        elif exp.get("id") == 2:
+            score += 1
         
         scored_experiences.append({
             "experience": exp,
-            "score": score,
-            "matching_keywords": list(exp_keywords & jd_keywords_lower)
+            "score": score
         })
     
     # Sort by score descending
@@ -306,34 +345,8 @@ def get_experience_for_resume(role_type: str, max_experiences: int = 4) -> List[
     Returns:
         List of experiences with selected bullets
     """
-    relevance = get_experiences_by_relevance(role_type)
-    
-    selected = []
-    
-    # Add primary experiences first
-    for exp in relevance["primary"]:
-        if len(selected) < max_experiences:
-            selected.append(exp)
-    
-    # Add secondary if room
-    for exp in relevance["secondary"]:
-        if len(selected) < max_experiences:
-            selected.append(exp)
-    
-    # Add supporting if still room
-    for exp in relevance["supporting"]:
-        if len(selected) < max_experiences:
-            selected.append(exp)
-    
-    # If still not enough, add remaining by ID order
-    if len(selected) < max_experiences:
-        all_exp = get_all_experiences()
-        selected_ids = {e["id"] for e in selected}
-        for exp in all_exp:
-            if exp["id"] not in selected_ids and len(selected) < max_experiences:
-                selected.append(exp)
-    
-    return selected
+    experiences = get_all_experiences()
+    return experiences[:max_experiences]
 
 
 # ============================================================================
@@ -343,19 +356,37 @@ def get_experience_for_resume(role_type: str, max_experiences: int = 4) -> List[
 def get_all_candidate_skills() -> List[str]:
     """Get flat list of all candidate skills."""
     data = load_candidate_data()
-    return data.get("all_skills_flat", [])
+    skills = data.get("skills", {})
+    
+    all_skills = []
+    for category, skill_string in skills.items():
+        if isinstance(skill_string, str):
+            all_skills.extend([s.strip() for s in skill_string.split(",")])
+        elif isinstance(skill_string, list):
+            all_skills.extend(skill_string)
+    
+    return list(set(all_skills))
 
 
 def get_all_candidate_keywords() -> List[str]:
-    """Get flat list of all candidate keywords."""
-    data = load_candidate_data()
-    return data.get("all_keywords_flat", [])
+    """Get flat list of all candidate keywords (same as skills in simplified template)."""
+    return get_all_candidate_skills()
 
 
 def get_skills_summary() -> Dict[str, Any]:
-    """Get categorized skills summary (detailed)."""
+    """Get categorized skills summary."""
     data = load_candidate_data()
-    return data.get("skills_summary", {})
+    skills = data.get("skills", {})
+    
+    # Convert strings to lists for detailed summary
+    summary = {}
+    for category, skill_string in skills.items():
+        if isinstance(skill_string, str):
+            summary[category] = [s.strip() for s in skill_string.split(",")]
+        elif isinstance(skill_string, list):
+            summary[category] = skill_string
+    
+    return summary
 
 
 def get_skills_for_resume() -> Dict[str, str]:
@@ -363,10 +394,25 @@ def get_skills_for_resume() -> Dict[str, str]:
     Get skills in resume-ready format (category: comma-separated string).
     
     Returns:
-        Dict like {"Programming": "Python, SQL, MATLAB", ...}
+        Dict like {"AI/ML": "Python, TensorFlow, ...", ...}
     """
     data = load_candidate_data()
-    return data.get("skills", {})
+    skills = data.get("skills", {})
+    
+    # Map internal keys to display names
+    display_names = {
+        "ai_ml": "AI/ML",
+        "ai_applications": "AI Applications",
+        "mlops": "MLOps & Tools",
+        "frameworks": "Frameworks"
+    }
+    
+    formatted = {}
+    for key, value in skills.items():
+        display_key = display_names.get(key, key.replace("_", " ").title())
+        formatted[display_key] = value if isinstance(value, str) else ", ".join(value)
+    
+    return formatted
 
 
 def get_skills_for_resume_lists() -> Dict[str, List[str]]:
@@ -374,10 +420,28 @@ def get_skills_for_resume_lists() -> Dict[str, List[str]]:
     Get skills as lists per category.
     
     Returns:
-        Dict like {"Programming": ["Python", "SQL", "MATLAB"], ...}
+        Dict like {"AI/ML": ["Python", "TensorFlow", ...], ...}
     """
     data = load_candidate_data()
-    return data.get("skills_for_resume", {})
+    skills = data.get("skills", {})
+    
+    # Map internal keys to display names
+    display_names = {
+        "ai_ml": "AI/ML",
+        "ai_applications": "AI Applications",
+        "mlops": "MLOps & Tools",
+        "frameworks": "Frameworks"
+    }
+    
+    formatted = {}
+    for key, value in skills.items():
+        display_key = display_names.get(key, key.replace("_", " ").title())
+        if isinstance(value, str):
+            formatted[display_key] = [s.strip() for s in value.split(",")]
+        elif isinstance(value, list):
+            formatted[display_key] = value
+    
+    return formatted
 
 
 def get_skills_line(category: str) -> str:
@@ -385,37 +449,43 @@ def get_skills_line(category: str) -> str:
     Get a single skills line for a category.
     
     Args:
-        category: One of: Programming, Frameworks, Scientific_AI, Core_Expertise, Databases_Tools
+        category: Category name (e.g., 'ai_ml', 'frameworks')
     
     Returns:
         Comma-separated string of skills
     """
     skills = get_skills_for_resume()
-    return skills.get(category, "")
+    
+    # Try exact match
+    if category in skills:
+        return skills[category]
+    
+    # Try normalized match
+    for key, value in skills.items():
+        if category.lower().replace("_", "") in key.lower().replace(" ", "").replace("/", ""):
+            return value
+    
+    return ""
 
 
 def get_skills_by_category(category: str) -> List[str]:
     """
-    Get skills for a specific category from detailed summary.
+    Get skills for a specific category.
     
     Args:
-        category: One of: programming_languages, ml_ai_frameworks, scientific_ai,
-                  core_expertise, databases_tools, simulation_modeling, soft_skills
+        category: Category name
     
     Returns:
         List of skills in that category
     """
-    summary = get_skills_summary()
+    skills_lists = get_skills_for_resume_lists()
     
-    if category in summary:
-        value = summary[category]
-        if isinstance(value, dict):
-            # For programming_languages which has sub-categories
-            all_skills = []
-            for level_skills in value.values():
-                all_skills.extend(level_skills)
-            return all_skills
-        elif isinstance(value, list):
+    if category in skills_lists:
+        return skills_lists[category]
+    
+    # Try normalized match
+    for key, value in skills_lists.items():
+        if category.lower().replace("_", "") in key.lower().replace(" ", "").replace("/", ""):
             return value
     
     return []
@@ -432,9 +502,6 @@ def match_candidate_skills_to_jd(jd_skills: List[str]) -> Dict[str, List[str]]:
         Dict with 'matched', 'missing', 'additional' skill lists
     """
     candidate_skills = set(skill.lower() for skill in get_all_candidate_skills())
-    candidate_keywords = set(kw.lower() for kw in get_all_candidate_keywords())
-    all_candidate = candidate_skills | candidate_keywords
-    
     jd_skills_lower = set(skill.lower() for skill in jd_skills)
     
     matched = []
@@ -442,12 +509,12 @@ def match_candidate_skills_to_jd(jd_skills: List[str]) -> Dict[str, List[str]]:
     
     for skill in jd_skills:
         skill_lower = skill.lower()
-        if skill_lower in all_candidate:
+        if skill_lower in candidate_skills:
             matched.append(skill)
         else:
             # Check for partial matches
             partial_match = False
-            for cand_skill in all_candidate:
+            for cand_skill in candidate_skills:
                 if skill_lower in cand_skill or cand_skill in skill_lower:
                     matched.append(skill)
                     partial_match = True
@@ -461,18 +528,64 @@ def match_candidate_skills_to_jd(jd_skills: List[str]) -> Dict[str, List[str]]:
     return {
         "matched": matched,
         "missing": missing,
-        "additional": additional[:10]  # Limit to top 10
+        "additional": additional[:10]
     }
 
 
 # ============================================================================
-# PUBLICATIONS
+# PROJECTS
+# ============================================================================
+
+def get_projects() -> List[Dict[str, Any]]:
+    """Get all projects."""
+    data = load_candidate_data()
+    projects = data.get("projects", [])
+    
+    # Normalize to standard format
+    normalized = []
+    for idx, proj in enumerate(projects):
+        normalized_proj = {
+            "id": idx + 1,
+            "name": proj.get("name", ""),
+            "github_url": proj.get("github_url", ""),
+            "description": proj.get("subtitle", ""),
+            "technologies": proj.get("technologies", ""),
+            "tech_stack": {
+                "main": [t.strip() for t in proj.get("technologies", "").split(",")]
+            },
+            "bullets": proj.get("bullets", []),
+            "bullets_for_resume": proj.get("bullets", []),
+            "relevance_tags": ["ml_ai"]
+        }
+        normalized.append(normalized_proj)
+    
+    return normalized
+
+
+def get_projects_for_resume(max_projects: int = 3) -> List[Dict[str, Any]]:
+    """Get projects formatted for resume."""
+    return get_projects()[:max_projects]
+
+
+# ============================================================================
+# PUBLICATIONS / RESEARCH
 # ============================================================================
 
 def get_publications() -> List[Dict[str, Any]]:
     """Get all publications."""
     data = load_candidate_data()
-    return data.get("publications", [])
+    research = data.get("research", {})
+    
+    if research:
+        return [{
+            "title": research.get("title", ""),
+            "journal": "",
+            "year": "",
+            "doi": research.get("doi_url", ""),
+            "doi_text": research.get("doi_text", "")
+        }]
+    
+    return []
 
 
 def get_publications_formatted() -> List[str]:
@@ -487,10 +600,12 @@ def get_publications_formatted() -> List[str]:
     
     for pub in publications:
         title = pub.get("title", "")
-        journal = pub.get("journal", "")
-        year = pub.get("year", "")
+        doi = pub.get("doi_text", "")
         
-        formatted.append(f'"{title}" - {journal} ({year})')
+        if doi:
+            formatted.append(f"{title} ({doi})")
+        else:
+            formatted.append(title)
     
     return formatted
 
@@ -516,6 +631,7 @@ def get_complete_resume_data(role_type: str = "ml_ai", max_experiences: int = 4)
         "education": get_education_formatted(),
         "certifications": get_certifications_formatted(),
         "experiences": get_experience_for_resume(role_type, max_experiences),
+        "projects": get_projects_for_resume(),
         "skills": get_skills_for_resume(),
         "skills_detailed": get_skills_summary(),
         "publications": get_publications_formatted(),
@@ -529,21 +645,21 @@ def get_complete_resume_data(role_type: str = "ml_ai", max_experiences: int = 4)
 
 if __name__ == "__main__":
     print("=" * 60)
-    print("Testing Candidate Data Loader")
+    print("Testing Candidate Data Loader (Simplified Template)")
     print("=" * 60)
     
     # Test header
     print("\n📋 HEADER:")
     header = get_header()
     print(f"  Name: {header.get('name')}")
-    print(f"  Title: {header.get('title')}")
     print(f"  Email: {header.get('email')}")
-    print(f"  Phone: {header.get('phone')}")
     print(f"  Location: {header.get('location')}")
+    print(f"  LinkedIn: {header.get('linkedin')}")
+    print(f"  GitHub: {header.get('github')}")
     
     # Test professional summary
-    print("\n📝 PROFESSIONAL SUMMARY (ML Engineer):")
-    summary = get_professional_summary("ml_engineer")
+    print("\n📝 PROFESSIONAL SUMMARY:")
+    summary = get_professional_summary()
     print(f"  {summary[:100]}...")
     
     # Test education
@@ -551,18 +667,17 @@ if __name__ == "__main__":
     for edu in get_education_formatted():
         print(f"  • {edu['degree']}")
         print(f"    {edu['institution']}, {edu['location']}")
-        print(f"    GPA: {edu['gpa']} | Graduation: {edu['graduation']}")
     
     # Test certifications
     print("\n🏆 CERTIFICATIONS:")
     for cert in get_certifications_formatted():
         print(f"  • {cert}")
     
-    # Test skills (resume format)
-    print("\n🔧 SKILLS (Resume Format):")
+    # Test skills
+    print("\n🔧 SKILLS:")
     skills = get_skills_for_resume()
     for category, skill_line in skills.items():
-        print(f"  {category}: {skill_line[:60]}...")
+        print(f"  {category}: {skill_line[:50]}...")
     
     # Test experiences
     print("\n💼 EXPERIENCES:")
@@ -570,26 +685,24 @@ if __name__ == "__main__":
     print(f"  Total: {len(experiences)}")
     for exp in experiences:
         print(f"  {exp['id']}. {exp['role']} @ {exp['company']}")
+        print(f"     Bullets: {len(exp['bullets_flat'])}")
     
-    # Test relevance mapping
-    print("\n🎯 RELEVANCE FOR ML/AI ROLE:")
-    ml_exp = get_experiences_by_relevance("ml_ai")
-    print(f"  Primary: {[e['role'] for e in ml_exp['primary']]}")
-    print(f"  Secondary: {[e['role'] for e in ml_exp['secondary']]}")
-    print(f"  Supporting: {[e['role'] for e in ml_exp['supporting']]}")
-    
-    # Test skill matching
-    print("\n🔍 SKILL MATCHING:")
-    jd_skills = ["Python", "TensorFlow", "PyTorch", "AWS", "Docker", "LangChain", "XGBoost"]
-    match = match_candidate_skills_to_jd(jd_skills)
-    print(f"  JD Skills: {jd_skills}")
-    print(f"  Matched: {match['matched']}")
-    print(f"  Missing: {match['missing']}")
+    # Test projects
+    print("\n🚀 PROJECTS:")
+    projects = get_projects()
+    for proj in projects:
+        print(f"  • {proj['name']} ({proj['technologies']})")
     
     # Test publications
     print("\n📚 PUBLICATIONS:")
     for pub in get_publications_formatted():
-        print(f"  • {pub[:80]}...")
+        print(f"  • {pub[:70]}...")
+    
+    # Test all skills flat
+    print("\n🔍 ALL SKILLS (flat):")
+    all_skills = get_all_candidate_skills()
+    print(f"  Total: {len(all_skills)}")
+    print(f"  Sample: {all_skills[:5]}")
     
     # Test complete resume data
     print("\n📄 COMPLETE RESUME DATA:")
@@ -599,9 +712,9 @@ if __name__ == "__main__":
     print(f"  Education: {len(resume['education'])} entries")
     print(f"  Certifications: {len(resume['certifications'])} entries")
     print(f"  Experiences: {len(resume['experiences'])} entries")
+    print(f"  Projects: {len(resume['projects'])} entries")
     print(f"  Skills Categories: {len(resume['skills'])} categories")
     print(f"  Publications: {len(resume['publications'])} entries")
-    print(f"  All Skills: {len(resume['all_skills'])} skills")
     
     print("\n" + "=" * 60)
     print("Test complete!")

@@ -1,0 +1,67 @@
+# =============================================================================
+# Job Application Assistant - Docker Compose
+# =============================================================================
+# Usage:
+#   docker-compose up --build      # Build and run
+#   docker-compose up -d           # Run in background
+#   docker-compose down            # Stop
+#   docker-compose logs -f         # View logs
+# =============================================================================
+
+version: '3.8'
+
+services:
+  job-assistant:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
+    container_name: job-application-assistant
+    
+    # Load .env file from host (NOT baked into image)
+    env_file:
+      - .env
+    
+    ports:
+      - "8501:8501"
+    
+    # Mount volumes for persistence
+    volumes:
+      # Persist application outputs
+      - ./applications:/app/applications
+      
+      # Persist checkpoints
+      - ./data/checkpoints:/app/data/checkpoints
+      
+      # Persist Excel tracker
+      - ./job_applications.xlsx:/app/job_applications.xlsx
+      
+      # Mount candidate data (so you can edit externally)
+      - ./data/candidate_experience.json:/app/data/candidate_experience.json
+      
+      # Mount GitHub projects (optional override)
+      - ./data/github_projects.json:/app/data/github_projects.json
+    
+    # Restart policy
+    restart: unless-stopped
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Run CLI pipeline instead of Streamlit
+  # Uncomment to use
+  # job-assistant-cli:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   env_file:
+  #     - .env
+  #   volumes:
+  #     - ./applications:/app/applications
+  #     - ./data:/app/data
+  #   command: ["python", "main.py", "--test"]

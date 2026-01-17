@@ -2,6 +2,7 @@
 Candidate Profile Page - Job Application Assistant
 
 Allows users to edit their candidate information.
+Supports the simplified JSON template structure.
 """
 
 import streamlit as st
@@ -41,9 +42,6 @@ def load_candidate_data():
 
 def save_candidate_data(data):
     """Save candidate data to JSON file."""
-    # Update timestamp
-    data["candidate_info"]["last_updated"] = datetime.now().strftime("%Y-%m-%d")
-    
     # Ensure directory exists
     CANDIDATE_FILE.parent.mkdir(parents=True, exist_ok=True)
     
@@ -54,30 +52,36 @@ def save_candidate_data(data):
 
 
 def get_empty_template():
-    """Return empty candidate template."""
+    """Return empty candidate template matching new structure."""
     return {
-        "candidate_info": {
-            "last_updated": datetime.now().strftime("%Y-%m-%d"),
-            "total_experiences": 0,
-            "years_of_experience": "0"
-        },
         "header": {
             "name": "",
-            "title": "",
-            "phone": "",
-            "email": "",
             "location": "",
-            "linkedin": "",
-            "github": ""
+            "email": "",
+            "phone": "",
+            "linkedin_url": "",
+            "linkedin_text": "LinkedIn",
+            "github_url": "",
+            "github_text": "GitHub",
+            "portfolio_url": "",
+            "portfolio_text": "Portfolio"
         },
-        "professional_summary": {
-            "default": ""
-        },
+        "professional_summary": "",
         "education": [],
-        "certifications": [],
-        "skills": {},
-        "experiences": [],
-        "publications": []
+        "experience": [],
+        "research": {
+            "title": "",
+            "doi_url": "",
+            "doi_text": ""
+        },
+        "projects": [],
+        "skills": {
+            "ai_ml": "",
+            "ai_applications": "",
+            "mlops": "",
+            "frameworks": ""
+        },
+        "certifications": []
     }
 
 
@@ -89,11 +93,7 @@ data = st.session_state.candidate_data
 
 # Page header
 st.title("👤 Candidate Profile")
-st.markdown("Edit your personal information, experiences, skills, and education")
-
-# Last updated info
-if data.get("candidate_info", {}).get("last_updated"):
-    st.caption(f"📅 Last updated: {data['candidate_info']['last_updated']}")
+st.markdown("Edit your personal information, experiences, skills, and projects")
 
 # Create tabs for different sections
 tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
@@ -101,8 +101,8 @@ tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     "💼 Experience", 
     "🎓 Education", 
     "🔧 Skills",
-    "📝 Summary",
-    "📚 Publications"
+    "🚀 Projects",
+    "📚 Research & Certs"
 ])
 
 # ============================================================================
@@ -110,6 +110,10 @@ tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
 # ============================================================================
 with tab1:
     st.markdown("### Personal Information")
+    
+    # Ensure header exists
+    if "header" not in data:
+        data["header"] = get_empty_template()["header"]
     
     col1, col2 = st.columns(2)
     
@@ -135,39 +139,46 @@ with tab1:
         data["header"]["location"] = st.text_input(
             "Location",
             value=data.get("header", {}).get("location", ""),
-            placeholder="City, State/Country",
+            placeholder="City, State",
             key="location"
         )
     
     with col2:
-        data["header"]["title"] = st.text_input(
-            "Professional Title",
-            value=data.get("header", {}).get("title", ""),
-            placeholder="e.g., Machine Learning Engineer | Data Scientist",
-            key="title"
-        )
-        
-        data["header"]["linkedin"] = st.text_input(
+        data["header"]["linkedin_url"] = st.text_input(
             "LinkedIn URL",
-            value=data.get("header", {}).get("linkedin", ""),
-            placeholder="linkedin.com/in/yourprofile",
+            value=data.get("header", {}).get("linkedin_url", ""),
+            placeholder="https://www.linkedin.com/in/yourprofile",
             key="linkedin"
         )
         
-        data["header"]["github"] = st.text_input(
+        data["header"]["github_url"] = st.text_input(
             "GitHub URL",
-            value=data.get("header", {}).get("github", ""),
-            placeholder="github.com/yourusername",
+            value=data.get("header", {}).get("github_url", ""),
+            placeholder="https://github.com/yourusername",
             key="github"
         )
         
-        # Years of experience
-        data["candidate_info"]["years_of_experience"] = st.text_input(
-            "Years of Experience",
-            value=data.get("candidate_info", {}).get("years_of_experience", ""),
-            placeholder="e.g., 3+, 5-7",
-            key="years_exp"
+        data["header"]["portfolio_url"] = st.text_input(
+            "Portfolio URL",
+            value=data.get("header", {}).get("portfolio_url", ""),
+            placeholder="https://yourportfolio.com",
+            key="portfolio"
         )
+    
+    st.markdown("---")
+    st.markdown("### Professional Summary")
+    
+    data["professional_summary"] = st.text_area(
+        "Summary *",
+        value=data.get("professional_summary", ""),
+        height=150,
+        key="summary",
+        help="A brief professional summary highlighting your key skills and experience"
+    )
+    
+    if data.get("professional_summary"):
+        word_count = len(data["professional_summary"].split())
+        st.caption(f"Word count: {word_count}")
 
 # ============================================================================
 # TAB 2: EXPERIENCE
@@ -176,42 +187,40 @@ with tab2:
     st.markdown("### Work Experience")
     st.caption("Add your work experiences. Most recent first.")
     
-    experiences = data.get("experiences", [])
+    # Ensure experience list exists
+    if "experience" not in data:
+        data["experience"] = []
+    
+    experiences = data.get("experience", [])
     
     # Add new experience button
     if st.button("➕ Add New Experience", key="add_exp"):
         new_exp = {
-            "id": len(experiences) + 1,
-            "role": "",
-            "role_full": "",
             "company": "",
-            "employment_type": "Full-time",
-            "dates": {"start": "", "end": "", "duration_months": 0},
-            "location": {"city": "", "state": "", "country": "", "type": "On-site"},
-            "scope": "",
-            "bullets_flat": [],
-            "skills": [],
-            "keywords": [],
-            "relevance_tags": []
+            "job_title": "",
+            "date_range": "",
+            "location": "",
+            "bullets": []
         }
         experiences.insert(0, new_exp)
-        data["experiences"] = experiences
+        data["experience"] = experiences
         st.rerun()
     
     # Display existing experiences
     for i, exp in enumerate(experiences):
         with st.expander(
-            f"**{exp.get('role', 'New Role')}** at {exp.get('company', 'Company')} "
-            f"({exp.get('dates', {}).get('start', '')} - {exp.get('dates', {}).get('end', '')})",
+            f"**{exp.get('job_title', 'New Role')}** at {exp.get('company', 'Company')} "
+            f"({exp.get('date_range', '')})",
             expanded=(i == 0)
         ):
             col1, col2 = st.columns(2)
             
             with col1:
-                exp["role"] = st.text_input(
-                    "Role Title *",
-                    value=exp.get("role", ""),
-                    key=f"exp_role_{i}"
+                exp["job_title"] = st.text_input(
+                    "Job Title *",
+                    value=exp.get("job_title", ""),
+                    key=f"exp_title_{i}",
+                    placeholder="e.g., Machine Learning Engineer"
                 )
                 
                 exp["company"] = st.text_input(
@@ -219,95 +228,42 @@ with tab2:
                     value=exp.get("company", ""),
                     key=f"exp_company_{i}"
                 )
-                
-                exp["employment_type"] = st.selectbox(
-                    "Employment Type",
-                    options=["Full-time", "Part-time", "Contract", "Internship", "Freelance", "Research Position"],
-                    index=["Full-time", "Part-time", "Contract", "Internship", "Freelance", "Research Position"].index(
-                        exp.get("employment_type", "Full-time")
-                    ) if exp.get("employment_type") in ["Full-time", "Part-time", "Contract", "Internship", "Freelance", "Research Position"] else 0,
-                    key=f"exp_type_{i}"
-                )
             
             with col2:
-                # Dates
-                date_col1, date_col2 = st.columns(2)
-                with date_col1:
-                    if "dates" not in exp:
-                        exp["dates"] = {}
-                    exp["dates"]["start"] = st.text_input(
-                        "Start Date",
-                        value=exp.get("dates", {}).get("start", ""),
-                        placeholder="e.g., Jan 2023",
-                        key=f"exp_start_{i}"
-                    )
-                with date_col2:
-                    exp["dates"]["end"] = st.text_input(
-                        "End Date",
-                        value=exp.get("dates", {}).get("end", ""),
-                        placeholder="e.g., Present",
-                        key=f"exp_end_{i}"
-                    )
+                exp["date_range"] = st.text_input(
+                    "Date Range",
+                    value=exp.get("date_range", ""),
+                    placeholder="e.g., Jan 2023 -- Present",
+                    key=f"exp_dates_{i}"
+                )
                 
-                # Location
-                if "location" not in exp:
-                    exp["location"] = {}
-                loc_col1, loc_col2 = st.columns(2)
-                with loc_col1:
-                    exp["location"]["city"] = st.text_input(
-                        "City",
-                        value=exp.get("location", {}).get("city", ""),
-                        key=f"exp_city_{i}"
-                    )
-                with loc_col2:
-                    exp["location"]["type"] = st.selectbox(
-                        "Work Type",
-                        options=["On-site", "Remote", "Hybrid"],
-                        index=["On-site", "Remote", "Hybrid"].index(
-                            exp.get("location", {}).get("type", "On-site")
-                        ) if exp.get("location", {}).get("type") in ["On-site", "Remote", "Hybrid"] else 0,
-                        key=f"exp_worktype_{i}"
-                    )
-            
-            # Scope/Description
-            exp["scope"] = st.text_area(
-                "Role Description",
-                value=exp.get("scope", ""),
-                height=80,
-                key=f"exp_scope_{i}"
-            )
+                exp["location"] = st.text_input(
+                    "Location",
+                    value=exp.get("location", ""),
+                    placeholder="e.g., Boston, MA or Remote",
+                    key=f"exp_location_{i}"
+                )
             
             # Bullets
             st.markdown("**Bullet Points** (one per line)")
-            bullets_text = "\n".join(exp.get("bullets_flat", []))
+            bullets_text = "\n".join(exp.get("bullets", []))
             new_bullets = st.text_area(
                 "Bullets",
                 value=bullets_text,
                 height=150,
                 key=f"exp_bullets_{i}",
-                label_visibility="collapsed"
+                label_visibility="collapsed",
+                help="Include a 'Skills:' line at the end to highlight key skills used"
             )
-            exp["bullets_flat"] = [b.strip() for b in new_bullets.split("\n") if b.strip()]
-            
-            # Skills used
-            skills_text = ", ".join(exp.get("skills", []))
-            new_skills = st.text_input(
-                "Skills Used (comma-separated)",
-                value=skills_text,
-                key=f"exp_skills_{i}"
-            )
-            exp["skills"] = [s.strip() for s in new_skills.split(",") if s.strip()]
+            exp["bullets"] = [b.strip() for b in new_bullets.split("\n") if b.strip()]
             
             # Delete button
             col1, col2, col3 = st.columns([1, 1, 1])
             with col3:
                 if st.button("🗑️ Delete Experience", key=f"del_exp_{i}"):
                     experiences.pop(i)
-                    data["experiences"] = experiences
+                    data["experience"] = experiences
                     st.rerun()
-    
-    # Update experience count
-    data["candidate_info"]["total_experiences"] = len(experiences)
 
 # ============================================================================
 # TAB 3: EDUCATION
@@ -315,18 +271,18 @@ with tab2:
 with tab3:
     st.markdown("### Education")
     
+    # Ensure education list exists
+    if "education" not in data:
+        data["education"] = []
+    
     education = data.get("education", [])
     
     if st.button("➕ Add Education", key="add_edu"):
         new_edu = {
             "institution": "",
-            "location": "",
             "degree": "",
-            "field": "",
-            "graduation": "",
-            "gpa": "",
-            "coursework": [],
-            "highlights": []
+            "graduation_date": "",
+            "location": ""
         }
         education.insert(0, new_edu)
         data["education"] = education
@@ -334,7 +290,7 @@ with tab3:
     
     for i, edu in enumerate(education):
         with st.expander(
-            f"**{edu.get('degree', 'Degree')}** - {edu.get('institution', 'Institution')}",
+            f"**{edu.get('institution', 'Institution')}** - {edu.get('degree', 'Degree')[:50]}",
             expanded=(i == 0)
         ):
             col1, col2 = st.columns(2)
@@ -346,18 +302,11 @@ with tab3:
                     key=f"edu_inst_{i}"
                 )
                 
-                edu["degree"] = st.text_input(
-                    "Degree *",
-                    value=edu.get("degree", ""),
-                    placeholder="e.g., Master of Science",
-                    key=f"edu_degree_{i}"
-                )
-                
-                edu["field"] = st.text_input(
-                    "Field of Study *",
-                    value=edu.get("field", ""),
-                    placeholder="e.g., Computer Science",
-                    key=f"edu_field_{i}"
+                edu["graduation_date"] = st.text_input(
+                    "Graduation Date",
+                    value=edu.get("graduation_date", ""),
+                    placeholder="e.g., May 2024",
+                    key=f"edu_grad_{i}"
                 )
             
             with col2:
@@ -366,38 +315,14 @@ with tab3:
                     value=edu.get("location", ""),
                     key=f"edu_loc_{i}"
                 )
-                
-                edu["graduation"] = st.text_input(
-                    "Graduation Date",
-                    value=edu.get("graduation", ""),
-                    placeholder="e.g., May 2024",
-                    key=f"edu_grad_{i}"
-                )
-                
-                edu["gpa"] = st.text_input(
-                    "GPA",
-                    value=edu.get("gpa", ""),
-                    placeholder="e.g., 3.8/4.0",
-                    key=f"edu_gpa_{i}"
-                )
             
-            # Coursework
-            coursework_text = ", ".join(edu.get("coursework", []))
-            new_coursework = st.text_input(
-                "Relevant Coursework (comma-separated)",
-                value=coursework_text,
-                key=f"edu_courses_{i}"
+            edu["degree"] = st.text_input(
+                "Degree (include GPA and Coursework) *",
+                value=edu.get("degree", ""),
+                placeholder="e.g., M.S. in Data Science, GPA: 4.0; Coursework: ML, NLP, Statistics",
+                key=f"edu_degree_{i}",
+                help="Format: Degree, GPA: X.X; Coursework: Subject1, Subject2"
             )
-            edu["coursework"] = [c.strip() for c in new_coursework.split(",") if c.strip()]
-            
-            # Highlights
-            highlights_text = ", ".join(edu.get("highlights", []))
-            new_highlights = st.text_input(
-                "Highlights/Achievements (comma-separated)",
-                value=highlights_text,
-                key=f"edu_highlights_{i}"
-            )
-            edu["highlights"] = [h.strip() for h in new_highlights.split(",") if h.strip()]
             
             # Delete
             if st.button("🗑️ Delete Education", key=f"del_edu_{i}"):
@@ -410,168 +335,184 @@ with tab3:
 # ============================================================================
 with tab4:
     st.markdown("### Skills")
-    st.caption("Organize your skills by category")
+    st.caption("Enter skills as comma-separated values for each category")
+    
+    # Ensure skills dict exists
+    if "skills" not in data:
+        data["skills"] = get_empty_template()["skills"]
     
     skills = data.get("skills", {})
     
-    # Add new category
-    col1, col2 = st.columns([3, 1])
+    col1, col2 = st.columns(2)
+    
     with col1:
-        new_category = st.text_input(
-            "New Category Name",
-            placeholder="e.g., Cloud Platforms",
-            key="new_skill_cat"
+        skills["ai_ml"] = st.text_area(
+            "AI/ML Skills *",
+            value=skills.get("ai_ml", ""),
+            height=100,
+            key="skill_ai_ml",
+            placeholder="Python, Machine Learning, Deep Learning, NLP, LLMs, Generative AI"
         )
+        
+        skills["ai_applications"] = st.text_area(
+            "AI Applications",
+            value=skills.get("ai_applications", ""),
+            height=100,
+            key="skill_ai_apps",
+            placeholder="API Integration, Prompt Engineering, RAG, Vector Databases, LangChain"
+        )
+    
     with col2:
-        st.markdown("<br>", unsafe_allow_html=True)
-        if st.button("➕ Add Category") and new_category:
-            skills[new_category] = ""
-            data["skills"] = skills
-            st.rerun()
+        skills["mlops"] = st.text_area(
+            "MLOps & Tools",
+            value=skills.get("mlops", ""),
+            height=100,
+            key="skill_mlops",
+            placeholder="Git, Docker, CI/CD, Model Deployment, Logging, Versioning"
+        )
+        
+        skills["frameworks"] = st.text_area(
+            "Frameworks",
+            value=skills.get("frameworks", ""),
+            height=100,
+            key="skill_frameworks",
+            placeholder="Scikit-learn, TensorFlow, PyTorch, Keras"
+        )
     
-    # Display existing categories
+    data["skills"] = skills
+    
+    # Show all skills count
     st.markdown("---")
-    
-    categories_to_delete = []
-    for category, skill_list in skills.items():
-        col1, col2 = st.columns([4, 1])
-        with col1:
-            skills[category] = st.text_input(
-                f"**{category}**",
-                value=skill_list if isinstance(skill_list, str) else ", ".join(skill_list),
-                key=f"skill_{category}",
-                help="Enter skills separated by commas"
-            )
-        with col2:
-            st.markdown("<br>", unsafe_allow_html=True)
-            if st.button("🗑️", key=f"del_skill_{category}"):
-                categories_to_delete.append(category)
-    
-    # Delete marked categories
-    for cat in categories_to_delete:
-        del skills[cat]
-        data["skills"] = skills
-        st.rerun()
-    
-    # Update all_skills_flat
     all_skills = []
     for skill_str in skills.values():
-        if isinstance(skill_str, str):
+        if skill_str:
             all_skills.extend([s.strip() for s in skill_str.split(",") if s.strip()])
-        elif isinstance(skill_str, list):
-            all_skills.extend(skill_str)
-    data["all_skills_flat"] = list(set(all_skills))
+    st.info(f"📊 Total unique skills: {len(set(all_skills))}")
 
 # ============================================================================
-# TAB 5: PROFESSIONAL SUMMARY
+# TAB 5: PROJECTS
 # ============================================================================
 with tab5:
-    st.markdown("### Professional Summary")
-    st.caption("Create different versions of your summary for different roles")
+    st.markdown("### Projects")
+    st.caption("Add your key projects (GitHub, personal, etc.)")
     
-    summaries = data.get("professional_summary", {"default": ""})
+    # Ensure projects list exists
+    if "projects" not in data:
+        data["projects"] = []
     
-    # Default summary
-    summaries["default"] = st.text_area(
-        "Default Summary *",
-        value=summaries.get("default", ""),
-        height=150,
-        key="summary_default",
-        help="This is your main professional summary"
-    )
+    projects = data.get("projects", [])
     
-    st.markdown("---")
-    st.markdown("#### Role-Specific Summaries (Optional)")
+    if st.button("➕ Add Project", key="add_proj"):
+        new_proj = {
+            "name": "",
+            "subtitle": "",
+            "technologies": "",
+            "github_url": "",
+            "github_text": "GitHub",
+            "bullets": []
+        }
+        projects.insert(0, new_proj)
+        data["projects"] = projects
+        st.rerun()
     
-    # Add new variant
-    col1, col2 = st.columns([3, 1])
-    with col1:
-        new_variant = st.text_input(
-            "New Variant Name",
-            placeholder="e.g., data_engineer, frontend_developer",
-            key="new_summary_variant"
-        )
-    with col2:
-        st.markdown("<br>", unsafe_allow_html=True)
-        if st.button("➕ Add Variant") and new_variant:
-            summaries[new_variant] = summaries.get("default", "")
-            data["professional_summary"] = summaries
-            st.rerun()
-    
-    # Display variants
-    for variant, text in summaries.items():
-        if variant != "default":
-            col1, col2 = st.columns([5, 1])
+    for i, proj in enumerate(projects):
+        with st.expander(
+            f"**{proj.get('name', 'New Project')}** ({proj.get('technologies', '')})",
+            expanded=(i == 0)
+        ):
+            col1, col2 = st.columns(2)
+            
             with col1:
-                summaries[variant] = st.text_area(
-                    f"**{variant}**",
-                    value=text,
-                    height=100,
-                    key=f"summary_{variant}"
+                proj["name"] = st.text_input(
+                    "Project Name *",
+                    value=proj.get("name", ""),
+                    key=f"proj_name_{i}"
                 )
+                
+                proj["technologies"] = st.text_input(
+                    "Technologies",
+                    value=proj.get("technologies", ""),
+                    placeholder="e.g., LLMs, NLP, RAG",
+                    key=f"proj_tech_{i}"
+                )
+            
             with col2:
-                st.markdown("<br><br>", unsafe_allow_html=True)
-                if st.button("🗑️", key=f"del_summary_{variant}"):
-                    del summaries[variant]
-                    data["professional_summary"] = summaries
-                    st.rerun()
-    
-    data["professional_summary"] = summaries
+                proj["github_url"] = st.text_input(
+                    "GitHub URL",
+                    value=proj.get("github_url", ""),
+                    placeholder="https://github.com/user/project",
+                    key=f"proj_github_{i}"
+                )
+                
+                proj["subtitle"] = st.text_input(
+                    "Subtitle (optional)",
+                    value=proj.get("subtitle", ""),
+                    placeholder="e.g., AI Application",
+                    key=f"proj_subtitle_{i}"
+                )
+            
+            # Bullets
+            st.markdown("**Description Bullets** (one per line)")
+            bullets_text = "\n".join(proj.get("bullets", []))
+            new_bullets = st.text_area(
+                "Bullets",
+                value=bullets_text,
+                height=100,
+                key=f"proj_bullets_{i}",
+                label_visibility="collapsed"
+            )
+            proj["bullets"] = [b.strip() for b in new_bullets.split("\n") if b.strip()]
+            
+            # Delete
+            if st.button("🗑️ Delete Project", key=f"del_proj_{i}"):
+                projects.pop(i)
+                data["projects"] = projects
+                st.rerun()
 
 # ============================================================================
-# TAB 6: PUBLICATIONS & CERTIFICATIONS
+# TAB 6: RESEARCH & CERTIFICATIONS
 # ============================================================================
 with tab6:
     col1, col2 = st.columns(2)
     
     with col1:
-        st.markdown("### Publications")
+        st.markdown("### Research / Publication")
         
-        publications = data.get("publications", [])
+        # Ensure research dict exists
+        if "research" not in data:
+            data["research"] = get_empty_template()["research"]
         
-        if st.button("➕ Add Publication", key="add_pub"):
-            publications.append({
-                "title": "",
-                "journal": "",
-                "year": "",
-                "authors": [],
-                "type": "Peer-reviewed"
-            })
-            data["publications"] = publications
-            st.rerun()
+        research = data.get("research", {})
         
-        for i, pub in enumerate(publications):
-            with st.expander(pub.get("title", "New Publication") or "New Publication"):
-                pub["title"] = st.text_input(
-                    "Title *",
-                    value=pub.get("title", ""),
-                    key=f"pub_title_{i}"
-                )
-                pub["journal"] = st.text_input(
-                    "Journal/Conference",
-                    value=pub.get("journal", ""),
-                    key=f"pub_journal_{i}"
-                )
-                pub["year"] = st.text_input(
-                    "Year",
-                    value=str(pub.get("year", "")),
-                    key=f"pub_year_{i}"
-                )
-                authors_text = ", ".join(pub.get("authors", []))
-                new_authors = st.text_input(
-                    "Authors (comma-separated)",
-                    value=authors_text,
-                    key=f"pub_authors_{i}"
-                )
-                pub["authors"] = [a.strip() for a in new_authors.split(",") if a.strip()]
-                
-                if st.button("🗑️ Delete", key=f"del_pub_{i}"):
-                    publications.pop(i)
-                    data["publications"] = publications
-                    st.rerun()
+        research["title"] = st.text_input(
+            "Publication Title",
+            value=research.get("title", ""),
+            key="research_title",
+            placeholder="Your paper or research title"
+        )
+        
+        research["doi_url"] = st.text_input(
+            "DOI URL",
+            value=research.get("doi_url", ""),
+            key="research_doi_url",
+            placeholder="https://doi.org/10.xxxx/xxxxx"
+        )
+        
+        research["doi_text"] = st.text_input(
+            "DOI Text (display)",
+            value=research.get("doi_text", ""),
+            key="research_doi_text",
+            placeholder="DOI: 10.xxxx/xxxxx"
+        )
+        
+        data["research"] = research
     
     with col2:
         st.markdown("### Certifications")
+        
+        # Ensure certifications list exists
+        if "certifications" not in data:
+            data["certifications"] = []
         
         certifications = data.get("certifications", [])
         
@@ -579,8 +520,7 @@ with tab6:
             certifications.append({
                 "name": "",
                 "issuer": "",
-                "year": "",
-                "credential_id": ""
+                "year": ""
             })
             data["certifications"] = certifications
             st.rerun()
@@ -601,11 +541,6 @@ with tab6:
                     "Year",
                     value=str(cert.get("year", "") or ""),
                     key=f"cert_year_{i}"
-                )
-                cert["credential_id"] = st.text_input(
-                    "Credential ID",
-                    value=cert.get("credential_id", "") or "",
-                    key=f"cert_id_{i}"
                 )
                 
                 if st.button("🗑️ Delete", key=f"del_cert_{i}"):
@@ -636,14 +571,13 @@ with col2:
         st.rerun()
 
 with col3:
-    if st.button("📥 Download JSON", use_container_width=True):
-        st.download_button(
-            label="⬇️ Download",
-            data=json.dumps(data, indent=2, ensure_ascii=False),
-            file_name="candidate_experience.json",
-            mime="application/json",
-            use_container_width=True
-        )
+    st.download_button(
+        label="📥 Download JSON",
+        data=json.dumps(data, indent=2, ensure_ascii=False),
+        file_name="candidate_experience.json",
+        mime="application/json",
+        use_container_width=True
+    )
 
 # Preview section
 with st.expander("📋 Preview JSON Data"):
@@ -669,3 +603,64 @@ if uploaded_file:
             st.rerun()
     except json.JSONDecodeError:
         st.error("Invalid JSON file")
+
+# Template info
+st.markdown("---")
+with st.expander("ℹ️ Template Structure"):
+    st.markdown("""
+    ### JSON Template Structure
+    
+    ```json
+    {
+      "header": {
+        "name": "Your Name",
+        "location": "City, State",
+        "email": "email@example.com",
+        "phone": "+1 xxx-xxx-xxxx",
+        "linkedin_url": "https://linkedin.com/in/...",
+        "github_url": "https://github.com/...",
+        "portfolio_url": "https://..."
+      },
+      "professional_summary": "Your summary...",
+      "education": [
+        {
+          "institution": "University Name",
+          "degree": "M.S. in Data Science, GPA: 4.0; Coursework: ML, NLP",
+          "graduation_date": "May 2024",
+          "location": "City, State"
+        }
+      ],
+      "experience": [
+        {
+          "company": "Company Name",
+          "job_title": "Job Title",
+          "date_range": "Jan 2023 -- Present",
+          "location": "City, State",
+          "bullets": ["Bullet 1", "Bullet 2", "Skills: Python, ML"]
+        }
+      ],
+      "projects": [
+        {
+          "name": "Project Name",
+          "technologies": "Tech1, Tech2",
+          "github_url": "https://github.com/...",
+          "bullets": ["Description bullet 1", "Description bullet 2"]
+        }
+      ],
+      "skills": {
+        "ai_ml": "Python, ML, Deep Learning",
+        "ai_applications": "RAG, LangChain",
+        "mlops": "Git, Docker",
+        "frameworks": "TensorFlow, PyTorch"
+      },
+      "research": {
+        "title": "Paper Title",
+        "doi_url": "https://doi.org/...",
+        "doi_text": "DOI: 10.xxx"
+      },
+      "certifications": [
+        {"name": "Cert Name", "issuer": "Issuer", "year": "2024"}
+      ]
+    }
+    ```
+    """)

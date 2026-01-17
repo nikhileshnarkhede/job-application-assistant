@@ -42,3 +42,6 @@ ddgs
 
 # Streamlit GUI
 streamlit>=1.28.0
+
+# LaTeX Resume Generation
+jinja2>=3.0.0
