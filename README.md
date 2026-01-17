@@ -21,6 +21,8 @@ An AI-powered job application automation system built with **LangGraph**, **LLM*
 - **Excel Tracking**: Automatic job application tracking spreadsheet
 - **Checkpointing**: Resume from any stage with SQLite persistence
 - **Streamlit GUI**: User-friendly web interface for easy interaction
+- **PDF Generation**: LaTeX-based professional resume PDF export
+- **Docker Support**: Containerized deployment with external `.env` configuration
 
 ## 🏗️ Architecture
 
@@ -138,7 +140,12 @@ job-application-assistant/
 │   └── tools/
 │       ├── candidate_loader.py   # Load candidate data
 │       ├── github_project_loader.py  # GitHub API integration
+│       ├── latex_generator.py    # LaTeX/PDF resume generation
 │       └── resource_loader.py    # Load resource files
+│
+├── files/                        # LaTeX templates
+│   ├── resume_template.tex       # Jinja2 LaTeX template
+│   └── generate_resume.py        # Standalone generator script
 │
 ├── resources/                    # Reference materials (READ-ONLY)
 │   ├── action_verbs.json
@@ -239,6 +246,58 @@ Open `http://localhost:8501` in your browser.
 | 🚀 **Run Pipeline** | Input JD and execute |
 | 📄 **Resume** | View and copy resume |
 | ✉️ **Cover Letter & Email** | View generated documents |
+| 👤 **Candidate Profile** | Edit your info |
+
+## 🐳 Docker
+
+Run with Docker (`.env` file loaded at runtime, not baked into image):
+
+```bash
+# Create your .env file
+cp .env.example .env
+# Edit .env with your API keys
+
+# Using Docker Compose (recommended)
+docker-compose up --build
+
+# Or using Docker directly
+docker build -t job-application-assistant .
+docker run -p 8501:8501 --env-file .env job-application-assistant
+```
+
+Open `http://localhost:8501` in your browser.
+
+See [DOCKER.md](DOCKER.md) for detailed Docker documentation.
+
+## 📄 PDF Resume Generation
+
+Generate professional PDF resumes using LaTeX:
+
+### Prerequisites
+
+Install a TeX distribution:
+- **Windows**: [MiKTeX](https://miktex.org/download) or [TeX Live](https://tug.org/texlive/)
+- **Mac**: `brew install --cask mactex`
+- **Linux**: `sudo apt install texlive-full`
+
+### Usage
+
+```bash
+# Generate PDF from candidate profile
+python -m mcp_server.tools.latex_generator
+
+# With custom data
+python -m mcp_server.tools.latex_generator -d data/candidate_experience.json -o ./output
+
+# Generate .tex only (no PDF compilation)
+python -m mcp_server.tools.latex_generator --tex-only
+```
+
+Or use the **Streamlit GUI** → Resume page → PDF Export tab.
+
+### Template Customization
+
+Edit `files/resume_template.tex` to customize the LaTeX template. Uses Jinja2 with `[[ variable ]]` syntax.
 
 ## 📊 CLI Options
 

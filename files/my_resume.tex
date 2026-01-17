@@ -1,0 +1,139 @@
+%-------------------------
+% AI Application Engineer | ATS Optimized, 1 Page (TEMPLATE WITH PLACEHOLDERS)
+% Use with Jinja2 templating (see generate_resume.py for delimiter config)
+%-------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+
+% Margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-0.5in}
+\addtolength{\textheight}{1in}
+
+% Section formatting
+\titleformat{\section}
+{\vspace{-6pt}\scshape\raggedright\large}
+{}{0em}{}[\titlerule \vspace{-7pt}]
+
+\pdfgentounicode=1
+
+% Commands
+\newcommand{\resumeItem}[1]{\item\small{#1}}
+\newcommand{\resumeSubheading}[4]{
+\item
+\begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+\textbf{#1} & #2 \\
+\textit{\small #3} & \textit{\small #4}
+\end{tabular*}
+}
+\newcommand{\resumeItemListStart}{
+\begin{itemize}[leftmargin=0.15in,itemsep=1pt,topsep=2pt]
+}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+\begin{document}
+
+%----------HEADER----------
+\begin{center}
+\textbf{\Huge \scshape Nikhilesh Narkhede}\\[-2pt]
+\small Boston, MA $|$
+\href{mailto:nnarkhede@umassd.edu}{nnarkhede@umassd.edu} $|$
+\href{https://www.linkedin.com/in/nikhileshnarkhede}{LinkedIn} $|$
+\href{https://github.com/nikhileshnarkhede}{GitHub} $|$
+\href{https://nikhileshnarkhede.github.io/portfolio/}{Portfolio}
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+\begin{itemize}[leftmargin=0.15in,label={},itemsep=2pt]
+\resumeSubheading
+{University of Massachusetts Dartmouth}{May 2026}
+{M.S. in Data Science, GPA: 4.0; Coursework: ML, NLP, Applied Statistics}{Boston, MA}
+\resumeSubheading
+{Savitribai Phule Pune University}{June 2023}
+{B.E. in Mechanical Engineering, GPA: 3.64; Systems \& Manufacturing}{Pune, India}
+\end{itemize}
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+\begin{itemize}[leftmargin=0.15in,label={}]
+\resumeSubheading
+{University of Massachusetts Dartmouth}{Jun 2025 -- Dec 2025}
+{Research Assistant — AI / ML Engineer}{Boston, MA}
+\resumeItemListStart
+\resumeItem{Developed AI-driven optimization and prediction pipelines using Python, integrating ML models into reusable, modular workflows.}
+\resumeItem{Translated domain-specific requirements into scalable ML components, enabling experimentation, validation, and deployment readiness.}
+\resumeItem{Skills: Python, Machine Learning, AI Pipelines, Feature Engineering, Model Validation, Modular Design.}
+\resumeItemListEnd
+\resumeSubheading
+{Deep Learning Researcher — Contract}{Feb 2025 -- May 2025}
+{AI Engineer (Applied)}{Remote}
+\resumeItemListStart
+\resumeItem{Built and deployed deep learning models for real-world engineering applications under low-data constraints.}
+\resumeItem{Implemented end-to-end training, validation, and inference workflows with reproducible experimentation.}
+\resumeItem{Skills: TensorFlow, Deep Learning, Model Deployment, Validation, Documentation.}
+\resumeItemListEnd
+\resumeSubheading
+{Tech-Neo Publications LLP}{Jul 2023 -- May 2024}
+{Machine Learning Intern}{India}
+\resumeItemListStart
+\resumeItem{Developed ML-powered research applications with clean code practices, version control, and experiment tracking.}
+\resumeItem{Collaborated with researchers to integrate ML outputs into downstream applications and reports.}
+\resumeItem{Skills: Python, Scikit-learn, Git, Code Review, Application Integration.}
+\resumeItemListEnd
+\end{itemize}
+
+%-----------RESEARCH-----------
+\section{Research}
+\small{
+\textbf{Prediction of Mechanical and Fracture Properties of Lightweight Polyurethane Composites Using Machine Learning.}
+\href{https://doi.org/10.3390/jcs9060271}{DOI: 10.3390/jcs9060271}
+}
+
+%-----------PROJECTS-----------
+\section{Projects}
+\begin{itemize}[leftmargin=0.15in,label={}]
+\resumeSubheading
+{Job Application Assistant — AI Application}{}
+{LLMs, NLP, APIs}{\href{https://github.com/nikhileshnarkhede/job-application-assistant}{GitHub}}
+\resumeItemListStart
+\resumeItem{Designed and deployed a production-style LLM application automating resume customization and content generation.}
+\resumeItem{Built modular prompt pipelines, API integrations, logging, and versioning aligned with AI application engineering best practices.}
+\resumeItemListEnd
+\resumeSubheading
+{Chat with YouTube Videos — Conversational AI}{}
+{RAG, LLMs, Vector DBs}{\href{https://github.com/nikhileshnarkhede/Chat_with_YouTube_Video}{GitHub}}
+\resumeItemListStart
+\resumeItem{Developed an end-to-end conversational AI system using embeddings, vector search, and LLM-based generation.}
+\resumeItem{Integrated FAISS/ChromaDB with LangChain to deliver low-latency, context-aware responses.}
+\resumeItemListEnd
+\resumeSubheading
+{Market Momentum \& Sentiment Prediction}{}
+{LSTM, NLP}{\href{https://github.com/nikhileshnarkhede/Real-Time-Evolving-Deep-Learning-Model-for-S-P-500-Momentum-and-Sentiment-Prediction}{GitHub}}
+\resumeItemListStart
+\resumeItem{Built real-time AI pipelines combining time-series forecasting with NLP-driven sentiment analytics.}
+\resumeItemListEnd
+\end{itemize}
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+\small{
+\textbf{AI \& ML:} Python, Machine Learning, Deep Learning, NLP, LLMs, Generative AI, Feature Engineering; 
+\textbf{AI Applications:} API Integration, Prompt Engineering, RAG, Vector Databases, LangChain; 
+\textbf{MLOps \& Deployment:} Git, Logging, Versioning, CI/CD, Docker, Model Deployment; 
+\textbf{Frameworks:} Scikit-learn, TensorFlow, PyTorch
+}
+
+\end{document}
